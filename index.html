@@ -1279,10 +1279,30 @@
     }
 
     /* ── MADAME LA BELLE' AI CHAT ── */
-    .chat-fab {
+    .chat-launcher {
       position: fixed;
       bottom: 24px;
       right: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+    }
+    .chat-label {
+      background: #111111;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      border-radius: 24px;
+      padding: 10px 18px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: .08em;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .chat-label:hover { opacity: 0.85; }
+    .chat-fab {
       width: 64px;
       height: 64px;
       background: var(--gold);
@@ -1291,13 +1311,13 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      z-index: 1000;
       border: none;
+      flex-shrink: 0;
       animation: chatPulse 2.8s ease-in-out infinite;
       transition: transform 0.2s;
     }
     .chat-fab:hover { transform: scale(1.08); }
-    .chat-fab img { width: 38px; height: 38px; object-fit: contain; }
+.chat-fab img { width: 40px; height: 40px; object-fit: contain; filter: brightness(1.5) saturate(1.4); }
     @keyframes chatPulse {
       0%, 100% { box-shadow: 0 4px 20px rgba(201,149,74,0.45); }
       50%       { box-shadow: 0 4px 36px rgba(201,149,74,0.8), 0 0 0 10px rgba(201,149,74,0.12); }
@@ -1336,7 +1356,7 @@
       gap: 10px;
       flex-shrink: 0;
     }
-    .chat-header img { width: 28px; height: 28px; object-fit: contain; flex-shrink: 0; }
+    .chat-header img { object-fit: contain; }
     .chat-header-info { flex: 1; }
     .chat-header-name {
       font-family: var(--serif);
@@ -1492,7 +1512,8 @@
 
     @media (max-width: 480px) {
       .chat-window { width: calc(100vw - 32px); right: 16px; bottom: 90px; }
-      .chat-fab { right: 16px; bottom: 16px; }
+      .chat-launcher { right: 16px; bottom: 16px; }
+      .chat-label { display: none; }
     }
   </style>
 </head>
@@ -1978,13 +1999,20 @@
   </script>
 
   <!-- MADAME LA BELLE' AI CHAT AGENT -->
-  <button class="chat-fab" id="chatFab" aria-label="Chat with Madame La Belle'">
-    <img src="public/labelle-site-logo.png" alt="Madame La Belle'" />
-  </button>
+  <div class="chat-launcher">
+    <span class="chat-label" id="chatLabel">Chat with Madame La Belle' ✨</span>
+    <button class="chat-fab" id="chatFab" aria-label="Chat with Madame La Belle'">
+      <div style="background:#000000; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center;">
+        <img src="public/labelle-site-logo.png" alt="Madame La Belle'" style="width:36px; height:36px; border-radius:50%;" />
+      </div>
+    </button>
+  </div>
 
   <div class="chat-window" id="chatWindow" role="dialog" aria-label="Madame La Belle' chat">
     <div class="chat-header">
-      <img src="public/labelle-site-logo.png" alt="La Belle' emblem" />
+      <div style="background:#000000; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+        <img src="public/labelle-site-logo.png" alt="La Belle' emblem" style="width:36px; height:36px; border-radius:50%;" />
+      </div>
       <div class="chat-header-info">
         <span class="chat-header-name">Madame La Belle'</span>
         <span class="chat-header-sub">Your Beauty Concierge</span>
@@ -2011,7 +2039,6 @@
   </div>
 
   <script>
-    const ANTHROPIC_API_KEY = 'YOUR_ANTHROPIC_API_KEY';
     const FRESHA_URL = 'https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348';
 
     const SYSTEM_PROMPT = `You are Madame La Belle', the elegant AI concierge for La Belle' Beauty Bar in Apex, NC. You are warm, luxurious, knowledgeable and personal — never robotic. You represent a high-end luxury beauty bar and speak accordingly.
@@ -2083,6 +2110,7 @@ Keep responses concise, warm and elegant. Maximum 3 short paragraphs per respons
     let hasOpened = false;
 
     const fab        = document.getElementById('chatFab');
+    const chatLabel  = document.getElementById('chatLabel');
     const chatWindow = document.getElementById('chatWindow');
     const closeBtn   = document.getElementById('chatClose');
     const messages   = document.getElementById('chatMessages');
@@ -2157,23 +2185,22 @@ Keep responses concise, warm and elegant. Maximum 3 short paragraphs per respons
       const typing = showTyping();
 
       try {
-        const res = await fetch('https://api.anthropic.com/v1/messages', {
+        const res = await fetch('/api/chat', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': ANTHROPIC_API_KEY,
-            'anthropic-version': '2023-06-01',
-            'anthropic-dangerous-direct-browser-access': 'true'
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            model: 'claude-sonnet-4-20250514',
+            model: 'claude-sonnet-4-5',
             max_tokens: 1000,
             system: SYSTEM_PROMPT,
             messages: conversationHistory
           })
         });
 
+        console.log('Response status:', res.status);
         const data = await res.json();
+        console.log('Response data:', JSON.stringify(data, null, 2));
         removeTyping();
 
         if (data.content && data.content[0]) {
@@ -2187,6 +2214,7 @@ Keep responses concise, warm and elegant. Maximum 3 short paragraphs per respons
           appendMessage('agent', "I'm so sorry — I'm having a little trouble connecting right now. Please call us at (919) 321-1148 and we'll be happy to help!");
         }
       } catch (err) {
+        console.error('Full error:', err);
         removeTyping();
         appendMessage('agent', "I'm having trouble connecting at the moment. Please reach us directly at (919) 321-1148 or text (919) 759-5828 — we'd love to hear from you!");
       }
@@ -2212,7 +2240,13 @@ Keep responses concise, warm and elegant. Maximum 3 short paragraphs per respons
     }
 
     fab.addEventListener('click', () => isOpen ? closeChat() : openChat());
+    chatLabel.addEventListener('click', () => isOpen ? closeChat() : openChat());
     closeBtn.addEventListener('click', closeChat);
+
+    if (!sessionStorage.getItem('labelle_chat_seen')) {
+      sessionStorage.setItem('labelle_chat_seen', '1');
+      setTimeout(() => { if (!isOpen) openChat(); }, 5000);
+    }
 
     sendBtn.addEventListener('click', () => sendMessage(input.value));
     input.addEventListener('keydown', e => {
