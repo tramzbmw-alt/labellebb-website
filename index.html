@@ -107,7 +107,33 @@
       padding: 16px 60px;
       border-bottom: 1px solid rgba(201,149,74,0.15);
     }
-    .nav-logo img { height: 85px; display: block; }
+    .nav-logo {
+      display: inline-flex !important;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .nav-logo img { height: 50px; display: block; flex-shrink: 0; }
+    .nav-logo-text { display: flex; flex-direction: column; justify-content: center; }
+    .nav-logo-name {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      color: var(--white);
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+    .nav-logo-sub {
+      font-family: var(--sans);
+      font-size: 0.52rem;
+      font-weight: 600;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-top: 3px;
+      white-space: nowrap;
+    }
     .nav-links {
       display: flex;
       gap: 38px;
@@ -1258,7 +1284,11 @@
   <!-- NAVBAR -->
   <nav id="navbar">
     <a href="#hero" class="nav-logo">
-      <img src="public/labelle-logo-main-1.png" alt="La Belle' Beauty Bar" style="filter: drop-shadow(0 0 12px rgba(0,0,0,0.95)) drop-shadow(0 0 20px rgba(0,0,0,0.9));" />
+      <img src="public/labelle-site-logo.png" alt="La Belle' emblem" />
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">La Belle'</span>
+        <span class="nav-logo-sub">Beauty Bar</span>
+      </div>
     </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
