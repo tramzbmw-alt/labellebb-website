@@ -1130,6 +1130,110 @@
       .insta-grid { max-width: 100%; }
       .social-platforms { gap: 10px; }
     }
+
+    /* ── CONTACT / LOCATION ── */
+    #contact {
+      background: #0d0d0d;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 620px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .contact-map {
+      position: relative;
+      min-height: 520px;
+    }
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+      filter: grayscale(30%) contrast(1.05);
+    }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 72px 64px;
+    }
+    .contact-info h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.18;
+      margin-bottom: 36px;
+    }
+    .contact-info h2 em { font-style: italic; color: var(--gold); }
+
+    .contact-block {
+      margin-bottom: 28px;
+    }
+    .contact-block-label {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .contact-block p,
+    .contact-block address {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.6);
+      font-style: normal;
+    }
+    .contact-block a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-block a:hover { color: var(--gold); }
+
+    .contact-hours-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4px 20px;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+    .contact-hours-grid .day { font-weight: 500; color: rgba(255,255,255,0.75); }
+    .contact-hours-grid .closed { color: rgba(255,255,255,0.28); }
+
+    .contact-arrival {
+      font-family: var(--sans);
+      font-size: 0.74rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.42);
+      border-left: 2px solid rgba(201,149,74,0.3);
+      padding-left: 16px;
+      margin-bottom: 36px;
+    }
+
+    .contact-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+      margin: 24px 0;
+    }
+
+    @media (max-width: 1024px) {
+      #contact { grid-template-columns: 1fr; }
+      .contact-map { min-height: 380px; }
+      .contact-info { padding: 56px 48px; }
+    }
+    @media (max-width: 768px) {
+      .contact-info { padding: 48px 24px; }
+    }
   </style>
 </head>
 <body>
@@ -1382,6 +1486,63 @@
           <span class="hour-time">Closed</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / LOCATION -->
+  <section id="contact">
+    <div class="contact-map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.155!2d-78.9102673!3d35.7775925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89aced123cb5c36d%3A0xa36212737ce82752!2sLa%20Belle\'%20Beauty%20Bar!5e0!3m2!1sen!2sus!4v1"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="La Belle' Beauty Bar location map">
+      </iframe>
+    </div>
+
+    <div class="contact-info">
+      <span class="section-label">Find Us</span>
+      <div class="divider-gold left"></div>
+      <h2>Visit <em>La Belle'</em></h2>
+
+      <div class="contact-block">
+        <span class="contact-block-label">Address</span>
+        <address>
+          3675 Green Level W Road, Suite 205<br/>
+          Apex, NC 27523
+        </address>
+      </div>
+
+      <div class="contact-block">
+        <span class="contact-block-label">Contact</span>
+        <p>
+          <a href="tel:9193211148">Call: (919) 321-1148</a><br/>
+          <a href="sms:9197595828">Text: (919) 759-5828</a>
+        </p>
+      </div>
+
+      <div class="contact-block">
+        <span class="contact-block-label">Hours</span>
+        <div class="contact-hours-grid">
+          <span class="day">Tuesday</span>       <span>9:00 am – 7:00 pm</span>
+          <span class="day">Wednesday</span>     <span>12:00 pm – 7:00 pm</span>
+          <span class="day">Thursday</span>      <span>12:00 pm – 7:00 pm</span>
+          <span class="day">Friday</span>        <span>9:00 am – 6:00 pm</span>
+          <span class="day">Saturday</span>      <span>10:00 am – 4:00 pm</span>
+          <span class="day closed">Sunday</span> <span class="closed">Closed</span>
+          <span class="day closed">Monday</span> <span class="closed">Closed</span>
+        </div>
+      </div>
+
+      <div class="contact-divider"></div>
+
+      <p class="contact-arrival">
+        <span class="contact-block-label" style="margin-bottom:6px;">Getting Here</span>
+        Enter through the keypad door, then take the elevator or stairs to the 2nd floor. Turn left, go through the door marked Suites 201–209 — Suite 205 is on the left.
+      </p>
+
+      <a href="https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348" target="_blank" rel="noopener" class="btn-gold">Book Appointment</a>
     </div>
   </section>
 
