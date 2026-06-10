@@ -1277,6 +1277,223 @@
     @media (max-width: 768px) {
       .contact-info { padding: 48px 24px; }
     }
+
+    /* ── MADAME LA BELLE' AI CHAT ── */
+    .chat-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 64px;
+      height: 64px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1000;
+      border: none;
+      animation: chatPulse 2.8s ease-in-out infinite;
+      transition: transform 0.2s;
+    }
+    .chat-fab:hover { transform: scale(1.08); }
+    .chat-fab img { width: 38px; height: 38px; object-fit: contain; }
+    @keyframes chatPulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(201,149,74,0.45); }
+      50%       { box-shadow: 0 4px 36px rgba(201,149,74,0.8), 0 0 0 10px rgba(201,149,74,0.12); }
+    }
+
+    .chat-window {
+      position: fixed;
+      bottom: 100px;
+      right: 24px;
+      width: 380px;
+      height: 520px;
+      background: #111111;
+      border: 1px solid var(--gold);
+      border-radius: 12px;
+      overflow: hidden;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+      transform: scale(0.92) translateY(16px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .chat-window.open {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .chat-header {
+      background: var(--gold);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .chat-header img { width: 28px; height: 28px; object-fit: contain; flex-shrink: 0; }
+    .chat-header-info { flex: 1; }
+    .chat-header-name {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.2;
+      display: block;
+    }
+    .chat-header-sub {
+      font-family: var(--sans);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+      display: block;
+    }
+    .chat-close {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      padding: 0 2px;
+      line-height: 1;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    .chat-close:hover { opacity: 1; }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .chat-messages::-webkit-scrollbar { width: 3px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: rgba(201,149,74,0.3); border-radius: 2px; }
+
+    .chat-msg { display: flex; flex-direction: column; max-width: 86%; }
+    .chat-msg.user { align-self: flex-end; align-items: flex-end; }
+    .chat-msg.agent { align-self: flex-start; align-items: flex-start; }
+    .chat-bubble {
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-family: var(--sans);
+      font-size: 0.77rem;
+      font-weight: 300;
+      line-height: 1.65;
+      word-break: break-word;
+    }
+    .chat-msg.user .chat-bubble  { background: var(--gold); color: #111; border-bottom-right-radius: 3px; }
+    .chat-msg.agent .chat-bubble { background: #1a1a1a; color: var(--cream); border-bottom-left-radius: 3px; }
+    .chat-ts {
+      font-family: var(--sans);
+      font-size: 0.56rem;
+      color: rgba(255,255,255,0.22);
+      margin-top: 4px;
+      padding: 0 2px;
+    }
+    .chat-booking-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 18px;
+      background: var(--gold);
+      color: #111;
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: opacity 0.2s;
+    }
+    .chat-booking-btn:hover { opacity: 0.85; }
+
+    .chat-typing { display: flex; gap: 5px; align-items: center; padding: 11px 14px;
+      background: #1a1a1a; border-radius: 12px; border-bottom-left-radius: 3px; width: fit-content; }
+    .chat-typing span { width: 7px; height: 7px; background: var(--gold); border-radius: 50%;
+      animation: typingDot 1.2s ease-in-out infinite; }
+    .chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+    .chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typingDot {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.35; }
+      30%            { transform: translateY(-5px); opacity: 1; }
+    }
+
+    .chat-suggestions {
+      padding: 0 12px 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .chat-pill {
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 6px 12px;
+      border: 1px solid rgba(201,149,74,0.4);
+      color: rgba(201,149,74,0.85);
+      background: transparent;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .chat-pill:hover { background: rgba(201,149,74,0.1); color: var(--gold); }
+
+    .chat-input-area {
+      background: #1a1a1a;
+      border-top: 1px solid rgba(201,149,74,0.3);
+      padding: 10px 12px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .chat-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--cream);
+      resize: none;
+      line-height: 1.5;
+      max-height: 72px;
+      padding: 4px 0;
+    }
+    .chat-input::placeholder { color: rgba(245,240,234,0.3); }
+    .chat-send {
+      width: 36px;
+      height: 36px;
+      background: var(--gold);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: opacity 0.2s;
+    }
+    .chat-send:hover { opacity: 0.85; }
+    .chat-send svg { width: 15px; height: 15px; fill: #111; }
+
+    @media (max-width: 480px) {
+      .chat-window { width: calc(100vw - 32px); right: 16px; bottom: 90px; }
+      .chat-fab { right: 16px; bottom: 16px; }
+    }
   </style>
 </head>
 <body>
@@ -1757,6 +1974,257 @@
       el.style.transform = 'translateY(32px)';
       el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
       observer.observe(el);
+    });
+  </script>
+
+  <!-- MADAME LA BELLE' AI CHAT AGENT -->
+  <button class="chat-fab" id="chatFab" aria-label="Chat with Madame La Belle'">
+    <img src="public/labelle-site-logo.png" alt="Madame La Belle'" />
+  </button>
+
+  <div class="chat-window" id="chatWindow" role="dialog" aria-label="Madame La Belle' chat">
+    <div class="chat-header">
+      <img src="public/labelle-site-logo.png" alt="La Belle' emblem" />
+      <div class="chat-header-info">
+        <span class="chat-header-name">Madame La Belle'</span>
+        <span class="chat-header-sub">Your Beauty Concierge</span>
+      </div>
+      <button class="chat-close" id="chatClose" aria-label="Close chat">&times;</button>
+    </div>
+
+    <div class="chat-messages" id="chatMessages"></div>
+
+    <div class="chat-suggestions" id="chatSuggestions">
+      <button class="chat-pill" data-q="How much is a Brazilian?">How much is a Brazilian?</button>
+      <button class="chat-pill" data-q="First time visitor">First time visitor</button>
+      <button class="chat-pill" data-q="What services do you offer?">What services do you offer?</button>
+      <button class="chat-pill" data-q="Book an appointment">Book an appointment</button>
+    </div>
+
+    <div class="chat-input-area">
+      <textarea class="chat-input" id="chatInput" rows="1"
+        placeholder="Ask Madame La Belle'..."></textarea>
+      <button class="chat-send" id="chatSendBtn" aria-label="Send">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const ANTHROPIC_API_KEY = 'YOUR_ANTHROPIC_API_KEY';
+    const FRESHA_URL = 'https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348';
+
+    const SYSTEM_PROMPT = `You are Madame La Belle', the elegant AI concierge for La Belle' Beauty Bar in Apex, NC. You are warm, luxurious, knowledgeable and personal — never robotic. You represent a high-end luxury beauty bar and speak accordingly.
+
+SERVICES AND PRICING:
+WAXING:
+- Brazilian Wax — $65
+- Hollywood Wax — $75
+- Bikini Line — $35
+- Full Leg — $75
+- Half Leg — $45
+- Underarm — $25
+- Lip — $15
+- Chin — $15
+- Full Face — $55
+- Back Wax — $65
+- Chest Wax — $55
+- Eyebrow Wax — $20
+- Arm Wax — $45
+- Sugaring available as alternative to waxing
+
+FACIALS:
+- Signature Facial — $85
+- Back Purifier — $75
+- Vajacial — $65
+- Gentlemen's Facial/Beard Treatment — $75
+
+LASH AND BROW:
+- Lash Lift — $85
+- Lash Tint — $35
+- Lash Lift and Tint — $100
+- Brow Lamination — $75
+- Brow Tint — $25
+- Brow Lamination and Tint — $90
+- Brow Wax — $20
+
+BUSINESS INFO:
+- Address: 3675 Green Level W Road Suite 205, Apex NC 27523
+- Phone: (919) 321-1148
+- Text: (919) 759-5828
+- Hours: Tuesday 9am-7pm, Wednesday 12pm-7pm, Thursday 12pm-7pm, Friday 9am-6pm, Saturday 10am-4pm, Sunday-Monday Closed
+- New clients: 25% off first visit with code FIRSTTIME
+- Loyalty program: Earn 10 points per dollar spent, 100 points for booking online, 500 points on 6th visit
+- All products are natural, organic and vegan
+- Hard wax used — gentle on sensitive skin
+
+ABOUT THE BUSINESS:
+La Belle' Beauty Bar is a luxury boutique beauty bar in Apex NC. Woman-owned. 5-star rated with 64 Google reviews. 'We are Lavish, We are Luxury, We are La Belle.'
+
+WHEN CLIENT WANTS TO BOOK:
+Say: 'I would love to get you scheduled at La Belle'! Let me take you to our booking page where you can choose your perfect time with Mia or Phyllcia.'
+Then add the text: [SHOW_BOOKING_BUTTON]
+
+ANSWER QUESTIONS ABOUT:
+- What to expect during first wax visit
+- How to prepare for services (no shaving 2 weeks before wax etc)
+- Aftercare advice
+- Difference between services (Brazilian vs Hollywood etc)
+- Product recommendations
+- Parking and directions to Suite 205
+- Anything related to beauty services and skincare
+
+Keep responses concise, warm and elegant. Maximum 3 short paragraphs per response.`;
+
+    const OPENING_MESSAGE = "Welcome to La Belle' Beauty Bar! I'm Madame La Belle', your personal beauty concierge ✨ Whether you have questions about our services, pricing, or want to book an appointment — I'm here to help. How can I assist you today?";
+
+    let conversationHistory = [];
+    let isOpen = false;
+    let hasOpened = false;
+
+    const fab        = document.getElementById('chatFab');
+    const chatWindow = document.getElementById('chatWindow');
+    const closeBtn   = document.getElementById('chatClose');
+    const messages   = document.getElementById('chatMessages');
+    const input      = document.getElementById('chatInput');
+    const sendBtn    = document.getElementById('chatSendBtn');
+    const suggestions = document.getElementById('chatSuggestions');
+
+    function ts() {
+      return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function scrollToBottom() {
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function appendMessage(role, text, showBooking = false) {
+      const wrapper = document.createElement('div');
+      wrapper.className = `chat-msg ${role}`;
+
+      const bubble = document.createElement('div');
+      bubble.className = 'chat-bubble';
+      bubble.textContent = text;
+      wrapper.appendChild(bubble);
+
+      if (showBooking) {
+        const btn = document.createElement('a');
+        btn.className = 'chat-booking-btn';
+        btn.href = FRESHA_URL;
+        btn.target = '_blank';
+        btn.rel = 'noopener';
+        btn.textContent = 'Book Your Appointment →';
+        wrapper.appendChild(btn);
+      }
+
+      const time = document.createElement('div');
+      time.className = 'chat-ts';
+      time.textContent = ts();
+      wrapper.appendChild(time);
+
+      messages.appendChild(wrapper);
+      scrollToBottom();
+    }
+
+    function showTyping() {
+      const el = document.createElement('div');
+      el.className = 'chat-msg agent';
+      el.id = 'typingIndicator';
+      el.innerHTML = '<div class="chat-typing"><span></span><span></span><span></span></div>';
+      messages.appendChild(el);
+      scrollToBottom();
+      return el;
+    }
+
+    function removeTyping() {
+      const el = document.getElementById('typingIndicator');
+      if (el) el.remove();
+    }
+
+    async function sendMessage(text) {
+      if (!text.trim()) return;
+
+      // Hide suggestions after first real interaction
+      suggestions.style.display = 'none';
+
+      appendMessage('user', text);
+      input.value = '';
+      input.style.height = 'auto';
+      sendBtn.disabled = true;
+
+      conversationHistory.push({ role: 'user', content: text });
+
+      const typing = showTyping();
+
+      try {
+        const res = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': ANTHROPIC_API_KEY,
+            'anthropic-version': '2023-06-01',
+            'anthropic-dangerous-direct-browser-access': 'true'
+          },
+          body: JSON.stringify({
+            model: 'claude-sonnet-4-20250514',
+            max_tokens: 1000,
+            system: SYSTEM_PROMPT,
+            messages: conversationHistory
+          })
+        });
+
+        const data = await res.json();
+        removeTyping();
+
+        if (data.content && data.content[0]) {
+          let reply = data.content[0].text;
+          const showBooking = reply.includes('[SHOW_BOOKING_BUTTON]');
+          reply = reply.replace('[SHOW_BOOKING_BUTTON]', '').trim();
+
+          conversationHistory.push({ role: 'assistant', content: reply });
+          appendMessage('agent', reply, showBooking);
+        } else {
+          appendMessage('agent', "I'm so sorry — I'm having a little trouble connecting right now. Please call us at (919) 321-1148 and we'll be happy to help!");
+        }
+      } catch (err) {
+        removeTyping();
+        appendMessage('agent', "I'm having trouble connecting at the moment. Please reach us directly at (919) 321-1148 or text (919) 759-5828 — we'd love to hear from you!");
+      }
+
+      sendBtn.disabled = false;
+    }
+
+    function openChat() {
+      isOpen = true;
+      chatWindow.classList.add('open');
+      fab.style.animation = 'none';
+      if (!hasOpened) {
+        hasOpened = true;
+        appendMessage('agent', OPENING_MESSAGE);
+      }
+      setTimeout(() => input.focus(), 300);
+    }
+
+    function closeChat() {
+      isOpen = false;
+      chatWindow.classList.remove('open');
+      fab.style.animation = '';
+    }
+
+    fab.addEventListener('click', () => isOpen ? closeChat() : openChat());
+    closeBtn.addEventListener('click', closeChat);
+
+    sendBtn.addEventListener('click', () => sendMessage(input.value));
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(input.value); }
+    });
+    input.addEventListener('input', () => {
+      input.style.height = 'auto';
+      input.style.height = Math.min(input.scrollHeight, 72) + 'px';
+    });
+
+    suggestions.querySelectorAll('.chat-pill').forEach(pill => {
+      pill.addEventListener('click', () => sendMessage(pill.dataset.q));
     });
   </script>
 </body>
