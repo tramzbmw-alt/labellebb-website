@@ -1136,14 +1136,14 @@
       background: #0d0d0d;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: 620px;
+      align-items: center;
       border-top: 1px solid rgba(255,255,255,0.05);
-      padding: 0 48px;
+      padding: 60px 48px;
       gap: 48px;
     }
     .contact-map {
       position: relative;
-      min-height: 520px;
+      height: 350px;
     }
     .contact-map iframe {
       width: 100%;
@@ -1157,19 +1157,21 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 72px 0;
+      padding: 0;
     }
     .contact-info-inner {
       max-width: 420px;
       width: 100%;
+      text-align: center;
     }
     .contact-info h2 {
       font-family: var(--serif);
-      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+      font-size: 1.6rem;
       font-weight: 400;
       color: var(--white);
-      line-height: 1.18;
-      margin-bottom: 36px;
+      line-height: 1.2;
+      white-space: nowrap;
+      margin-bottom: 32px;
     }
     .contact-info h2 em { font-style: italic; color: var(--gold); }
 
@@ -1204,8 +1206,10 @@
 
     .contact-hours-grid {
       display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 4px 20px;
+      grid-template-columns: auto auto;
+      gap: 4px 24px;
+      width: fit-content;
+      margin: 0 auto;
       font-family: var(--sans);
       font-size: 0.78rem;
       font-weight: 300;
@@ -1221,9 +1225,8 @@
       font-weight: 300;
       line-height: 1.9;
       color: rgba(255,255,255,0.42);
-      border-left: 2px solid rgba(201,149,74,0.3);
-      padding-left: 16px;
-      margin-bottom: 36px;
+      text-align: center;
+      margin-bottom: 32px;
     }
 
     .contact-divider {
@@ -1234,9 +1237,9 @@
     }
 
     @media (max-width: 1024px) {
-      #contact { grid-template-columns: 1fr; padding: 0; gap: 0; }
-      .contact-map { min-height: 380px; }
-      .contact-info { padding: 56px 32px; align-items: flex-start; }
+      #contact { grid-template-columns: 1fr; padding: 32px 24px; gap: 32px; }
+      .contact-map { height: 280px; }
+      .contact-info { padding: 0; }
     }
     @media (max-width: 768px) {
       .contact-info { padding: 48px 24px; }
@@ -1550,7 +1553,7 @@
           Enter through the keypad door, then take the elevator or stairs to the 2nd floor. Turn left, go through the door marked Suites 201–209 — Suite 205 is on the left.
         </p>
 
-        <a href="https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348" target="_blank" rel="noopener" class="btn-gold" style="width: auto; align-self: flex-start; padding: 14px 40px;">Book Appointment</a>
+        <a href="https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348" target="_blank" rel="noopener" class="btn-gold" style="padding: 14px 40px;">Book Appointment</a>
       </div>
     </div>
   </section>
