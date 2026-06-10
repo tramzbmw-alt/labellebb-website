@@ -1515,6 +1515,28 @@
       .chat-launcher { right: 16px; bottom: 16px; }
       .chat-label { display: none; }
     }
+
+    /* ── FLASH SALE ANIMATIONS ── */
+    @keyframes fsLightning {
+      0%, 40%, 100% { opacity: 1; }
+      50%, 90%      { opacity: 0.2; }
+    }
+    @keyframes fsBg {
+      0%, 100% { background-color: #C9954A; }
+      50%      { background-color: #D4A85C; }
+    }
+    @keyframes fsPulse {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.02); }
+    }
+    @keyframes fsGlow {
+      0%, 100% { box-shadow: 0 0 0px rgba(201,149,74,0); }
+      50%      { box-shadow: 0 0 18px rgba(201,149,74,0.6); }
+    }
+    .fs-lightning { display:inline; animation: fsLightning 0.6s ease-in-out infinite; }
+    .fs-heading   { display:inline-block; animation: fsPulse 1.5s ease-in-out infinite; }
+    #flashSale    { animation: fsBg 2s ease-in-out infinite; }
+    .fs-book-btn  { animation: fsGlow 2s ease-in-out infinite; }
   </style>
 </head>
 <body>
@@ -1576,13 +1598,13 @@
   <!-- FLASH SALE: Change display:none to display:block to activate -->
   <div id="flashSale" style="display:block; background:#C9954A; padding:40px 24px; text-align:center;">
     <div style="display:inline-flex; align-items:center; gap:14px; margin-bottom:10px;">
-      <span style="font-size:2rem;">🎁</span>
-      <span style="font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:700;letter-spacing:0.2em;color:#111111;text-transform:uppercase;">Father's Day Special ⚡</span>
-      <span style="font-size:2rem;">🎁</span>
+      <span class="fs-lightning" style="font-size:2rem;">⚡</span>
+      <span class="fs-heading" style="font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:700;letter-spacing:0.2em;color:#111111;text-transform:uppercase;">Father's Day Special 🎁</span>
+      <span class="fs-lightning" style="font-size:2rem;">⚡</span>
     </div>
     <p style="font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:500;letter-spacing:0.05em;color:#111111;margin-bottom:8px;">Treat Dad to a Gentlemen's Facial or Back Wax — the perfect gift this Father's Day</p>
     <p style="font-family:'Montserrat',sans-serif;font-size:0.8rem;font-weight:400;letter-spacing:0.1em;color:#111111;margin-bottom:28px;opacity:0.75;">Limited time offer &middot; June 15 only</p>
-    <a href="https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348" target="_blank" rel="noopener" style="display:inline-block;padding:14px 40px;background:#111111;color:#C9954A;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;border:2px solid #111111;transition:background 0.3s,color 0.3s;">Book Now</a>
+    <a href="https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348" target="_blank" rel="noopener" class="fs-book-btn" style="display:inline-block;padding:14px 40px;background:#111111;color:#C9954A;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;border:2px solid #111111;transition:background 0.3s,color 0.3s;">Book Now</a>
   </div>
 
   <!-- ABOUT -->
