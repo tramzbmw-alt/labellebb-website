@@ -1135,9 +1135,11 @@
     #contact {
       background: #0d0d0d;
       display: grid;
-      grid-template-columns: 3fr 5fr;
+      grid-template-columns: 1fr 1fr;
       min-height: 620px;
       border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 0 48px;
+      gap: 48px;
     }
     .contact-map {
       position: relative;
@@ -1154,7 +1156,12 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 72px 64px;
+      align-items: center;
+      padding: 72px 0;
+    }
+    .contact-info-inner {
+      max-width: 420px;
+      width: 100%;
     }
     .contact-info h2 {
       font-family: var(--serif);
@@ -1227,9 +1234,9 @@
     }
 
     @media (max-width: 1024px) {
-      #contact { grid-template-columns: 1fr; }
+      #contact { grid-template-columns: 1fr; padding: 0; gap: 0; }
       .contact-map { min-height: 380px; }
-      .contact-info { padding: 56px 48px; }
+      .contact-info { padding: 56px 32px; align-items: flex-start; }
     }
     @media (max-width: 768px) {
       .contact-info { padding: 48px 24px; }
@@ -1502,47 +1509,49 @@
     </div>
 
     <div class="contact-info">
-      <span class="section-label">Find Us</span>
-      <div class="divider-gold left"></div>
-      <h2>Visit <em>La Belle' Beauty Bar</em></h2>
+      <div class="contact-info-inner">
+        <span class="section-label">Find Us</span>
+        <div class="divider-gold left"></div>
+        <h2>Visit <em>La Belle' Beauty Bar</em></h2>
 
-      <div class="contact-block">
-        <span class="contact-block-label">Address</span>
-        <address>
-          3675 Green Level W Road, Suite 205<br/>
-          Apex, NC 27523
-        </address>
-      </div>
-
-      <div class="contact-block">
-        <span class="contact-block-label">Contact</span>
-        <p>
-          <a href="tel:9193211148">Call: (919) 321-1148</a><br/>
-          <a href="sms:9197595828">Text: (919) 759-5828</a>
-        </p>
-      </div>
-
-      <div class="contact-block">
-        <span class="contact-block-label">Hours</span>
-        <div class="contact-hours-grid">
-          <span class="day">Tuesday</span>       <span>9:00 am – 7:00 pm</span>
-          <span class="day">Wednesday</span>     <span>12:00 pm – 7:00 pm</span>
-          <span class="day">Thursday</span>      <span>12:00 pm – 7:00 pm</span>
-          <span class="day">Friday</span>        <span>9:00 am – 6:00 pm</span>
-          <span class="day">Saturday</span>      <span>10:00 am – 4:00 pm</span>
-          <span class="day closed">Sunday</span> <span class="closed">Closed</span>
-          <span class="day closed">Monday</span> <span class="closed">Closed</span>
+        <div class="contact-block">
+          <span class="contact-block-label">Address</span>
+          <address>
+            3675 Green Level W Road, Suite 205<br/>
+            Apex, NC 27523
+          </address>
         </div>
+
+        <div class="contact-block">
+          <span class="contact-block-label">Contact</span>
+          <p>
+            <a href="tel:9193211148">Call: (919) 321-1148</a><br/>
+            <a href="sms:9197595828">Text: (919) 759-5828</a>
+          </p>
+        </div>
+
+        <div class="contact-block">
+          <span class="contact-block-label">Hours</span>
+          <div class="contact-hours-grid">
+            <span class="day">Tuesday</span>       <span>9:00 am – 7:00 pm</span>
+            <span class="day">Wednesday</span>     <span>12:00 pm – 7:00 pm</span>
+            <span class="day">Thursday</span>      <span>12:00 pm – 7:00 pm</span>
+            <span class="day">Friday</span>        <span>9:00 am – 6:00 pm</span>
+            <span class="day">Saturday</span>      <span>10:00 am – 4:00 pm</span>
+            <span class="day closed">Sunday</span> <span class="closed">Closed</span>
+            <span class="day closed">Monday</span> <span class="closed">Closed</span>
+          </div>
+        </div>
+
+        <div class="contact-divider"></div>
+
+        <p class="contact-arrival">
+          <span class="contact-block-label" style="margin-bottom:6px;">Getting Here</span>
+          Enter through the keypad door, then take the elevator or stairs to the 2nd floor. Turn left, go through the door marked Suites 201–209 — Suite 205 is on the left.
+        </p>
+
+        <a href="https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348" target="_blank" rel="noopener" class="btn-gold" style="width: auto; align-self: flex-start; padding: 14px 40px;">Book Appointment</a>
       </div>
-
-      <div class="contact-divider"></div>
-
-      <p class="contact-arrival">
-        <span class="contact-block-label" style="margin-bottom:6px;">Getting Here</span>
-        Enter through the keypad door, then take the elevator or stairs to the 2nd floor. Turn left, go through the door marked Suites 201–209 — Suite 205 is on the left.
-      </p>
-
-      <a href="https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348" target="_blank" rel="noopener" class="btn-gold" style="width: auto; align-self: flex-start; padding: 14px 40px;">Book Appointment</a>
     </div>
   </section>
 
