@@ -1568,13 +1568,13 @@
     </div>
   </section>
 
-  <!-- ANNOUNCEMENT STRIP -->
-  <div class="strip">
+  <!-- ANNOUNCEMENT STRIP: hidden automatically when flash sale is active -->
+  <div class="strip" id="announcementStrip">
     <p>New clients receive 25% off — use code <strong>FIRSTTIME</strong> at booking &nbsp;·&nbsp; <a href="https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348" target="_blank" rel="noopener">Book on Fresha</a></p>
   </div>
 
   <!-- FLASH SALE: Change display:none to display:block to activate -->
-  <div style="display:block; background:#C9954A; padding:40px 24px; text-align:center;">
+  <div id="flashSale" style="display:block; background:#C9954A; padding:40px 24px; text-align:center;">
     <div style="display:inline-flex; align-items:center; gap:14px; margin-bottom:10px;">
       <span style="font-size:2rem;">🎁</span>
       <span style="font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:700;letter-spacing:0.2em;color:#111111;text-transform:uppercase;">Father's Day Special ⚡</span>
@@ -2083,6 +2083,7 @@ BUSINESS INFO:
 - Hours: Tuesday 9am-7pm, Wednesday 12pm-7pm, Thursday 12pm-7pm, Friday 9am-6pm, Saturday 10am-4pm, Sunday-Monday Closed
 - New clients: 25% off first visit with code FIRSTTIME
 - Loyalty program: Earn 10 points per dollar spent, 100 points for booking online, 500 points on 6th visit
+- Current special: Father's Day — Gentlemen's Facial or Back Wax, the perfect gift for Dad, June 15 only. Mention this when relevant (e.g. gifting, men's services, what's special right now).
 - All products are natural, organic and vegan
 - Hard wax used — gentle on sensitive skin
 
@@ -2261,6 +2262,14 @@ Keep responses concise, warm and elegant. Maximum 3 short paragraphs per respons
     suggestions.querySelectorAll('.chat-pill').forEach(pill => {
       pill.addEventListener('click', () => sendMessage(pill.dataset.q));
     });
+  </script>
+
+  <script>
+    const flashSale = document.getElementById('flashSale');
+    const announcementStrip = document.getElementById('announcementStrip');
+    if (flashSale && getComputedStyle(flashSale).display !== 'none') {
+      announcementStrip.style.display = 'none';
+    }
   </script>
 </body>
 </html>
