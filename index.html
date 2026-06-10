@@ -401,9 +401,14 @@
       padding-top: 36px;
       margin-top: 4px;
     }
-    .stat { text-align: left; padding-right: 24px; }
-    .stat:not(:last-child) { border-right: 1px solid rgba(0,0,0,0.1); padding-right: 24px; }
-    .stat:not(:first-child) { padding-left: 24px; padding-right: 24px; }
+    .stat {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .stat:not(:last-child) { border-right: 1px solid rgba(0,0,0,0.1); }
+    .stat { padding: 0 16px; }
     .stat-num {
       font-family: var(--serif);
       font-size: 2.6rem;
@@ -1016,8 +1021,10 @@
       #promo { padding: 60px 24px; }
       .about-content { padding: 52px 28px; }
       .products-content { padding: 52px 28px; }
-      .about-stats { grid-template-columns: 1fr; gap: 24px; }
-      .stat:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 20px; }
+      .about-stats { grid-template-columns: repeat(3, 1fr); gap: 0; }
+      .stat:not(:last-child) { border-right: 1px solid rgba(0,0,0,0.1); border-bottom: none; }
+      .stat-num { font-size: 1.8rem; }
+      .stat { padding: 0 8px; }
     }
 
     /* ── SOCIAL ── */
