@@ -1524,6 +1524,86 @@
       .chat-label { display: none; }
     }
 
+    /* ── GIFTS & SPECIALS ── */
+    #gifts {
+      background: var(--black);
+      padding: 110px 60px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    #gifts .section-header {
+      margin-bottom: 72px;
+    }
+    .gifts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .gifts-col {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(201,149,74,0.14);
+      padding: 60px 52px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .gifts-col img {
+      width: 100%;
+      max-width: 380px;
+      height: auto;
+      display: block;
+      margin: 0 auto 36px;
+    }
+    .gifts-col h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+    .gifts-col h3 em { font-style: italic; color: var(--gold); }
+    .gifts-col p {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 2;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 16px;
+      max-width: 340px;
+    }
+    .gifts-col .gifts-date {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+    }
+    .gifts-col .gifts-sub {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .gifts-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 32px;
+    }
+    @media (max-width: 768px) {
+      #gifts { padding: 80px 24px; }
+      .gifts-grid { grid-template-columns: 1fr; }
+      .gifts-col { padding: 52px 28px; }
+    }
+
     /* ── FLASH SALE ANIMATIONS ── */
     @keyframes fsLightning {
       0%, 40%, 100% { opacity: 1; }
@@ -1758,6 +1838,37 @@
         <div class="team-divider"></div>
         <p>A master of transformative facials and full-body waxing services. Phyllcia tailors every treatment to your skin's individual needs.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- GIFTS & SPECIALS -->
+  <section id="gifts">
+    <div class="section-header">
+      <span class="section-label">Gifts &amp; Specials</span>
+      <div class="divider-gold"></div>
+    </div>
+
+    <div class="gifts-grid">
+
+      <!-- LEFT: Gift Cards -->
+      <div class="gifts-col">
+        <img src="public/Gift_Card_View.png" alt="La Belle' Beauty Bar gift card" />
+        <h3>Give the Gift<br/>of <em>Beauty</em></h3>
+        <p>Treat someone special to a La Belle' experience. Gift cards are available in any amount and never expire.</p>
+        <a href="https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348" target="_blank" rel="noopener" class="btn-gold">Purchase a Gift Card</a>
+      </div>
+
+      <!-- RIGHT: Monthly Special — Update this section monthly with new special -->
+      <div class="gifts-col">
+        <span class="section-label">This Month's Special</span>
+        <div class="gifts-divider"></div>
+        <h3>Father's Day</h3>
+        <p class="gifts-sub">Gentlemen's Facial or Back Wax</p>
+        <p>The perfect gift for Dad this Father's Day. Treat him to a luxurious experience at La Belle'.</p>
+        <span class="gifts-date">Available through June 15th</span>
+        <a href="https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348" target="_blank" rel="noopener" class="btn-gold">Book This Special</a>
+      </div>
+
     </div>
   </section>
 
