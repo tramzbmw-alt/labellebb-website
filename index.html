@@ -172,11 +172,22 @@
       display: flex;
       align-items: center;
       overflow: hidden;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+    #hero img {
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
     }
     .hero-bg {
       position: absolute;
       inset: 0;
       background: url('public/labelle-about-section.png') top center / cover no-repeat;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
     }
     .hero-overlay {
       position: absolute;
@@ -342,13 +353,7 @@
       display: block;
     }
     .about-photo-accent {
-      position: absolute;
-      top: 40px;
-      left: 40px;
-      right: 40px;
-      bottom: 40px;
-      border: 1px solid rgba(201,149,74,0.35);
-      pointer-events: none;
+      display: none;
     }
     .about-content {
       display: flex;
