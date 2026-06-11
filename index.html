@@ -1552,12 +1552,10 @@
   <!-- NAVBAR -->
   <nav id="navbar">
     <a href="#hero" class="nav-logo">
-      <div style="display:flex; align-items:center; gap:10px;">
-        <img src="public/labelle-site-logo.png" style="height:50px; width:auto;" alt="La Belle' emblem" />
-        <div>
-          <div style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; letter-spacing:.18em; color:#ffffff; line-height:1;">LA BELLE'</div>
-          <div style="font-family:'Montserrat',sans-serif; font-size:8px; letter-spacing:.3em; color:rgba(255,255,255,0.7);">BEAUTY BAR</div>
-        </div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:5px;">
+        <img src="public/labelle-site-logo.png" style="height:45px; width:auto;" alt="La Belle' emblem" />
+        <div style="font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:400; letter-spacing:.18em; color:#ffffff; line-height:1.1; text-align:center;">LA BELLE'</div>
+        <div style="font-family:'Montserrat',sans-serif; font-size:8px; letter-spacing:.3em; color:rgba(255,255,255,0.7); text-align:center;">BEAUTY BAR</div>
       </div>
     </a>
     <ul class="nav-links">
@@ -2031,21 +2029,21 @@
 
   <!-- MADAME LA BELLE' AI CHAT AGENT -->
   <div class="chat-launcher">
-    <span class="chat-label" id="chatLabel">Chat with Madame La Belle' ✨</span>
-    <button class="chat-fab" id="chatFab" aria-label="Chat with Madame La Belle'">
+    <span class="chat-label" id="chatLabel">Chat with Madam La Belle' ✨</span>
+    <button class="chat-fab" id="chatFab" aria-label="Chat with Madam La Belle'">
       <div style="background:#000000; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center;">
-        <img src="public/labelle-site-logo.png" alt="Madame La Belle'" style="width:36px; height:36px; border-radius:50%;" />
+        <img src="public/labelle-site-logo.png" alt="Madam La Belle'" style="width:36px; height:36px; border-radius:50%;" />
       </div>
     </button>
   </div>
 
-  <div class="chat-window" id="chatWindow" role="dialog" aria-label="Madame La Belle' chat">
+  <div class="chat-window" id="chatWindow" role="dialog" aria-label="Madam La Belle' chat">
     <div class="chat-header">
       <div style="background:#000000; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
         <img src="public/labelle-site-logo.png" alt="La Belle' emblem" style="width:36px; height:36px; border-radius:50%;" />
       </div>
       <div class="chat-header-info">
-        <span class="chat-header-name">Madame La Belle'</span>
+        <span class="chat-header-name">Madam La Belle'</span>
         <span class="chat-header-sub">Your Beauty Concierge</span>
       </div>
       <button class="chat-close" id="chatClose" aria-label="Close chat">&times;</button>
@@ -2062,7 +2060,7 @@
 
     <div class="chat-input-area">
       <textarea class="chat-input" id="chatInput" rows="1"
-        placeholder="Ask Madame La Belle'..."></textarea>
+        placeholder="Ask Madam La Belle'..."></textarea>
       <button class="chat-send" id="chatSendBtn" aria-label="Send">
         <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
       </button>
@@ -2072,7 +2070,7 @@
   <script>
     const FRESHA_URL = 'https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348';
 
-    const SYSTEM_PROMPT = `You are Madame La Belle', the elegant AI concierge for La Belle' Beauty Bar in Apex, NC. You are warm, luxurious, knowledgeable and personal — never robotic. You represent a high-end luxury beauty bar and speak accordingly.
+    const SYSTEM_PROMPT = `You are Madam La Belle', the elegant AI concierge for La Belle' Beauty Bar in Apex, NC. You are warm, luxurious, knowledgeable and personal — never robotic. You represent a high-end luxury beauty bar and speak accordingly.
 
 SERVICES AND PRICING:
 WAXING:
@@ -2135,7 +2133,7 @@ ANSWER QUESTIONS ABOUT:
 
 Keep responses concise, warm and elegant. Maximum 3 short paragraphs per response.`;
 
-    const OPENING_MESSAGE = "Welcome to La Belle' Beauty Bar! I'm Madame La Belle', your personal beauty concierge ✨ Whether you have questions about our services, pricing, or want to book an appointment — I'm here to help. How can I assist you today?";
+    const OPENING_MESSAGE = "Welcome to La Belle' Beauty Bar! I'm Madam La Belle', your personal beauty concierge ✨ Whether you have questions about our services, pricing, or want to book an appointment — I'm here to help. How can I assist you today?";
 
     let conversationHistory = [];
     let isOpen = false;
