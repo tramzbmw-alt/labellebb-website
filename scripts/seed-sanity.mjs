@@ -111,6 +111,15 @@ const documents = [
     bookButtonText: 'Book Appointment',
   },
   {
+    _id: 'monthlySpecial-fathersDay',
+    _type: 'monthlySpecial',
+    active: true,
+    title: "Father's Day",
+    subtitle: 'Beard Facial or Back Wax',
+    description: "The perfect gift for Dad this Father's Day. Treat him to a luxurious experience at La Belle'.",
+    availableThrough: 'June 21st',
+  },
+  {
     _id: 'footerContent',
     _type: 'footerContent',
     description:
