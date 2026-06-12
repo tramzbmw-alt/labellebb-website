@@ -1,11 +1,38 @@
 import Navbar from '@/components/Navbar';
 import ChatWidget from '@/components/ChatWidget';
 import ClientInit from '@/components/ClientInit';
+import {
+  getSiteSettings,
+  getFlashSale,
+  getMonthlySpecial,
+  getTeamMembers,
+  getSectionVisibility,
+} from '@/sanity/lib/queries';
 
 const BOOKING_URL =
   'https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348';
 
-export default function Home() {
+export default async function Home() {
+  const [siteSettings, flashSale, monthlySpecial, teamMembers, visibility] = await Promise.all([
+    getSiteSettings(),
+    getFlashSale(),
+    getMonthlySpecial(),
+    getTeamMembers(),
+    getSectionVisibility(),
+  ]);
+
+  const announcementText =
+    siteSettings?.announcementBar ??
+    "New clients receive 25% off — use code FIRSTTIME at booking";
+  const showAnnouncement = siteSettings?.announcementActive ?? true;
+
+  const showFlashSale = (flashSale?.active || visibility?.showFlashSale) ?? false;
+  const showProducts = visibility?.showProducts ?? false;
+  const showInstagram = visibility?.showInstagram ?? false;
+
+  const special = monthlySpecial ?? null;
+  const hasTeam = teamMembers && teamMembers.length > 0;
+
   return (
     <>
       <Navbar />
@@ -55,21 +82,22 @@ export default function Home() {
       </section>
 
       {/* ANNOUNCEMENT STRIP */}
-      <div className="strip" id="announcementStrip">
-        <p>
-          New clients receive 25% off — use code <strong>FIRSTTIME</strong> at booking
-          &nbsp;·&nbsp;{' '}
-          <a href={BOOKING_URL} target="_blank" rel="noopener">
-            Book Now
-          </a>
-        </p>
-      </div>
+      {showAnnouncement && (
+        <div className="strip" id="announcementStrip">
+          <p>
+            {announcementText}&nbsp;·&nbsp;{' '}
+            <a href={BOOKING_URL} target="_blank" rel="noopener">
+              Book Now
+            </a>
+          </p>
+        </div>
+      )}
 
-      {/* FLASH SALE: Change display:none to display:block to activate */}
+      {/* FLASH SALE */}
       <div
         id="flashSale"
         style={{
-          display: 'none',
+          display: showFlashSale ? 'block' : 'none',
           background: '#C9954A',
           padding: '40px 24px',
           textAlign: 'center',
@@ -92,7 +120,7 @@ export default function Home() {
               textTransform: 'uppercase',
             }}
           >
-            Father&apos;s Day Special 🎁
+            {flashSale?.heading ?? "Father's Day Special 🎁"}
           </span>
           <span className="fs-lightning" style={{ fontSize: '2rem' }}>
             ⚡
@@ -108,21 +136,23 @@ export default function Home() {
             marginBottom: '8px',
           }}
         >
-          Treat Dad to a Beard Facial or Back Wax — the perfect gift this Father&apos;s Day
+          {flashSale?.subtext ?? "Treat Dad to a Beard Facial or Back Wax — the perfect gift this Father's Day"}
         </p>
-        <p
-          style={{
-            fontFamily: "'Montserrat',sans-serif",
-            fontSize: '0.8rem',
-            fontWeight: 400,
-            letterSpacing: '0.1em',
-            color: '#111111',
-            marginBottom: '28px',
-            opacity: 0.75,
-          }}
-        >
-          Limited time offer &middot; June 15 only
-        </p>
+        {flashSale?.expiryDate && (
+          <p
+            style={{
+              fontFamily: "'Montserrat',sans-serif",
+              fontSize: '0.8rem',
+              fontWeight: 400,
+              letterSpacing: '0.1em',
+              color: '#111111',
+              marginBottom: '28px',
+              opacity: 0.75,
+            }}
+          >
+            Limited time offer &middot; Expires {flashSale.expiryDate}
+          </p>
+        )}
         <a
           href={BOOKING_URL}
           target="_blank"
@@ -143,7 +173,7 @@ export default function Home() {
             transition: 'background 0.3s,color 0.3s',
           }}
         >
-          Book Now
+          {flashSale?.buttonText ?? 'Book Now'}
         </a>
       </div>
 
@@ -269,8 +299,8 @@ export default function Home() {
         </a>
       </section>
 
-      {/* PRODUCTS SECTION: Change display:none to display:block to re-enable when products available */}
-      <div style={{ display: 'none' }}>
+      {/* PRODUCTS SECTION: Change showProducts in Sanity or set visibility to re-enable */}
+      <div style={{ display: showProducts ? 'block' : 'none' }}>
         <section id="products">
           <div className="products-content">
             <span className="section-label">Retail &amp; Skincare</span>
@@ -340,28 +370,50 @@ export default function Home() {
           experience.
         </p>
         <div className="team-grid">
-          <div className="team-card">
-            <div className="team-card-body">
-              <h3>Mia</h3>
-              <span className="title">Licensed Esthetician</span>
-              <div className="team-divider" />
-              <p>
-                Specializing in full body waxing and brow + lash services. Mia brings expertise
-                and a warm touch to every appointment.
-              </p>
-            </div>
-          </div>
-          <div className="team-card">
-            <div className="team-card-body">
-              <h3>Phyllcia</h3>
-              <span className="title">Master Esthetician</span>
-              <div className="team-divider" />
-              <p>
-                A master of transformative facials and full-body waxing services. Phyllcia
-                tailors every treatment to your skin&apos;s individual needs.
-              </p>
-            </div>
-          </div>
+          {hasTeam ? (
+            teamMembers.map((member) => (
+              <div key={member._id} className="team-card">
+                <div className="team-card-body">
+                  <h3>{member.name}</h3>
+                  <span className="title">{member.title}</span>
+                  <div className="team-divider" />
+                  <p>{member.bio}</p>
+                  {member.specialties && member.specialties.length > 0 && (
+                    <div className="about-tags" style={{ marginTop: '12px' }}>
+                      {member.specialties.map((s) => (
+                        <span key={s} className="about-tag">{s}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))
+          ) : (
+            <>
+              <div className="team-card">
+                <div className="team-card-body">
+                  <h3>Mia</h3>
+                  <span className="title">Licensed Esthetician</span>
+                  <div className="team-divider" />
+                  <p>
+                    Specializing in full body waxing and brow + lash services. Mia brings expertise
+                    and a warm touch to every appointment.
+                  </p>
+                </div>
+              </div>
+              <div className="team-card">
+                <div className="team-card-body">
+                  <h3>Phyllcia</h3>
+                  <span className="title">Master Esthetician</span>
+                  <div className="team-divider" />
+                  <p>
+                    A master of transformative facials and full-body waxing services. Phyllcia
+                    tailors every treatment to your skin&apos;s individual needs.
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </section>
 
@@ -390,17 +442,22 @@ export default function Home() {
             </a>
           </div>
 
-          {/* Monthly Special — Update this section monthly */}
+          {/* Monthly Special — managed via Sanity */}
           <div className="gifts-col">
             <span className="section-label">This Month&apos;s Special</span>
             <div className="gifts-divider" />
-            <h3>Father&apos;s Day</h3>
-            <p className="gifts-sub">Beard Facial or Back Wax</p>
+            <h3>{special?.title ?? "Father's Day"}</h3>
+            <p className="gifts-sub">{special?.subtitle ?? 'Beard Facial or Back Wax'}</p>
             <p>
-              The perfect gift for Dad this Father&apos;s Day. Treat him to a luxurious
-              experience at La Belle&apos;.
+              {special?.description ??
+                "The perfect gift for Dad this Father's Day. Treat him to a luxurious experience at La Belle'."}
             </p>
-            <span className="gifts-date">Available through June 21st</span>
+            {(special?.availableThrough) && (
+              <span className="gifts-date">Available through {special.availableThrough}</span>
+            )}
+            {!special && (
+              <span className="gifts-date">Available through June 21st</span>
+            )}
             <a href={BOOKING_URL} target="_blank" rel="noopener" className="btn-gold">
               Book This Special
             </a>
@@ -578,8 +635,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* INSTAGRAM SECTION: Change display:none to display:block when ready to add Instagram feed */}
-      <div style={{ display: 'none' }}>
+      {/* INSTAGRAM SECTION: Enable by setting showInstagram in Sanity Section Visibility */}
+      <div style={{ display: showInstagram ? 'block' : 'none' }}>
         <section id="social">
           <span className="section-label">Stay Connected</span>
           <div className="divider-gold" />
