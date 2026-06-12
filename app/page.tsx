@@ -51,11 +51,11 @@ export default async function Home() {
           <h1 className="hero-headline">
             {heroLine1
               ? heroLine1
-              : <span>We Are <span style={{ color: '#C9954A', fontStyle: 'italic' }}>Lavish</span><span style={{ color: '#ffffff' }}>,</span></span>}
+              : <span>We Are <span style={{ color: '#C9954A', fontStyle: 'italic' }}>Lavish</span></span>}
             <br />
             {heroLine2
               ? heroLine2
-              : <span>We Are <span style={{ color: '#C9954A', fontStyle: 'italic' }}>Luxury</span><span style={{ color: '#ffffff' }}>,</span></span>}
+              : <span>We Are <span style={{ color: '#C9954A', fontStyle: 'italic' }}>Luxury</span></span>}
             <br />
             {heroLine3
               ? heroLine3
