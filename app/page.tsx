@@ -9,13 +9,22 @@ import {
   getSectionVisibility,
   getHeroContent,
   getOurStory,
+  getReviewsSection,
+  getTeamSection,
+  getLoyaltySection,
+  getGiftsSection,
+  getContactSection,
+  getFooterContent,
 } from '@/sanity/lib/queries';
 
 const BOOKING_URL =
   'https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348';
 
 export default async function Home() {
-  const [siteSettings, flashSale, monthlySpecial, teamMembers, visibility, hero, story] = await Promise.all([
+  const [
+    siteSettings, flashSale, monthlySpecial, teamMembers, visibility,
+    hero, story, reviews, teamSec, loyalty, gifts, contact, footer,
+  ] = await Promise.all([
     getSiteSettings(),
     getFlashSale(),
     getMonthlySpecial(),
@@ -23,23 +32,31 @@ export default async function Home() {
     getSectionVisibility(),
     getHeroContent(),
     getOurStory(),
+    getReviewsSection(),
+    getTeamSection(),
+    getLoyaltySection(),
+    getGiftsSection(),
+    getContactSection(),
+    getFooterContent(),
   ]);
 
   const announcementText =
-    siteSettings?.announcementBar ??
-    "New clients receive 25% off — use code FIRSTTIME at booking";
+    siteSettings?.announcementBar ?? "New clients receive 25% off — use code FIRSTTIME at booking";
   const showAnnouncement = siteSettings?.announcementActive ?? true;
-
   const showFlashSale = (flashSale?.active || visibility?.showFlashSale) ?? false;
   const showProducts = visibility?.showProducts ?? false;
   const showInstagram = visibility?.showInstagram ?? false;
-
   const special = monthlySpecial ?? null;
   const hasTeam = teamMembers && teamMembers.length > 0;
-
   const heroLine1 = hero?.line1 ?? null;
   const heroLine2 = hero?.line2 ?? null;
   const heroLine3 = hero?.line3 ?? null;
+
+  const phone = contact?.phone ?? '(919) 321-1148';
+  const phoneRaw = phone.replace(/\D/g, '');
+  const textNum = contact?.textNumber ?? '(919) 759-5828';
+  const textRaw = textNum.replace(/\D/g, '');
+  const email = contact?.email ?? 'info@labellebb.com';
 
   return (
     <>
@@ -115,11 +132,8 @@ export default async function Home() {
         <div
           style={{ display: 'inline-flex', alignItems: 'center', gap: '14px', marginBottom: '10px' }}
         >
-          <span className="fs-lightning" style={{ fontSize: '2rem' }}>
-            ⚡
-          </span>
+          <span style={{ fontSize: '2rem' }}>⚡</span>
           <span
-            className="fs-heading"
             style={{
               fontFamily: "'Montserrat',sans-serif",
               fontSize: '2rem',
@@ -131,9 +145,7 @@ export default async function Home() {
           >
             {flashSale?.heading ?? "Father's Day Special 🎁"}
           </span>
-          <span className="fs-lightning" style={{ fontSize: '2rem' }}>
-            ⚡
-          </span>
+          <span style={{ fontSize: '2rem' }}>⚡</span>
         </div>
         <p
           style={{
@@ -166,7 +178,6 @@ export default async function Home() {
           href={BOOKING_URL}
           target="_blank"
           rel="noopener"
-          className="fs-book-btn"
           style={{
             display: 'inline-block',
             padding: '14px 40px',
@@ -220,13 +231,7 @@ export default async function Home() {
             <span className="about-tag">{story?.badge3 ?? 'Clean Beauty'}</span>
             <span className="about-tag">{story?.badge4 ?? 'Luxury Experience'}</span>
           </div>
-          <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noopener"
-            className="btn-gold"
-            style={{ textAlign: 'center' }}
-          >
+          <a href={BOOKING_URL} target="_blank" rel="noopener" className="btn-gold" style={{ textAlign: 'center' }}>
             {story?.buttonText ?? 'Reserve Your Visit'}
           </a>
           <div className="about-stats">
@@ -257,7 +262,6 @@ export default async function Home() {
           From precise waxing to transformative facials and stunning lash &amp; brow artistry —
           every treatment is designed with intention.
         </p>
-
         <div className="services-grid">
           <div className="service-card">
             <img src="/labelle-services-header.png" alt="Waxing services at La Belle'" loading="lazy" />
@@ -286,11 +290,7 @@ export default async function Home() {
             </div>
           </div>
           <div className="service-card">
-            <img
-              src="/labelle-services-lash-brow.png"
-              alt="Lash and brow services at La Belle'"
-              loading="lazy"
-            />
+            <img src="/labelle-services-lash-brow.png" alt="Lash and brow services at La Belle'" loading="lazy" />
             <div className="service-card-overlay" />
             <div className="service-card-content">
               <span className="service-card-num">03</span>
@@ -303,22 +303,19 @@ export default async function Home() {
             </div>
           </div>
         </div>
-
         <a href={BOOKING_URL} target="_blank" rel="noopener" className="btn-gold">
           View Full Menu &amp; Book
         </a>
       </section>
 
-      {/* PRODUCTS SECTION: Change showProducts in Sanity or set visibility to re-enable */}
+      {/* PRODUCTS — enabled via Sanity Section Visibility */}
       <div style={{ display: showProducts ? 'block' : 'none' }}>
         <section id="products">
           <div className="products-content">
             <span className="section-label">Retail &amp; Skincare</span>
             <div className="divider-gold left" />
             <h2>
-              Clean Beauty
-              <br />
-              <em>You Can Take Home</em>
+              Clean Beauty<br /><em>You Can Take Home</em>
             </h2>
             <p>
               Our curated retail selection features natural, organic, and vegan formulas — the
@@ -338,46 +335,48 @@ export default async function Home() {
             </div>
           </div>
           <div className="products-photo">
-            <img
-              src="/labelle-section-products.png"
-              alt="La Belle' natural beauty products"
-              loading="lazy"
-            />
+            <img src="/labelle-section-products.png" alt="La Belle' natural beauty products" loading="lazy" />
           </div>
         </section>
       </div>
 
-      {/* PROMO BANNER */}
+      {/* LOYALTY / PROMO */}
       <section id="promo">
         <div className="promo-inner">
-          <span className="promo-label">First Time? Welcome.</span>
+          <span className="promo-label">{loyalty?.eyebrow ?? 'First Time? Welcome.'}</span>
           <h2>
-            Start Your
-            <br />
-            Beauty Journey
+            {loyalty?.heading ? (
+              loyalty.heading
+            ) : (
+              <>Start Your<br />Beauty Journey</>
+            )}
           </h2>
           <p>
-            New to La Belle&apos;? We&apos;d love to meet you. Use the code below at checkout and
-            receive 25% off your first service — because you deserve to arrive in luxury.
+            {loyalty?.subtext ??
+              "New to La Belle'? We'd love to meet you. Use the code below at checkout and receive 25% off your first service — because you deserve to arrive in luxury."}
           </p>
-          <div className="promo-code">FIRSTTIME</div>
+          <div className="promo-code">{loyalty?.promoCode ?? 'FIRSTTIME'}</div>
           <br />
           <a href={BOOKING_URL} target="_blank" rel="noopener" className="btn-white">
-            Claim Your Discount
+            {loyalty?.buttonText ?? 'Claim Your Discount'}
           </a>
         </div>
       </section>
 
       {/* TEAM */}
       <section id="team">
-        <span className="section-label">Meet the Experts</span>
+        <span className="section-label">{teamSec?.sectionEyebrow ?? 'Meet the Experts'}</span>
         <div className="divider-gold" />
         <h2>
-          Your <em>Beauty Team</em>
+          {teamSec?.sectionHeading ? (
+            teamSec.sectionHeading
+          ) : (
+            <>Your <em>Beauty Team</em></>
+          )}
         </h2>
         <p className="team-sub">
-          Licensed, passionate, and dedicated to giving every client a results-driven, luxury
-          experience.
+          {teamSec?.sectionSubtext ??
+            'Licensed, passionate, and dedicated to giving every client a results-driven, luxury experience.'}
         </p>
         <div className="team-grid">
           {hasTeam ? (
@@ -430,31 +429,30 @@ export default async function Home() {
       {/* GIFTS & SPECIALS */}
       <section id="gifts">
         <div className="section-header">
-          <span className="section-label">Gifts &amp; Specials</span>
+          <span className="section-label">{gifts?.sectionEyebrow ?? 'Gifts & Specials'}</span>
           <div className="divider-gold" />
         </div>
-
         <div className="gifts-grid">
-          {/* Gift Cards */}
           <div className="gifts-col">
             <img src="/Gift_Card_View.png" alt="La Belle' Beauty Bar gift card" loading="lazy" />
             <h3>
-              Give the Gift
-              <br />
-              of <em>Beauty</em>
+              {gifts?.giftCardHeading ? (
+                gifts.giftCardHeading
+              ) : (
+                <>Give the Gift<br />of <em>Beauty</em></>
+              )}
             </h3>
             <p>
-              Treat someone special to a La Belle&apos; experience. Gift cards are available in
-              any amount and never expire.
+              {gifts?.giftCardSubtext ??
+                "Treat someone special to a La Belle' experience. Gift cards are available in any amount and never expire."}
             </p>
             <a href={BOOKING_URL} target="_blank" rel="noopener" className="btn-gold">
-              Purchase a Gift Card
+              {gifts?.giftCardButtonText ?? 'Purchase a Gift Card'}
             </a>
           </div>
 
-          {/* Monthly Special — managed via Sanity */}
           <div className="gifts-col">
-            <span className="section-label">This Month&apos;s Special</span>
+            <span className="section-label">{gifts?.specialsEyebrow ?? "This Month's Special"}</span>
             <div className="gifts-divider" />
             <h3>{special?.title ?? "Father's Day"}</h3>
             <p className="gifts-sub">{special?.subtitle ?? 'Beard Facial or Back Wax'}</p>
@@ -462,7 +460,7 @@ export default async function Home() {
               {special?.description ??
                 "The perfect gift for Dad this Father's Day. Treat him to a luxurious experience at La Belle'."}
             </p>
-            {(special?.availableThrough) && (
+            {special?.availableThrough && (
               <span className="gifts-date">Available through {special.availableThrough}</span>
             )}
             {!special && (
@@ -492,19 +490,19 @@ export default async function Home() {
       {/* TESTIMONIALS */}
       <section id="testimonials">
         <div className="testimonials-inner">
-          <span className="section-label">Client Love</span>
+          <span className="section-label">{reviews?.sectionEyebrow ?? 'Client Love'}</span>
           <div className="divider-gold" />
           <span className="quote-mark">&ldquo;</span>
           <p className="testimonial-text">
-            La Belle&apos; is honestly the best beauty experience I&apos;ve had. Phyllcia made me
-            feel so welcome and my skin has never looked better. I won&apos;t go anywhere else.
+            {reviews?.review1Quote ??
+              "La Belle' is honestly the best beauty experience I've had. Phyllcia made me feel so welcome and my skin has never looked better. I won't go anywhere else."}
           </p>
           <p className="testimonial-author">
-            — Verified Client &nbsp;<span>★★★★★</span>&nbsp; Google Review
+            {reviews?.review1Name ?? '— Verified Client'}&nbsp;<span>★★★★★</span>&nbsp; Google Review
           </p>
           <div className="review-count">
             <span className="review-stars">★★★★★</span>
-            <span className="review-info">5.0 · 64 Google Reviews · Apex, NC</span>
+            <span className="review-info">{reviews?.badgeText ?? '5.0 · 64 Google Reviews · Apex, NC'}</span>
           </div>
         </div>
       </section>
@@ -515,9 +513,7 @@ export default async function Home() {
         <div className="booking-inner">
           <span className="section-label">Ready When You Are</span>
           <h2>
-            Book Your
-            <br />
-            <em>Experience</em>
+            Book Your<br /><em>Experience</em>
           </h2>
           <p>
             Reserve your appointment online in minutes — secure, simple, and hassle-free. New
@@ -527,8 +523,8 @@ export default async function Home() {
             <a href={BOOKING_URL} target="_blank" rel="noopener" className="btn-gold">
               Book Your Appointment
             </a>
-            <a href="tel:9193211148" className="btn-outline">
-              Call (919) 321-1148
+            <a href={`tel:${phoneRaw}`} className="btn-outline">
+              Call {phone}
             </a>
           </div>
           <div className="booking-hours">
@@ -567,41 +563,28 @@ export default async function Home() {
             title="La Belle' Beauty Bar location map"
           />
         </div>
-
         <div className="contact-info">
           <div className="contact-info-inner">
-            <span
-              className="section-label"
-              style={{ fontSize: '16px', letterSpacing: '.25em', marginBottom: '8px' }}
-            >
+            <span className="section-label" style={{ fontSize: '16px', letterSpacing: '.25em', marginBottom: '8px' }}>
               Find Us
             </span>
-            <div
-              style={{
-                width: '40px',
-                height: '1px',
-                background: '#C9954A',
-                margin: '0 auto 20px',
-              }}
-            />
+            <div style={{ width: '40px', height: '1px', background: '#C9954A', margin: '0 auto 20px' }} />
             <div className="contact-block">
               <span className="contact-block-label">Address</span>
               <address>
-                3675 Green Level W Road, Suite 205
+                {contact?.address ?? '3675 Green Level W Road, Suite 205'}
                 <br />
-                Apex, NC 27523
+                {contact?.city ?? 'Apex, NC 27523'}
               </address>
             </div>
-
             <div className="contact-block">
               <span className="contact-block-label">Contact</span>
               <p>
-                <a href="tel:9193211148">Call: (919) 321-1148</a>
+                <a href={`tel:${phoneRaw}`}>Call: {phone}</a>
                 <br />
-                <a href="sms:9197595828">Text: (919) 759-5828</a>
+                <a href={`sms:${textRaw}`}>Text: {textNum}</a>
               </p>
             </div>
-
             <div className="contact-block">
               <span className="contact-block-label">Hours</span>
               <div className="contact-hours-grid">
@@ -621,38 +604,25 @@ export default async function Home() {
                 <span className="closed">Closed</span>
               </div>
             </div>
-
             <div className="contact-divider" />
-
             <p className="contact-arrival">
-              <span className="contact-block-label" style={{ marginBottom: '6px' }}>
-                Getting Here
-              </span>
-              Enter through the keypad door, then take the elevator or stairs to the 2nd floor.
-              Turn left, go through the door marked Suites 201–209 — Suite 205 is on the left.
+              <span className="contact-block-label" style={{ marginBottom: '6px' }}>Getting Here</span>
+              {contact?.gettingHereText ??
+                'Enter through the keypad door, then take the elevator or stairs to the 2nd floor. Turn left, go through the door marked Suites 201–209 — Suite 205 is on the left.'}
             </p>
-
-            <a
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noopener"
-              className="btn-gold"
-              style={{ padding: '14px 40px' }}
-            >
-              Book Appointment
+            <a href={BOOKING_URL} target="_blank" rel="noopener" className="btn-gold" style={{ padding: '14px 40px' }}>
+              {contact?.bookButtonText ?? 'Book Appointment'}
             </a>
           </div>
         </div>
       </section>
 
-      {/* INSTAGRAM SECTION: Enable by setting showInstagram in Sanity Section Visibility */}
+      {/* INSTAGRAM — enabled via Sanity Section Visibility */}
       <div style={{ display: showInstagram ? 'block' : 'none' }}>
         <section id="social">
           <span className="section-label">Stay Connected</span>
           <div className="divider-gold" />
-          <h2>
-            Follow <em>Us</em>
-          </h2>
+          <h2>Follow <em>Us</em></h2>
           <p className="social-sub">
             Stay in the loop with new services, exclusive specials, and a peek behind the curtain
             at La Belle&apos;.
@@ -684,71 +654,48 @@ export default async function Home() {
               style={{ height: '70px', width: 'auto', display: 'block', margin: '0 auto 16px' }}
             />
             <p>
-              A luxury boutique beauty bar in Apex, NC — waxing, facials, lash &amp; brow, and
-              clean skincare, all in one beautiful space.
+              {footer?.description ??
+                "A luxury boutique beauty bar in Apex, NC — waxing, facials, lash & brow, and clean skincare, all in one beautiful space."}
             </p>
           </div>
           <div className="footer-col">
             <h4>Services</h4>
             <ul>
-              <li>
-                <a href="#services">Waxing</a>
-              </li>
-              <li>
-                <a href="#services">Facials</a>
-              </li>
-              <li>
-                <a href="#services">Brow + Lash</a>
-              </li>
-              <li>
-                <a href="#services">Back Purifiers</a>
-              </li>
-              <li>
-                <a href="#services">Beard Treatment Facial</a>
-              </li>
+              <li><a href="#services">Waxing</a></li>
+              <li><a href="#services">Facials</a></li>
+              <li><a href="#services">Brow + Lash</a></li>
+              <li><a href="#services">Back Purifiers</a></li>
+              <li><a href="#services">Beard Treatment Facial</a></li>
             </ul>
           </div>
           <div className="footer-col">
             <h4>Quick Links</h4>
             <ul>
-              <li>
-                <a href={BOOKING_URL} target="_blank" rel="noopener">
-                  Book Online
-                </a>
-              </li>
-              <li>
-                <a href="#about">About Us</a>
-              </li>
-              <li>
-                <a href="#team">Meet the Team</a>
-              </li>
-              <li>
-                <a href="#testimonials">Reviews</a>
-              </li>
+              <li><a href={BOOKING_URL} target="_blank" rel="noopener">Book Online</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#team">Meet the Team</a></li>
+              <li><a href="#testimonials">Reviews</a></li>
             </ul>
           </div>
           <div className="footer-col">
             <h4>Visit Us</h4>
             <address>
-              3675 Green Level W Road
+              {contact?.address ?? '3675 Green Level W Road'}
               <br />
-              Suite 205
+              {contact?.city ?? 'Apex, NC 27523'}
+              <br /><br />
+              <a href={`tel:${phoneRaw}`}>{phone}</a>
               <br />
-              Apex, NC 27523
-              <br />
-              <br />
-              <a href="tel:9193211148">(919) 321-1148</a>
-              <br />
-              <a href="mailto:info@labellebb.com">info@labellebb.com</a>
+              <a href={`mailto:${email}`}>{email}</a>
             </address>
           </div>
         </div>
         <div className="footer-bottom">
           <span className="footer-copy">
-            &copy; 2026 La Belle&apos; Beauty Bar LLC · Apex, NC · All rights reserved
+            {footer?.copyrightText ?? "© 2026 La Belle' Beauty Bar LLC · Apex, NC · All rights reserved"}
           </span>
           <span className="footer-tagline">
-            We are Lavish. We are Luxury. We are La Belle&apos;.
+            {footer?.tagline ?? "We are Lavish. We are Luxury. We are La Belle'."}
           </span>
         </div>
       </footer>

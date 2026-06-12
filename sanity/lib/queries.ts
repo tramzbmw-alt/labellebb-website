@@ -31,6 +31,12 @@ export type TeamMember = {
   specialties?: string[];
 };
 
+export type SectionVisibility = {
+  showInstagram?: boolean;
+  showProducts?: boolean;
+  showFlashSale?: boolean;
+};
+
 export type OurStory = {
   eyebrow?: string;
   heading?: string;
@@ -59,10 +65,58 @@ export type HeroContent = {
   secondaryButtonText?: string;
 };
 
-export type SectionVisibility = {
-  showInstagram?: boolean;
-  showProducts?: boolean;
-  showFlashSale?: boolean;
+export type ReviewsSection = {
+  sectionEyebrow?: string;
+  sectionHeading?: string;
+  review1Quote?: string;
+  review1Name?: string;
+  review2Quote?: string;
+  review2Name?: string;
+  badgeText?: string;
+};
+
+export type TeamSection = {
+  sectionEyebrow?: string;
+  sectionHeading?: string;
+  sectionSubtext?: string;
+};
+
+export type LoyaltySection = {
+  eyebrow?: string;
+  heading?: string;
+  subtext?: string;
+  promoCode?: string;
+  buttonText?: string;
+  stat1Number?: string;
+  stat1Label?: string;
+  stat2Number?: string;
+  stat2Label?: string;
+  stat3Number?: string;
+  stat3Label?: string;
+};
+
+export type GiftsSection = {
+  sectionEyebrow?: string;
+  giftCardHeading?: string;
+  giftCardSubtext?: string;
+  giftCardButtonText?: string;
+  specialsEyebrow?: string;
+};
+
+export type ContactSection = {
+  address?: string;
+  city?: string;
+  phone?: string;
+  textNumber?: string;
+  email?: string;
+  gettingHereText?: string;
+  bookButtonText?: string;
+};
+
+export type FooterContent = {
+  description?: string;
+  copyrightText?: string;
+  tagline?: string;
 };
 
 export async function getSiteSettings(): Promise<SiteSettings | null> {
@@ -95,4 +149,28 @@ export async function getHeroContent(): Promise<HeroContent | null> {
 
 export async function getOurStory(): Promise<OurStory | null> {
   return client.fetch(`*[_type == "ourStory"][0]`, {}, opts);
+}
+
+export async function getReviewsSection(): Promise<ReviewsSection | null> {
+  return client.fetch(`*[_type == "reviewsSection"][0]`, {}, opts);
+}
+
+export async function getTeamSection(): Promise<TeamSection | null> {
+  return client.fetch(`*[_type == "teamSection"][0]`, {}, opts);
+}
+
+export async function getLoyaltySection(): Promise<LoyaltySection | null> {
+  return client.fetch(`*[_type == "loyaltySection"][0]`, {}, opts);
+}
+
+export async function getGiftsSection(): Promise<GiftsSection | null> {
+  return client.fetch(`*[_type == "giftsSection"][0]`, {}, opts);
+}
+
+export async function getContactSection(): Promise<ContactSection | null> {
+  return client.fetch(`*[_type == "contactSection"][0]`, {}, opts);
+}
+
+export async function getFooterContent(): Promise<FooterContent | null> {
+  return client.fetch(`*[_type == "footerContent"][0]`, {}, opts);
 }
