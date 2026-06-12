@@ -7,18 +7,20 @@ import {
   getMonthlySpecial,
   getTeamMembers,
   getSectionVisibility,
+  getHeroContent,
 } from '@/sanity/lib/queries';
 
 const BOOKING_URL =
   'https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348';
 
 export default async function Home() {
-  const [siteSettings, flashSale, monthlySpecial, teamMembers, visibility] = await Promise.all([
+  const [siteSettings, flashSale, monthlySpecial, teamMembers, visibility, hero] = await Promise.all([
     getSiteSettings(),
     getFlashSale(),
     getMonthlySpecial(),
     getTeamMembers(),
     getSectionVisibility(),
+    getHeroContent(),
   ]);
 
   const announcementText =
@@ -33,6 +35,10 @@ export default async function Home() {
   const special = monthlySpecial ?? null;
   const hasTeam = teamMembers && teamMembers.length > 0;
 
+  const heroLine1 = hero?.line1 ?? null;
+  const heroLine2 = hero?.line2 ?? null;
+  const heroLine3 = hero?.line3 ?? null;
+
   return (
     <>
       <Navbar />
@@ -43,30 +49,31 @@ export default async function Home() {
         <div className="hero-overlay" />
         <div className="hero-content">
           <h1 className="hero-headline">
-            We Are{' '}
-            <span style={{ color: '#C9954A', fontStyle: 'italic' }}>Lavish</span>
-            <span style={{ color: '#ffffff' }}>,</span>
+            {heroLine1
+              ? heroLine1
+              : <span>We Are <span style={{ color: '#C9954A', fontStyle: 'italic' }}>Lavish</span><span style={{ color: '#ffffff' }}>,</span></span>}
             <br />
-            We Are{' '}
-            <span style={{ color: '#C9954A', fontStyle: 'italic' }}>Luxury</span>
-            <span style={{ color: '#ffffff' }}>,</span>
+            {heroLine2
+              ? heroLine2
+              : <span>We Are <span style={{ color: '#C9954A', fontStyle: 'italic' }}>Luxury</span><span style={{ color: '#ffffff' }}>,</span></span>}
             <br />
-            We Are{' '}
-            <span style={{ color: '#C9954A', fontStyle: 'italic' }}>La Belle</span>
-            <span style={{ color: '#ffffff' }}>&apos;</span>
+            {heroLine3
+              ? heroLine3
+              : <span>We Are <span style={{ color: '#C9954A', fontStyle: 'italic' }}>La Belle</span><span style={{ color: '#ffffff' }}>&apos;</span></span>}
           </h1>
-          <div className="hero-eyebrow">Luxury Boutique Beauty · Apex, NC</div>
+          <div className="hero-eyebrow">
+            {hero?.tagline ?? 'Luxury Boutique Beauty · Apex, NC'}
+          </div>
           <p className="hero-sub">
-            La Belle&apos; Beauty Bar is a one-stop-shop that offers a plethora of beauty
-            services and products rooted in luxury, community and expertise — waxing, facials,
-            lash &amp; brow services, and curated clean skincare.
+            {hero?.bodyText ??
+              "La Belle' Beauty Bar is a one-stop-shop that offers a plethora of beauty services and products rooted in luxury, community and expertise — waxing, facials, lash & brow services, and curated clean skincare."}
           </p>
           <div className="hero-actions">
             <a href={BOOKING_URL} target="_blank" rel="noopener" className="btn-gold">
-              Book Your Appointment
+              {hero?.primaryButtonText ?? 'Book Your Appointment'}
             </a>
             <a href="#services" className="btn-outline">
-              Explore Services
+              {hero?.secondaryButtonText ?? 'Explore Services'}
             </a>
           </div>
         </div>
