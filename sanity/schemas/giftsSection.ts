@@ -10,5 +10,7 @@ export const giftsSection = defineType({
     defineField({ name: 'giftCardSubtext', title: 'Gift Card Subtext', type: 'text', rows: 2 }),
     defineField({ name: 'giftCardButtonText', title: 'Gift Card Button Text', type: 'string', description: 'e.g. Purchase a Gift Card' }),
     defineField({ name: 'specialsEyebrow', title: "Monthly Special Eyebrow", type: 'string', description: "e.g. This Month's Special" }),
+    defineField({ name: 'giftCardImage', title: 'Gift Card Image', type: 'image', options: { hotspot: true } }),
+    defineField({ name: 'specialsImage', title: 'Specials / Loyalty Image', type: 'image', options: { hotspot: true }, description: 'Image shown below the monthly special (e.g. Belle-Points graphic)' }),
   ],
 });

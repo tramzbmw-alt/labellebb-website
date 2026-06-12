@@ -23,5 +23,19 @@ export const sectionVisibility = defineType({
       type: 'boolean',
       initialValue: false,
     }),
+    defineField({
+      name: 'heroImage',
+      title: 'Hero Background Image',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Full-width background photo on the hero section',
+    }),
+    defineField({
+      name: 'aboutImage',
+      title: 'About Section Photo',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'The photo shown in the Our Story / About section',
+    }),
   ],
 });

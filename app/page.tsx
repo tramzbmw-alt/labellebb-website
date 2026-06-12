@@ -1,4 +1,5 @@
 import Navbar from '@/components/Navbar';
+import { urlFor } from '@/sanity/lib/image';
 import ChatWidget from '@/components/ChatWidget';
 import ClientInit from '@/components/ClientInit';
 import {
@@ -52,6 +53,11 @@ export default async function Home() {
   const heroLine2 = hero?.line2 ?? null;
   const heroLine3 = hero?.line3 ?? null;
 
+  const heroImageUrl = visibility?.heroImage ? urlFor(visibility.heroImage).width(1800).url() : null;
+  const aboutImageUrl = visibility?.aboutImage ? urlFor(visibility.aboutImage).width(900).url() : null;
+  const giftCardImageUrl = gifts?.giftCardImage ? urlFor(gifts.giftCardImage).width(600).url() : null;
+  const specialsImageUrl = gifts?.specialsImage ? urlFor(gifts.specialsImage).width(400).url() : null;
+
   const phone = contact?.phone ?? '(919) 321-1148';
   const phoneRaw = phone.replace(/\D/g, '');
   const textNum = contact?.textNumber ?? '(919) 759-5828';
@@ -64,7 +70,7 @@ export default async function Home() {
 
       {/* HERO */}
       <section id="hero">
-        <div className="hero-bg" />
+        <div className="hero-bg" style={heroImageUrl ? { backgroundImage: `url(${heroImageUrl})` } : undefined} />
         <div className="hero-overlay" />
         <div className="hero-content">
           <h1 className="hero-headline">
@@ -201,7 +207,7 @@ export default async function Home() {
       <section id="about">
         <div className="about-photo">
           <img
-            src="/labelle-home-header.png"
+            src={aboutImageUrl ?? '/labelle-home-header.png'}
             alt="La Belle' Beauty Bar interior"
             style={{ border: 'none', outline: 'none', boxShadow: 'none' }}
           />
@@ -434,7 +440,7 @@ export default async function Home() {
         </div>
         <div className="gifts-grid">
           <div className="gifts-col">
-            <img src="/Gift_Card_View.png" alt="La Belle' Beauty Bar gift card" loading="lazy" />
+            <img src={giftCardImageUrl ?? '/Gift_Card_View.png'} alt="La Belle' Beauty Bar gift card" loading="lazy" />
             <h3>
               {gifts?.giftCardHeading ? (
                 gifts.giftCardHeading
@@ -470,7 +476,7 @@ export default async function Home() {
               Book This Special
             </a>
             <img
-              src="/Belle-Points.png"
+              src={specialsImageUrl ?? '/Belle-Points.png'}
               alt="25% off all services for first time clients - use code FIRSTTIME"
               style={{ maxWidth: '280px', display: 'block', margin: '16px auto' }}
             />

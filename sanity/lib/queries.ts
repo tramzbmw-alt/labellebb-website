@@ -31,10 +31,19 @@ export type TeamMember = {
   specialties?: string[];
 };
 
+export type SanityImageRef = {
+  _type: 'image';
+  asset: { _ref: string; _type: 'reference' };
+  hotspot?: object;
+  crop?: object;
+};
+
 export type SectionVisibility = {
   showInstagram?: boolean;
   showProducts?: boolean;
   showFlashSale?: boolean;
+  heroImage?: SanityImageRef;
+  aboutImage?: SanityImageRef;
 };
 
 export type OurStory = {
@@ -101,6 +110,8 @@ export type GiftsSection = {
   giftCardSubtext?: string;
   giftCardButtonText?: string;
   specialsEyebrow?: string;
+  giftCardImage?: SanityImageRef;
+  specialsImage?: SanityImageRef;
 };
 
 export type ContactSection = {

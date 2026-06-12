@@ -33,5 +33,12 @@ export const monthlySpecial = defineType({
       type: 'string',
       description: 'e.g. "June 21" or "End of Month"',
     }),
+    defineField({
+      name: 'specialImage',
+      title: 'Promo Image',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Optional image for this month\'s special',
+    }),
   ],
 });
