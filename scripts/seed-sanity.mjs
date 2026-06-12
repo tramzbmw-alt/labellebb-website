@@ -134,7 +134,10 @@ async function seed() {
 
   for (const doc of documents) {
     try {
-      await client.createOrReplace(doc);
+      // createIfNotExists + patch preserves image fields set by seed-images.mjs
+      await client.createIfNotExists(doc);
+      const { _id, _type, ...fields } = doc;
+      await client.patch(_id).set(fields).commit();
       console.log(`✓ ${doc._type} (${doc._id})`);
     } catch (err) {
       console.error(`✗ ${doc._type}: ${err.message}`);
