@@ -8,19 +8,21 @@ import {
   getTeamMembers,
   getSectionVisibility,
   getHeroContent,
+  getOurStory,
 } from '@/sanity/lib/queries';
 
 const BOOKING_URL =
   'https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348';
 
 export default async function Home() {
-  const [siteSettings, flashSale, monthlySpecial, teamMembers, visibility, hero] = await Promise.all([
+  const [siteSettings, flashSale, monthlySpecial, teamMembers, visibility, hero, story] = await Promise.all([
     getSiteSettings(),
     getFlashSale(),
     getMonthlySpecial(),
     getTeamMembers(),
     getSectionVisibility(),
     getHeroContent(),
+    getOurStory(),
   ]);
 
   const announcementText =
@@ -195,27 +197,28 @@ export default async function Home() {
           <div className="about-photo-accent" />
         </div>
         <div className="about-content">
-          <span className="section-label">Our Story</span>
+          <span className="section-label">{story?.eyebrow ?? 'Our Story'}</span>
           <div className="divider-gold left" />
           <h2>
-            A Sanctuary
-            <br />
-            Built for <em>You</em>
+            {story?.heading ? (
+              story.heading
+            ) : (
+              <>A Sanctuary<br />Built for <em>You</em></>
+            )}
           </h2>
           <p>
-            La Belle&apos; Beauty Bar is a luxury boutique beauty bar nestled in Apex, NC —
-            where every client is treated to a personalized, elevated experience from the moment
-            they walk through the door.
+            {story?.paragraph1 ??
+              "La Belle' Beauty Bar is a luxury boutique beauty bar nestled in Apex, NC — where every client is treated to a personalized, elevated experience from the moment they walk through the door."}
           </p>
           <p>
-            Founded on a passion for clean beauty and genuine care, we believe luxury isn&apos;t
-            just about results — it&apos;s about feeling completely seen, celebrated, and at home.
+            {story?.paragraph2 ??
+              "Founded on a passion for clean beauty and genuine care, we believe luxury isn't just about results — it's about feeling completely seen, celebrated, and at home."}
           </p>
           <div className="about-tags">
-            <span className="about-tag">Woman-Owned</span>
-            <span className="about-tag">5-Star Rated</span>
-            <span className="about-tag">Clean Beauty</span>
-            <span className="about-tag">Luxury Experience</span>
+            <span className="about-tag">{story?.badge1 ?? 'Woman-Owned'}</span>
+            <span className="about-tag">{story?.badge2 ?? '5-Star Rated'}</span>
+            <span className="about-tag">{story?.badge3 ?? 'Clean Beauty'}</span>
+            <span className="about-tag">{story?.badge4 ?? 'Luxury Experience'}</span>
           </div>
           <a
             href={BOOKING_URL}
@@ -224,20 +227,20 @@ export default async function Home() {
             className="btn-gold"
             style={{ textAlign: 'center' }}
           >
-            Reserve Your Visit
+            {story?.buttonText ?? 'Reserve Your Visit'}
           </a>
           <div className="about-stats">
             <div className="stat">
-              <span className="stat-num">5★</span>
-              <span className="stat-label">Average Rating</span>
+              <span className="stat-num">{story?.stat1Number ?? '5★'}</span>
+              <span className="stat-label">{story?.stat1Label ?? 'Average Rating'}</span>
             </div>
             <div className="stat">
-              <span className="stat-num">64</span>
-              <span className="stat-label">Google Reviews</span>
+              <span className="stat-num">{story?.stat2Number ?? '64'}</span>
+              <span className="stat-label">{story?.stat2Label ?? 'Google Reviews'}</span>
             </div>
             <div className="stat">
-              <span className="stat-num">7+</span>
-              <span className="stat-label">Services Offered</span>
+              <span className="stat-num">{story?.stat3Number ?? '7+'}</span>
+              <span className="stat-label">{story?.stat3Label ?? 'Services Offered'}</span>
             </div>
           </div>
         </div>

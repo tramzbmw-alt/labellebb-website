@@ -31,6 +31,24 @@ export type TeamMember = {
   specialties?: string[];
 };
 
+export type OurStory = {
+  eyebrow?: string;
+  heading?: string;
+  paragraph1?: string;
+  paragraph2?: string;
+  badge1?: string;
+  badge2?: string;
+  badge3?: string;
+  badge4?: string;
+  buttonText?: string;
+  stat1Number?: string;
+  stat1Label?: string;
+  stat2Number?: string;
+  stat2Label?: string;
+  stat3Number?: string;
+  stat3Label?: string;
+};
+
 export type HeroContent = {
   line1?: string;
   line2?: string;
@@ -73,4 +91,8 @@ export async function getSectionVisibility(): Promise<SectionVisibility | null> 
 
 export async function getHeroContent(): Promise<HeroContent | null> {
   return client.fetch(`*[_type == "heroContent"][0]`, {}, opts);
+}
+
+export async function getOurStory(): Promise<OurStory | null> {
+  return client.fetch(`*[_type == "ourStory"][0]`, {}, opts);
 }

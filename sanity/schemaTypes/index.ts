@@ -6,7 +6,8 @@ import { teamMember } from '../schemas/teamMember';
 import { services } from '../schemas/services';
 import { sectionVisibility } from '../schemas/sectionVisibility';
 import { heroContent } from '../schemas/heroContent';
+import { ourStory } from '../schemas/ourStory';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [heroContent, siteSettings, flashSale, monthlySpecial, teamMember, services, sectionVisibility],
+  types: [heroContent, ourStory, siteSettings, flashSale, monthlySpecial, teamMember, services, sectionVisibility],
 };
