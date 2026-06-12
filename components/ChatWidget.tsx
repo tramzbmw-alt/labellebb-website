@@ -5,36 +5,18 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 const FRESHA_URL =
   'https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348';
 
+const PRICE_MENU_URL =
+  'https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/all-offer';
+
 const SYSTEM_PROMPT = `You are Madam La Belle', the elegant AI concierge for La Belle' Beauty Bar in Apex, NC. You are warm, luxurious, knowledgeable and personal — never robotic. You represent a high-end luxury beauty bar and speak accordingly.
 
-SERVICES AND PRICING:
-WAXING:
-- Brazilian Wax — $65
-- Hollywood Wax — $75
-- Bikini Line — $35
-- Full Leg — $75
-- Half Leg — $45
-- Underarm — $25
-- Lip — $15
-- Chin — $15
-- Full Face — $55
-- Back Wax — $65
-- Chest Wax — $55
-- Eyebrow Wax — $20
-- Arm Wax — $45
-FACIALS:
-- Signature Facial — $85
-- Back Purifier — $75
-- Beard Facial — $75
+PRICING RULE — VERY IMPORTANT:
+When anyone asks about pricing, costs, or how much any service costs, do NOT quote prices or mention any dollar amounts. Instead say something warm like: "For our most current pricing, you can view our full service menu here ✨" and include the text [SHOW_PRICE_LINK] in your response. This ensures clients always see live, up-to-date pricing.
 
-LASH AND BROW:
-- Lash Lift — $85
-- Lash Tint — $35
-- Lash Lift and Tint — $100
-- Brow Lamination — $75
-- Brow Tint — $25
-- Brow Lamination and Tint — $90
-- Brow Wax — $20
+SERVICES OFFERED:
+WAXING: Brazilian, Hollywood, Bikini Line, Full Leg, Half Leg, Underarm, Lip, Chin, Full Face, Back Wax, Chest Wax, Eyebrow Wax, Arm Wax
+FACIALS: Signature Facial, Back Purifier, Beard Facial
+LASH AND BROW: Lash Lift, Lash Tint, Lash Lift and Tint, Brow Lamination, Brow Tint, Brow Lamination and Tint, Brow Wax
 
 BUSINESS INFO:
 - Address: 3675 Green Level W Road Suite 205, Apex NC 27523
@@ -80,6 +62,7 @@ type Message = {
   role: 'user' | 'agent';
   text: string;
   showBooking?: boolean;
+  showPriceLink?: boolean;
   ts: string;
 };
 
@@ -104,10 +87,10 @@ export default function ChatWidget() {
   const openedOnceRef = useRef(false);
 
   const addMessage = useCallback(
-    (role: 'user' | 'agent', text: string, showBooking = false) => {
+    (role: 'user' | 'agent', text: string, showBooking = false, showPriceLink = false) => {
       setMessages((prev) => [
         ...prev,
-        { id: Math.random().toString(36).slice(2), role, text, showBooking, ts: getTs() },
+        { id: Math.random().toString(36).slice(2), role, text, showBooking, showPriceLink, ts: getTs() },
       ]);
     },
     []
@@ -175,9 +158,13 @@ export default function ChatWidget() {
       if (data.content?.[0]) {
         let reply: string = data.content[0].text;
         const showBooking = reply.includes('[SHOW_BOOKING_BUTTON]');
-        reply = reply.replace('[SHOW_BOOKING_BUTTON]', '').trim();
+        const showPriceLink = reply.includes('[SHOW_PRICE_LINK]');
+        reply = reply
+          .replace('[SHOW_BOOKING_BUTTON]', '')
+          .replace('[SHOW_PRICE_LINK]', '')
+          .trim();
         setHistory((prev) => [...prev, { role: 'assistant', content: reply }]);
-        addMessage('agent', reply, showBooking);
+        addMessage('agent', reply, showBooking, showPriceLink);
       } else {
         addMessage(
           'agent',
@@ -289,6 +276,16 @@ export default function ChatWidget() {
                   rel="noopener"
                 >
                   Book Your Appointment →
+                </a>
+              )}
+              {msg.showPriceLink && (
+                <a
+                  className="chat-booking-btn"
+                  href={PRICE_MENU_URL}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  View Full Price Menu →
                 </a>
               )}
               <div className="chat-ts">{msg.ts}</div>
