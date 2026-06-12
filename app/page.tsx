@@ -59,7 +59,7 @@ export default async function Home() {
             <br />
             {heroLine3
               ? heroLine3
-              : <span>We Are <span style={{ color: '#C9954A', fontStyle: 'italic' }}>La Belle</span><span style={{ color: '#ffffff' }}>&apos;</span></span>}
+              : <span>We Are <span style={{ color: '#C9954A', fontStyle: 'italic' }}>La Belle&apos;</span></span>}
           </h1>
           <div className="hero-eyebrow">
             {hero?.tagline ?? 'Luxury Boutique Beauty · Apex, NC'}
