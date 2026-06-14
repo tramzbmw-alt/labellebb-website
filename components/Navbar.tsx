@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 const BOOKING_URL =
   'https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348';
 
-export default function Navbar() {
+export default function Navbar({ showProducts = false }: { showProducts?: boolean }) {
   useEffect(() => {
     const navbar = document.getElementById('navbar');
     if (!navbar) return;
@@ -24,6 +24,7 @@ export default function Navbar() {
       <ul className="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
+        {showProducts && <li><a href="#products">Products</a></li>}
         <li><a href="#team">Team</a></li>
         <li><a href="#booking">Hours</a></li>
       </ul>

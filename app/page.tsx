@@ -66,7 +66,7 @@ export default async function Home() {
 
   return (
     <>
-      <Navbar />
+      <Navbar showProducts={showProducts} />
 
       {/* HERO */}
       <section id="hero">
@@ -314,8 +314,8 @@ export default async function Home() {
         </a>
       </section>
 
-      {/* PRODUCTS — enabled via Sanity Section Visibility */}
-      <div style={{ display: showProducts ? 'block' : 'none' }}>
+      {/* PRODUCTS — controlled by Sanity › Site Images & Visibility › Show Products */}
+      {showProducts && (
         <section id="products">
           <div className="products-content">
             <span className="section-label">Retail &amp; Skincare</span>
@@ -344,7 +344,7 @@ export default async function Home() {
             <img src="/labelle-section-products.png" alt="La Belle' natural beauty products" loading="lazy" />
           </div>
         </section>
-      </div>
+      )}
 
       {/* LOYALTY / PROMO */}
       <section id="promo">
