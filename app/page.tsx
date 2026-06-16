@@ -57,6 +57,7 @@ export default async function Home() {
   const aboutImageUrl = visibility?.aboutImage ? urlFor(visibility.aboutImage).width(900).url() : null;
   const giftCardImageUrl = gifts?.giftCardImage ? urlFor(gifts.giftCardImage).width(600).url() : null;
   const specialsImageUrl = gifts?.specialsImage ? urlFor(gifts.specialsImage).width(400).url() : null;
+  const monthlySpecialImageUrl = special?.specialImage ? urlFor(special.specialImage).width(600).url() : null;
 
   const phone = contact?.phone ?? '(919) 321-1148';
   const phoneRaw = phone.replace(/\D/g, '');
@@ -471,6 +472,13 @@ export default async function Home() {
             )}
             {!special && (
               <span className="gifts-date">Available through June 21st</span>
+            )}
+            {monthlySpecialImageUrl && (
+              <img
+                src={monthlySpecialImageUrl}
+                alt={special?.title ?? "Monthly Special"}
+                style={{ maxWidth: '100%', display: 'block', margin: '16px auto', borderRadius: '8px' }}
+              />
             )}
             <a href={BOOKING_URL} target="_blank" rel="noopener" className="btn-gold">
               Book This Special
