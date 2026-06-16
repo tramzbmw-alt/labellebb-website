@@ -495,6 +495,7 @@ export default async function Home() {
               src={specialsImageUrl ?? '/Belle-Points.png'}
               alt="25% off for first time clients"
               loading="lazy"
+              style={{ objectPosition: 'top center' }}
             />
             <h3>First Time Clients</h3>
             <p>25% off all services on your first visit</p>
