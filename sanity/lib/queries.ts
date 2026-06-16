@@ -21,6 +21,7 @@ export type MonthlySpecial = {
   subtitle?: string;
   description?: string;
   availableThrough?: string;
+  specialImage?: { asset?: { _ref: string } };
 };
 
 export type TeamMember = {
