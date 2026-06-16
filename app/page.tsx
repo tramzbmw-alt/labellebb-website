@@ -439,14 +439,21 @@ export default async function Home() {
           <span className="section-label">{gifts?.sectionEyebrow ?? 'Gifts & Specials'}</span>
           <div className="divider-gold" />
         </div>
-        <div className="gifts-grid">
-          <div className="gifts-col">
-            <img src={giftCardImageUrl ?? '/Gift_Card_View.png'} alt="La Belle' Beauty Bar gift card" loading="lazy" />
+        <div className={`gifts-grid${!special ? ' gifts-grid--two' : ''}`}>
+
+          {/* Card 1 — Gift Card */}
+          <div className="gifts-card">
+            <img
+              className="gifts-card-img"
+              src={giftCardImageUrl ?? '/Gift_Card_View.png'}
+              alt="La Belle' Beauty Bar gift card"
+              loading="lazy"
+            />
             <h3>
               {gifts?.giftCardHeading ? (
                 gifts.giftCardHeading
               ) : (
-                <>Give the Gift<br />of <em>Beauty</em></>
+                <>Give the Gift of <em>Beauty</em></>
               )}
             </h3>
             <p>
@@ -458,46 +465,45 @@ export default async function Home() {
             </a>
           </div>
 
-          <div className="gifts-col">
-            <span className="section-label">{gifts?.specialsEyebrow ?? "This Month's Special"}</span>
-            <div className="gifts-divider" />
-            <h3>{special?.title ?? "Father's Day"}</h3>
-            <p className="gifts-sub">{special?.subtitle ?? 'Beard Facial or Back Wax'}</p>
-            <p>
-              {special?.description ??
-                "The perfect gift for Dad this Father's Day. Treat him to a luxurious experience at La Belle'."}
-            </p>
-            {special?.availableThrough && (
-              <span className="gifts-date">Available through {special.availableThrough}</span>
-            )}
-            {!special && (
-              <span className="gifts-date">Available through June 21st</span>
-            )}
-            {monthlySpecialImageUrl && (
-              <img
-                src={monthlySpecialImageUrl}
-                alt={special?.title ?? "Monthly Special"}
-                style={{ maxWidth: '100%', display: 'block', margin: '16px auto', borderRadius: '8px' }}
-              />
-            )}
-            <a href={BOOKING_URL} target="_blank" rel="noopener" className="btn-gold">
-              Book This Special
-            </a>
+          {/* Card 2 — Monthly Special (hidden when none active) */}
+          {special && (
+            <div className="gifts-card">
+              {monthlySpecialImageUrl && (
+                <img
+                  className="gifts-card-img"
+                  src={monthlySpecialImageUrl}
+                  alt={special.title ?? 'Monthly Special'}
+                  loading="lazy"
+                />
+              )}
+              <h3>{special.title ?? "This Month's Special"}</h3>
+              {special.subtitle && <p className="gifts-sub">{special.subtitle}</p>}
+              {special.description && <p>{special.description}</p>}
+              {special.availableThrough && (
+                <span className="gifts-date">Available through {special.availableThrough}</span>
+              )}
+              <a href={BOOKING_URL} target="_blank" rel="noopener" className="btn-gold">
+                Book This Special
+              </a>
+            </div>
+          )}
+
+          {/* Card 3 — New Client Offer */}
+          <div className="gifts-card">
             <img
+              className="gifts-card-img"
               src={specialsImageUrl ?? '/Belle-Points.png'}
-              alt="25% off all services for first time clients - use code FIRSTTIME"
-              style={{ maxWidth: '280px', display: 'block', margin: '16px auto' }}
+              alt="25% off for first time clients"
+              loading="lazy"
             />
-            <a
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noopener"
-              className="btn-gold"
-              style={{ display: 'block', textAlign: 'center', margin: '16px auto', maxWidth: '280px' }}
-            >
-              BOOK THIS SPECIAL
+            <h3>First Time Clients</h3>
+            <p>25% off all services on your first visit</p>
+            <span className="gifts-code">USE CODE: FIRSTTIME</span>
+            <a href={BOOKING_URL} target="_blank" rel="noopener" className="btn-gold">
+              Claim Your Offer
             </a>
           </div>
+
         </div>
       </section>
 

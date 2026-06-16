@@ -1543,67 +1543,83 @@ footer {
 }
 .gifts-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2px;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
+  align-items: stretch;
 }
-.gifts-col {
+.gifts-grid--two {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 860px;
+}
+.gifts-card {
   background: rgba(255,255,255,0.02);
   border: 1px solid rgba(201,149,74,0.14);
-  padding: 60px 52px;
+  padding: 60px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
-.gifts-col img {
+.gifts-card-img {
   width: 100%;
-  max-width: 380px;
-  height: auto;
+  max-width: 320px;
+  height: 280px;
+  object-fit: cover;
   display: block;
   margin: 0 auto 36px;
+  border-radius: 4px;
 }
-.gifts-col h3 {
+.gifts-card h3 {
   font-family: var(--serif);
-  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
   font-weight: 400;
   color: var(--white);
   line-height: 1.2;
   margin-bottom: 18px;
 }
-.gifts-col h3 em { font-style: italic; color: var(--gold); }
-.gifts-col p {
+.gifts-card h3 em { font-style: italic; color: var(--gold); }
+.gifts-card p {
   font-family: var(--sans);
   font-size: 0.82rem;
   font-weight: 300;
   line-height: 2;
   color: rgba(255,255,255,0.55);
   margin-bottom: 16px;
-  max-width: 340px;
+  max-width: 300px;
 }
-.gifts-col .gifts-date {
+.gifts-card .gifts-date {
   font-family: var(--sans);
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
-.gifts-col .gifts-sub {
+.gifts-card .gifts-sub {
   font-family: var(--serif);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 400;
   color: rgba(255,255,255,0.7);
   margin-bottom: 20px;
   font-style: italic;
 }
-.gifts-divider {
-  width: 40px;
-  height: 1px;
-  background: var(--gold);
-  margin: 0 auto 32px;
+.gifts-card .gifts-code {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,149,74,0.4);
+  padding: 8px 20px;
+  margin-bottom: 28px;
+  display: inline-block;
+}
+.gifts-card .btn-gold {
+  margin-top: auto;
 }
 .btn-outline-gold {
   display: inline-block;
@@ -1623,8 +1639,9 @@ footer {
 
 @media (max-width: 768px) {
   #gifts { padding: 80px 24px; }
-  .gifts-grid { grid-template-columns: 1fr; }
-  .gifts-col { padding: 52px 28px; }
+  .gifts-grid,
+  .gifts-grid--two { grid-template-columns: 1fr; }
+  .gifts-card { padding: 52px 28px; }
 }
 
 /* ── FLASH SALE ANIMATIONS ── */
