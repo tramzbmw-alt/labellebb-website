@@ -154,6 +154,66 @@ nav.scrolled {
 }
 .nav-book:hover { background: var(--gold); color: var(--white); }
 
+/* ── LANGUAGE SELECTOR ── */
+.lang-selector {
+  position: relative;
+  flex-shrink: 0;
+}
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border: 0.5px solid #C9954A;
+  border-radius: 4px;
+  background: transparent;
+  color: #C9954A;
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.lang-toggle:hover {
+  background: rgba(201,149,74,0.12);
+}
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 150px;
+  background: #1a1a1a;
+  border: 0.5px solid #C9954A;
+  border-radius: 4px;
+  list-style: none;
+  padding: 4px 0;
+  z-index: 200;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+.lang-dropdown li button {
+  display: block;
+  width: 100%;
+  padding: 9px 16px;
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.82);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.lang-dropdown li button:hover,
+.lang-dropdown li button.active {
+  background: rgba(201,149,74,0.15);
+  color: #C9954A;
+}
+
 /* ── HERO ── */
 #hero {
   position: relative;

@@ -17,5 +17,11 @@ export const siteSettings = defineType({
       type: 'boolean',
       initialValue: true,
     }),
+    defineField({
+      name: 'announcementTextEs',
+      title: 'Announcement Bar Text (Spanish)',
+      type: 'string',
+      description: 'Spanish version of the announcement strip text',
+    }),
   ],
 });

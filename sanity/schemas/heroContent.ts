@@ -48,5 +48,12 @@ export const heroContent = defineType({
       type: 'string',
       description: 'e.g. Explore Services',
     }),
+    defineField({
+      name: 'heroSubtextEs',
+      title: 'Body Text (Spanish)',
+      type: 'text',
+      rows: 3,
+      description: 'Spanish version of the hero paragraph',
+    }),
   ],
 });

@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 
 const FRESHA_URL =
   'https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348';
@@ -8,7 +9,7 @@ const FRESHA_URL =
 const PRICE_MENU_URL =
   'https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/all-offer';
 
-const SYSTEM_PROMPT = `You are Madam La Belle', the elegant AI concierge for La Belle' Beauty Bar in Apex, NC. You are warm, luxurious, knowledgeable and personal — never robotic. You represent a high-end luxury beauty bar and speak accordingly.
+const SYSTEM_PROMPT_EN = `You are Madam La Belle', the elegant AI concierge for La Belle' Beauty Bar in Apex, NC. You are warm, luxurious, knowledgeable and personal — never robotic. You represent a high-end luxury beauty bar and speak accordingly.
 
 PRICING RULE — VERY IMPORTANT:
 When anyone asks about pricing, costs, or how much any service costs, do NOT quote prices or mention any dollar amounts. Instead say something warm like: "For our most current pricing, you can view our full service menu here ✨" and include the text [SHOW_PRICE_LINK] in your response. This ensures clients always see live, up-to-date pricing.
@@ -47,14 +48,62 @@ ANSWER QUESTIONS ABOUT:
 
 Keep responses concise, warm and elegant. Maximum 3 short paragraphs per response.`;
 
-const OPENING_MESSAGE =
+const SYSTEM_PROMPT_ES = `Eres Madam La Belle', la elegante concierge de IA para La Belle' Beauty Bar en Apex, NC. Eres cálida, lujosa, conocedora y personal — nunca robótica. Representas una boutique de belleza de lujo y hablas en consecuencia. RESPONDE SIEMPRE EN ESPAÑOL.
+
+REGLA DE PRECIOS — MUY IMPORTANTE:
+Cuando alguien pregunte sobre precios o cuánto cuesta un servicio, NO menciones precios ni cantidades en dólares. Di algo cálido como: "Para nuestros precios más actuales, puedes ver nuestro menú completo de servicios aquí ✨" e incluye el texto [SHOW_PRICE_LINK] en tu respuesta.
+
+SERVICIOS OFRECIDOS:
+DEPILACIÓN CON CERA: Brasileña, Hollywood, Línea de Bikini, Pierna Completa, Media Pierna, Axilas, Labio, Barbilla, Cara Completa, Espalda, Pecho, Cejas, Brazos
+FACIALES: Facial de Firma, Purificador de Espalda, Facial de Barba
+CEJAS Y PESTAÑAS: Lifting de Pestañas, Tinte de Pestañas, Lifting y Tinte, Laminación de Cejas, Tinte de Cejas, Laminación y Tinte, Depilación de Cejas
+
+INFORMACIÓN DEL NEGOCIO:
+- Dirección: 3675 Green Level W Road Suite 205, Apex NC 27523
+- Teléfono: (919) 321-1148
+- Texto: (919) 759-5828
+- Horario: Martes 9am-7pm, Miércoles 12pm-7pm, Jueves 12pm-7pm, Viernes 9am-6pm, Sábado 10am-4pm, Domingo-Lunes Cerrado
+- Nuevas clientas: 25% de descuento en primera visita con código FIRSTTIME
+- Programa de lealtad: Gana 10 puntos por dólar gastado, 100 puntos por reserva en línea, 500 puntos en la 6ta visita
+- Todos los productos son naturales, orgánicos y veganos
+- Se usa cera dura — suave con la piel sensible
+
+SOBRE EL NEGOCIO:
+La Belle' Beauty Bar es una boutique de belleza de lujo en Apex NC. De propiedad de mujeres. Con calificación de 5 estrellas y 64 reseñas en Google. 'Somos Exquisitas, Somos Lujo, Somos La Belle.'
+
+CUANDO LA CLIENTA QUIERE RESERVAR:
+Di: '¡Me encantaría programar tu cita en La Belle'! Permíteme llevarte a nuestra página de reservas donde puedes elegir tu momento perfecto con Mia o Phyllcia.'
+Luego agrega el texto: [SHOW_BOOKING_BUTTON]
+
+Responde preguntas sobre:
+- Qué esperar en la primera visita de depilación
+- Cómo prepararse para los servicios
+- Cuidados posteriores al servicio
+- Diferencias entre servicios (Brasileña vs Hollywood, etc.)
+- Recomendaciones de productos
+- Estacionamiento y cómo llegar a la Suite 205
+- Todo relacionado con servicios de belleza y skincare
+
+Mantén las respuestas concisas, cálidas y elegantes. Máximo 3 párrafos cortos por respuesta.`;
+
+const OPENING_MESSAGE_EN =
   "Welcome to La Belle' Beauty Bar! I'm Madam La Belle', your personal beauty concierge ✨ Whether you have questions about our services, pricing, or want to book an appointment — I'm here to help. How can I assist you today?";
 
-const SUGGESTIONS = [
+const OPENING_MESSAGE_ES =
+  "¡Bienvenida a La Belle' Beauty Bar! Soy Madam La Belle', tu concierge personal de belleza ✨ Ya sea que tengas preguntas sobre nuestros servicios, precios o quieras reservar una cita — estoy aquí para ayudarte. ¿En qué puedo asistirte hoy?";
+
+const SUGGESTIONS_EN = [
   'How much is a Brazilian?',
   'First time visitor',
   'What services do you offer?',
   'Book an appointment',
+];
+
+const SUGGESTIONS_ES = [
+  '¿Cuánto cuesta un brasileño?',
+  'Primera vez de visita',
+  '¿Qué servicios ofrecen?',
+  'Reservar una cita',
 ];
 
 type Message = {
@@ -73,6 +122,12 @@ function getTs() {
 }
 
 export default function ChatWidget() {
+  const { lang, t } = useLanguage();
+  const isEs = lang === 'es';
+  const SYSTEM_PROMPT = isEs ? SYSTEM_PROMPT_ES : SYSTEM_PROMPT_EN;
+  const OPENING_MESSAGE = isEs ? OPENING_MESSAGE_ES : OPENING_MESSAGE_EN;
+  const SUGGESTIONS = isEs ? SUGGESTIONS_ES : SUGGESTIONS_EN;
+
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
@@ -202,7 +257,7 @@ export default function ChatWidget() {
       {/* Launcher */}
       <div className="chat-launcher">
         <span className="chat-label" onClick={handleLaunch}>
-          Chat with Madam La Belle&apos; ✨
+          {t.chat.label}
         </span>
         <button
           className="chat-fab"
@@ -257,7 +312,7 @@ export default function ChatWidget() {
           </div>
           <div className="chat-header-info">
             <span className="chat-header-name">Madam La Belle&apos;</span>
-            <span className="chat-header-sub">Your Beauty Concierge</span>
+            <span className="chat-header-sub">{t.chat.headerSub}</span>
           </div>
           <button className="chat-close" onClick={closeChat} aria-label="Close chat">
             &times;
@@ -275,7 +330,7 @@ export default function ChatWidget() {
                   target="_blank"
                   rel="noopener"
                 >
-                  Book Your Appointment →
+                  {t.chat.bookBtn}
                 </a>
               )}
               {msg.showPriceLink && (
@@ -285,7 +340,7 @@ export default function ChatWidget() {
                   target="_blank"
                   rel="noopener"
                 >
-                  View Full Price Menu →
+                  {t.chat.priceBtn}
                 </a>
               )}
               <div className="chat-ts">{msg.ts}</div>
@@ -326,8 +381,8 @@ export default function ChatWidget() {
             value={inputValue}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            placeholder="Ask Madam La Belle'..."
-            aria-label="Ask Madam La Belle' a question"
+            placeholder={t.chat.placeholder}
+            aria-label={t.chat.placeholder}
           />
           <button
             className="chat-send"

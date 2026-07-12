@@ -38,7 +38,20 @@ export const monthlySpecial = defineType({
       title: 'Promo Image',
       type: 'image',
       options: { hotspot: true },
-      description: 'Optional image for this month\'s special',
+      description: "Optional image for this month's special",
+    }),
+    defineField({
+      name: 'monthlySpecialTitleEs',
+      title: 'Title (Spanish)',
+      type: 'string',
+      description: 'Spanish version of the monthly special title',
+    }),
+    defineField({
+      name: 'monthlySpecialDescriptionEs',
+      title: 'Description (Spanish)',
+      type: 'text',
+      rows: 3,
+      description: 'Spanish version of the monthly special description',
     }),
   ],
 });

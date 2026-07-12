@@ -5,6 +5,7 @@ const opts = { next: { revalidate: 60 } };
 export type SiteSettings = {
   announcementBar?: string;
   announcementActive?: boolean;
+  announcementTextEs?: string;
 };
 
 export type FlashSale = {
@@ -22,6 +23,8 @@ export type MonthlySpecial = {
   description?: string;
   availableThrough?: string;
   specialImage?: { asset?: { _ref: string } };
+  monthlySpecialTitleEs?: string;
+  monthlySpecialDescriptionEs?: string;
 };
 
 export type TeamMember = {
@@ -73,6 +76,7 @@ export type HeroContent = {
   bodyText?: string;
   primaryButtonText?: string;
   secondaryButtonText?: string;
+  heroSubtextEs?: string;
 };
 
 export type ReviewsSection = {
