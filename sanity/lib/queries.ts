@@ -1,6 +1,7 @@
 import { client } from './client';
 
 const opts = { next: { revalidate: 60 } };
+const liveOpts = { cache: 'no-store' } as const;
 
 export type SiteSettings = {
   announcementBar?: string;
@@ -140,7 +141,7 @@ export async function getSiteSettings(): Promise<SiteSettings | null> {
 }
 
 export async function getFlashSale(): Promise<FlashSale | null> {
-  return client.fetch(`*[_type == "flashSale"][0]`, {}, opts);
+  return client.fetch(`*[_type == "flashSale"][0]`, {}, liveOpts);
 }
 
 export async function getMonthlySpecial(): Promise<MonthlySpecial | null> {
@@ -156,7 +157,7 @@ export async function getTeamMembers(): Promise<TeamMember[]> {
 }
 
 export async function getSectionVisibility(): Promise<SectionVisibility | null> {
-  return client.fetch(`*[_type == "sectionVisibility"][0]`, {}, opts);
+  return client.fetch(`*[_type == "sectionVisibility"][0]`, {}, liveOpts);
 }
 
 export async function getHeroContent(): Promise<HeroContent | null> {
