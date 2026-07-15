@@ -38,10 +38,6 @@ export default async function Home() {
 
   const showAnnouncement = siteSettings?.announcementActive ?? true;
   const showFlashSale = (flashSale?.active || visibility?.showFlashSale) ?? false;
-
-  console.log('Flash sale data:', JSON.stringify(flashSale));
-  console.log('Section visibility:', JSON.stringify({ showFlashSale: visibility?.showFlashSale }));
-  console.log('Show flash sale:', showFlashSale);
   const showProducts = visibility?.showProducts ?? false;
   const showInstagram = visibility?.showInstagram ?? false;
 
