@@ -141,7 +141,7 @@ export async function getSiteSettings(): Promise<SiteSettings | null> {
 }
 
 export async function getFlashSale(): Promise<FlashSale | null> {
-  return client.fetch(`*[_type == "flashSale"][0]`, {}, liveOpts);
+  return client.fetch(`*[_type == "flashSale" && _id == "flashSale"][0]`, {}, liveOpts);
 }
 
 export async function getMonthlySpecial(): Promise<MonthlySpecial | null> {
