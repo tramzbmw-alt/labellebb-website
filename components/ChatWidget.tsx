@@ -86,25 +86,6 @@ Responde preguntas sobre:
 
 Mantén las respuestas concisas, cálidas y elegantes. Máximo 3 párrafos cortos por respuesta.`;
 
-const OPENING_MESSAGE_EN =
-  "Welcome to La Belle' Beauty Bar! I'm Madam La Belle', your personal beauty concierge ✨ Whether you have questions about our services, pricing, or want to book an appointment — I'm here to help. How can I assist you today?";
-
-const OPENING_MESSAGE_ES =
-  "¡Bienvenida a La Belle' Beauty Bar! Soy Madam La Belle', tu concierge personal de belleza ✨ Ya sea que tengas preguntas sobre nuestros servicios, precios o quieras reservar una cita — estoy aquí para ayudarte. ¿En qué puedo asistirte hoy?";
-
-const SUGGESTIONS_EN = [
-  'How much is a Brazilian?',
-  'First time visitor',
-  'What services do you offer?',
-  'Book an appointment',
-];
-
-const SUGGESTIONS_ES = [
-  '¿Cuánto cuesta un brasileño?',
-  'Primera vez de visita',
-  '¿Qué servicios ofrecen?',
-  'Reservar una cita',
-];
 
 type Message = {
   id: string;
@@ -125,8 +106,6 @@ export default function ChatWidget() {
   const { lang, t } = useLanguage();
   const isEs = lang === 'es';
   const SYSTEM_PROMPT = isEs ? SYSTEM_PROMPT_ES : SYSTEM_PROMPT_EN;
-  const OPENING_MESSAGE = isEs ? OPENING_MESSAGE_ES : OPENING_MESSAGE_EN;
-  const SUGGESTIONS = isEs ? SUGGESTIONS_ES : SUGGESTIONS_EN;
 
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -157,11 +136,11 @@ export default function ChatWidget() {
     if (!openedOnceRef.current) {
       openedOnceRef.current = true;
       setMessages([
-        { id: '0', role: 'agent', text: OPENING_MESSAGE, ts: getTs() },
+        { id: '0', role: 'agent', text: t.chat.openingMessage, ts: getTs() },
       ]);
     }
     setTimeout(() => inputRef.current?.focus(), 300);
-  }, []);
+  }, [t.chat.openingMessage]);
 
   const closeChat = () => {
     setIsOpen(false);
@@ -179,6 +158,16 @@ export default function ChatWidget() {
       return () => clearTimeout(timer);
     }
   }, [openChat]);
+
+  // When language changes, update the opening message if no real conversation has started
+  useEffect(() => {
+    setMessages((prev) => {
+      if (prev.length === 1 && prev[0].role === 'agent') {
+        return [{ ...prev[0], text: t.chat.openingMessage }];
+      }
+      return prev;
+    });
+  }, [t.chat.openingMessage]);
 
   // Scroll to bottom on new messages / typing
   useEffect(() => {
@@ -360,7 +349,7 @@ export default function ChatWidget() {
 
         {showSuggestions && (
           <div className="chat-suggestions">
-            {SUGGESTIONS.map((q) => (
+            {t.chat.suggestions.map((q) => (
               <button
                 key={q}
                 type="button"

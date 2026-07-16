@@ -186,15 +186,15 @@ export const es: Translations = {
   chat: {
     label: "Hablar con Madam La Belle' ✨",
     openingMessage:
-      "¡Bienvenida a La Belle' Beauty Bar! Soy Madam La Belle', tu concierge personal de belleza ✨ Ya sea que tengas preguntas sobre nuestros servicios, precios o quieras reservar una cita — estoy aquí para ayudarte. ¿En qué puedo asistirte hoy?",
-    placeholder: "Pregunta a Madam La Belle'...",
+      "¡Bienvenida a La Belle' Beauty Bar! Soy Madam La Belle', tu asesora de belleza personal ✨ Ya sea que tengas preguntas sobre nuestros servicios, precios, o quieras hacer una cita — estoy aquí para ayudarte. ¿En qué puedo asistirte hoy?",
+    placeholder: "Pregúntale a Madam La Belle'...",
     suggestions: [
       '¿Cuánto cuesta un brasileño?',
-      'Primera vez de visita',
+      'Primera visita',
       '¿Qué servicios ofrecen?',
-      'Reservar una cita',
+      'Hacer una cita',
     ],
-    headerSub: 'Tu Concierge de Belleza',
+    headerSub: 'Tu Asesora de Belleza',
     bookBtn: 'Reserva Tu Cita →',
     priceBtn: 'Ver Menú de Precios Completo →',
   },
