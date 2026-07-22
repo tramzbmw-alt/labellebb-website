@@ -14,12 +14,13 @@ import {
   getGiftsSection,
   getContactSection,
   getFooterContent,
+  getSignatureServices,
 } from '@/sanity/lib/queries';
 
 export default async function Home() {
   const [
     siteSettings, flashSale, monthlySpecial, teamMembers, visibility,
-    hero, story, reviews, teamSec, loyalty, gifts, contact, footer,
+    hero, story, reviews, teamSec, loyalty, gifts, contact, footer, signatureServices,
   ] = await Promise.all([
     getSiteSettings(),
     getFlashSale(),
@@ -34,6 +35,7 @@ export default async function Home() {
     getGiftsSection(),
     getContactSection(),
     getFooterContent(),
+    getSignatureServices(),
   ]);
 
   const showAnnouncement = siteSettings?.announcementActive ?? true;
@@ -87,6 +89,7 @@ export default async function Home() {
       special={monthlySpecial}
       contact={contact}
       footer={footer}
+      signatureServices={signatureServices}
       phone={phone}
       phoneRaw={phoneRaw}
       textNum={textNum}

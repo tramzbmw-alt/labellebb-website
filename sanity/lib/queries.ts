@@ -136,6 +136,21 @@ export type FooterContent = {
   tagline?: string;
 };
 
+export type SignatureServices = {
+  sectionEyebrow?: string;
+  sectionHeading?: string;
+  sectionSubtext?: string;
+  card1Title?: string;
+  card1Description?: string;
+  card2Title?: string;
+  card2Description?: string;
+  card3Title?: string;
+  card3Description?: string;
+};
+
+export const signatureServicesQuery =
+  "*[_type == 'signatureServices' && _id == 'signatureServices'][0]";
+
 export async function getSiteSettings(): Promise<SiteSettings | null> {
   return client.fetch(`*[_type == "siteSettings"][0]`, {}, opts);
 }
@@ -190,4 +205,8 @@ export async function getContactSection(): Promise<ContactSection | null> {
 
 export async function getFooterContent(): Promise<FooterContent | null> {
   return client.fetch(`*[_type == "footerContent"][0]`, {}, opts);
+}
+
+export async function getSignatureServices(): Promise<SignatureServices | null> {
+  return client.fetch(signatureServicesQuery, {}, opts);
 }

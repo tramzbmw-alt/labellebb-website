@@ -120,6 +120,21 @@ const documents = [
     availableThrough: 'June 21st',
   },
   {
+    _id: 'signatureServices',
+    _type: 'signatureServices',
+    sectionEyebrow: 'WHAT WE OFFER',
+    sectionHeading: 'Signature Services',
+    card1Title: 'Waxing',
+    card1Description:
+      'Precision waxing for face and body using premium hard wax gentle enough for sensitive skin. Brazilian, bikini, underarm, leg and full body services available.',
+    card2Title: 'Facials',
+    card2Description:
+      'Transformative facial treatments tailored to your skin\'s individual needs. From signature facials to back purifiers and beard treatments.',
+    card3Title: 'Brow + Lash',
+    card3Description:
+      'Stunning brow and lash services including lifts, tints, lamination and waxing to frame your face beautifully.',
+  },
+  {
     _id: 'footerContent',
     _type: 'footerContent',
     description:

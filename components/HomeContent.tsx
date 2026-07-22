@@ -17,6 +17,7 @@ import type {
   GiftsSection,
   ContactSection,
   FooterContent,
+  SignatureServices,
 } from '@/sanity/lib/queries';
 
 const BOOKING_URL =
@@ -44,6 +45,7 @@ export interface HomeContentProps {
   special: MonthlySpecial | null;
   contact: ContactSection | null;
   footer: FooterContent | null;
+  signatureServices: SignatureServices | null;
   phone: string;
   phoneRaw: string;
   textNum: string;
@@ -73,6 +75,7 @@ export default function HomeContent({
   special,
   contact,
   footer,
+  signatureServices,
   phone,
   phoneRaw,
   textNum,
@@ -321,12 +324,15 @@ export default function HomeContent({
 
       {/* SERVICES */}
       <section id="services">
-        <span className="section-label">{t.services.eyebrow}</span>
+        <span className="section-label">{s(signatureServices?.sectionEyebrow, t.services.eyebrow)}</span>
         <div className="divider-gold" />
         <h2>
-          {t.services.heading} <em>{t.services.headingEm}</em>
+          {!isEs && signatureServices?.sectionHeading
+            ? signatureServices.sectionHeading
+            : <>{t.services.heading} <em>{t.services.headingEm}</em></>
+          }
         </h2>
-        <p className="services-sub">{t.services.subtext}</p>
+        <p className="services-sub">{s(signatureServices?.sectionSubtext, t.services.subtext)}</p>
         <div className="services-grid">
           <div className="service-card">
             <img
@@ -338,8 +344,8 @@ export default function HomeContent({
             <div className="service-card-content">
               <span className="service-card-num">01</span>
               <div className="service-card-line" />
-              <h3>{t.services.card1Title}</h3>
-              <p>{t.services.card1Desc}</p>
+              <h3>{s(signatureServices?.card1Title, t.services.card1Title)}</h3>
+              <p>{s(signatureServices?.card1Description, t.services.card1Desc)}</p>
             </div>
           </div>
           <div className="service-card">
@@ -352,8 +358,8 @@ export default function HomeContent({
             <div className="service-card-content">
               <span className="service-card-num">02</span>
               <div className="service-card-line" />
-              <h3>{t.services.card2Title}</h3>
-              <p>{t.services.card2Desc}</p>
+              <h3>{s(signatureServices?.card2Title, t.services.card2Title)}</h3>
+              <p>{s(signatureServices?.card2Description, t.services.card2Desc)}</p>
             </div>
           </div>
           <div className="service-card">
@@ -366,8 +372,8 @@ export default function HomeContent({
             <div className="service-card-content">
               <span className="service-card-num">03</span>
               <div className="service-card-line" />
-              <h3 style={{ whiteSpace: 'nowrap' }}>{t.services.card3Title}</h3>
-              <p>{t.services.card3Desc}</p>
+              <h3 style={{ whiteSpace: 'nowrap' }}>{s(signatureServices?.card3Title, t.services.card3Title)}</h3>
+              <p>{s(signatureServices?.card3Description, t.services.card3Desc)}</p>
             </div>
           </div>
         </div>

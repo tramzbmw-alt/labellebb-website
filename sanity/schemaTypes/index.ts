@@ -13,6 +13,7 @@ import { loyaltySection } from '../schemas/loyaltySection';
 import { giftsSection } from '../schemas/giftsSection';
 import { contactSection } from '../schemas/contactSection';
 import { footerContent } from '../schemas/footerContent';
+import { signatureServices } from '../schemas/signatureServices';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -30,5 +31,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     giftsSection,
     contactSection,
     footerContent,
+    signatureServices,
   ],
 };
