@@ -134,6 +134,7 @@ export type FooterContent = {
   description?: string;
   copyrightText?: string;
   tagline?: string;
+  servicesList?: string[];
 };
 
 export type SignatureServices = {

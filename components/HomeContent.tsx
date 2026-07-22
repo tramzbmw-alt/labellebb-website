@@ -786,11 +786,12 @@ export default function HomeContent({
           <div className="footer-col">
             <h4>{t.footer.services}</h4>
             <ul>
-              <li><a href="#services">{t.footer.waxing}</a></li>
-              <li><a href="#services">{t.footer.facials}</a></li>
-              <li><a href="#services">{t.footer.browLash}</a></li>
-              <li><a href="#services">{t.footer.backPurifiers}</a></li>
-              <li><a href="#services">{t.footer.beardFacial}</a></li>
+              {(isEs
+                ? [t.footer.waxing, t.footer.facials, t.footer.browLash]
+                : (footer?.servicesList?.length ? footer.servicesList : ['Waxing', 'Facials', 'Brow + Lash'])
+              ).map((service) => (
+                <li key={service}><a href="#services">{service}</a></li>
+              ))}
             </ul>
           </div>
           <div className="footer-col">

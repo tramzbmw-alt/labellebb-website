@@ -141,6 +141,7 @@ const documents = [
       "A luxury boutique beauty bar in Apex, NC — waxing, facials, lash & brow, and clean skincare, all in one beautiful space.",
     copyrightText: "© 2026 La Belle' Beauty Bar LLC · Apex, NC · All rights reserved",
     tagline: "We are Lavish. We are Luxury. We are La Belle'.",
+    servicesList: ['Waxing', 'Facials', 'Brow + Lash'],
   },
 ];
 
