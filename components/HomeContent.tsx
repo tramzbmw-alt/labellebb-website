@@ -457,6 +457,11 @@ export default function HomeContent({
             teamMembers.map((member) => (
               <div key={member._id} className="team-card">
                 <div className="team-card-body">
+                  <img
+                    src="/labelle-site-logo.png"
+                    alt="La Belle' emblem"
+                    style={{ width: '40px', height: '40px', borderRadius: '50%', display: 'block', margin: '0 auto 12px auto' }}
+                  />
                   <h3>{member.name}</h3>
                   <span className="title">
                     {member.name === 'Mia'
@@ -489,6 +494,11 @@ export default function HomeContent({
             <>
               <div className="team-card">
                 <div className="team-card-body">
+                  <img
+                    src="/labelle-site-logo.png"
+                    alt="La Belle' emblem"
+                    style={{ width: '40px', height: '40px', borderRadius: '50%', display: 'block', margin: '0 auto 12px auto' }}
+                  />
                   <h3>Mia</h3>
                   <span className="title">{t.team.miaTitle}</span>
                   <div className="team-divider" />
@@ -497,6 +507,11 @@ export default function HomeContent({
               </div>
               <div className="team-card">
                 <div className="team-card-body">
+                  <img
+                    src="/labelle-site-logo.png"
+                    alt="La Belle' emblem"
+                    style={{ width: '40px', height: '40px', borderRadius: '50%', display: 'block', margin: '0 auto 12px auto' }}
+                  />
                   <h3>Phyllcia</h3>
                   <span className="title">{t.team.phyllciaTitle}</span>
                   <div className="team-divider" />
