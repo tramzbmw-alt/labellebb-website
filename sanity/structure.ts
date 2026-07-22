@@ -24,6 +24,11 @@ export const structure: StructureResolver = (S) =>
         .child(S.document().schemaType('ourStory').documentId('ourStory')),
 
       S.listItem()
+        .title('Signature Services')
+        .id('signatureServices')
+        .child(S.document().schemaType('signatureServices').documentId('signatureServices')),
+
+      S.listItem()
         .title('Flash Sale')
         .id('flashSale')
         .child(S.document().schemaType('flashSale').documentId('flashSale')),
