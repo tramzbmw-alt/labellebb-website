@@ -248,6 +248,16 @@ export default async function GalleryPage() {
                     >
                       Panel {n}
                     </p>
+                    <p
+                      style={{
+                        fontFamily: 'var(--serif)',
+                        fontSize: '1.3rem',
+                        color: '#C9954A',
+                        marginBottom: '4px',
+                      }}
+                    >
+                      $100
+                    </p>
                     <a
                       href={`mailto:info@labellebb.com?subject=${encodeURIComponent(`Pink Harvest — Panel ${n} Inquiry`)}`}
                       style={{
@@ -260,11 +270,22 @@ export default async function GalleryPage() {
                         textDecoration: 'none',
                         borderBottom: '1px solid rgba(201,149,74,0.4)',
                         paddingBottom: '2px',
-                        transition: 'border-color 0.2s',
+                        display: 'inline-block',
+                        marginBottom: '4px',
                       }}
                     >
                       Inquire
                     </a>
+                    <p
+                      style={{
+                        fontFamily: 'var(--sans)',
+                        fontSize: '0.62rem',
+                        color: 'rgba(245,240,234,0.3)',
+                        letterSpacing: '0.08em',
+                      }}
+                    >
+                      or save with complete set
+                    </p>
                   </div>
                 ))}
               </div>
@@ -286,24 +307,68 @@ export default async function GalleryPage() {
                     fontWeight: 300,
                     color: '#F5F0EA',
                     fontStyle: 'italic',
+                    marginBottom: '20px',
+                  }}
+                >
+                  Complete Set — All 6 Panels
+                </h3>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '16px',
+                    flexWrap: 'wrap',
                     marginBottom: '12px',
                   }}
                 >
-                  Complete Set — Inquire for Pricing
-                </h3>
+                  <span
+                    style={{
+                      fontFamily: 'var(--sans)',
+                      fontSize: '0.65rem',
+                      fontWeight: 700,
+                      letterSpacing: '0.2em',
+                      textTransform: 'uppercase',
+                      color: '#C9954A',
+                      border: '1px solid rgba(201,149,74,0.5)',
+                      padding: '5px 14px',
+                    }}
+                  >
+                    Save $100
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--serif)',
+                      fontSize: '1.1rem',
+                      color: 'rgba(245,240,234,0.3)',
+                      textDecoration: 'line-through',
+                    }}
+                  >
+                    $600
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--serif)',
+                      fontSize: '2.2rem',
+                      color: '#C9954A',
+                      fontWeight: 400,
+                    }}
+                  >
+                    $500
+                  </span>
+                </div>
                 <p
                   style={{
                     fontFamily: 'var(--sans)',
                     fontSize: '0.85rem',
-                    color: 'rgba(245,240,234,0.45)',
-                    marginBottom: '32px',
-                    maxWidth: '380px',
+                    color: 'rgba(245,240,234,0.4)',
+                    maxWidth: '360px',
                     margin: '0 auto 32px',
                     lineHeight: 1.75,
                   }}
                 >
-                  Acquire all six panels as a cohesive collection. Contact us to
-                  discuss pricing and availability.
+                  Acquire all six panels as a cohesive collection and save $100
+                  off the individual price.
                 </p>
                 <a
                   href={`mailto:info@labellebb.com?subject=${encodeURIComponent('Pink Harvest Collection Inquiry')}`}
