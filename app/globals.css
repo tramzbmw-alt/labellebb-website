@@ -214,6 +214,66 @@ nav.scrolled {
   color: #C9954A;
 }
 
+/* ── HAMBURGER & MOBILE MENU ── */
+.nav-hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #111111;
+    border-top: 1px solid rgba(201,149,74,0.18);
+    border-bottom: 1px solid rgba(201,149,74,0.18);
+    padding: 6px 0 14px;
+    z-index: 99;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+  }
+
+  .mobile-menu a {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #C9954A;
+    padding: 15px 24px;
+    border-bottom: 1px solid rgba(201,149,74,0.08);
+    transition: background 0.15s;
+    display: block;
+  }
+
+  .mobile-menu a:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-menu a:hover,
+  .mobile-menu a:active {
+    background: rgba(201,149,74,0.08);
+  }
+}
+
 /* ── HERO ── */
 #hero {
   position: relative;
