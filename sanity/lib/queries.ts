@@ -47,8 +47,24 @@ export type SectionVisibility = {
   showInstagram?: boolean;
   showProducts?: boolean;
   showFlashSale?: boolean;
+  showProductsPage?: boolean;
+  showGalleryPage?: boolean;
   heroImage?: SanityImageRef;
   aboutImage?: SanityImageRef;
+};
+
+export type Artwork = {
+  _id: string;
+  title?: string;
+  description?: string;
+  medium?: string;
+  dimensions?: string;
+  price?: number;
+  status?: 'available' | 'inquire' | 'not_for_sale' | 'sold';
+  image?: SanityImageRef;
+  displayOrder?: number;
+  isPartOfSeries?: boolean;
+  seriesName?: string;
 };
 
 export type OurStory = {
@@ -210,4 +226,22 @@ export async function getFooterContent(): Promise<FooterContent | null> {
 
 export async function getSignatureServices(): Promise<SignatureServices | null> {
   return client.fetch(signatureServicesQuery, {}, opts);
+}
+
+const artworkFields = `_id, title, description, medium, dimensions, price, status, image, displayOrder, isPartOfSeries, seriesName`;
+
+export async function getArtworks(): Promise<Artwork[]> {
+  return client.fetch(
+    `*[_type == "artwork"] | order(displayOrder asc) { ${artworkFields} }`,
+    {},
+    opts
+  );
+}
+
+export async function getFeaturedArtwork(): Promise<Artwork | null> {
+  return client.fetch(
+    `*[_type == "artwork" && status == "not_for_sale"] | order(displayOrder asc) [0] { ${artworkFields} }`,
+    {},
+    opts
+  );
 }

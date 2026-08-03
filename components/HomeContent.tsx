@@ -32,6 +32,8 @@ export interface HomeContentProps {
   showAnnouncement: boolean;
   showFlashSale: boolean;
   showProducts: boolean;
+  showProductsPage: boolean;
+  showGalleryPage: boolean;
   showInstagram: boolean;
   siteSettings: SiteSettings | null;
   flashSale: FlashSale | null;
@@ -62,6 +64,8 @@ export default function HomeContent({
   showAnnouncement,
   showFlashSale,
   showProducts,
+  showProductsPage,
+  showGalleryPage,
   showInstagram,
   siteSettings,
   flashSale,
@@ -112,7 +116,7 @@ export default function HomeContent({
 
   return (
     <>
-      <Navbar showProducts={showProducts} />
+      <Navbar showProductsPage={showProductsPage} showGalleryPage={showGalleryPage} />
 
       {/* HERO */}
       <section id="hero">

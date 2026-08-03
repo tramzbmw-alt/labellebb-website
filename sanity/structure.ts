@@ -68,6 +68,13 @@ export const structure: StructureResolver = (S) =>
       S.divider(),
 
       S.listItem()
+        .title('Art Gallery')
+        .id('artwork')
+        .child(S.documentTypeList('artwork').title('Artworks')),
+
+      S.divider(),
+
+      S.listItem()
         .title('Contact')
         .id('contactSection')
         .child(S.document().schemaType('contactSection').documentId('contactSection')),

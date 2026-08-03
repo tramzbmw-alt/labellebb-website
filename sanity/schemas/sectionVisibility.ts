@@ -46,5 +46,21 @@ export const sectionVisibility = defineType({
       group: 'visibility',
       initialValue: false,
     }),
+    defineField({
+      name: 'showProductsPage',
+      title: 'Show Products Page',
+      type: 'boolean',
+      group: 'visibility',
+      description: 'When off, /products shows a Coming Soon message and PRODUCTS disappears from nav',
+      initialValue: true,
+    }),
+    defineField({
+      name: 'showGalleryPage',
+      title: 'Show Gallery Page',
+      type: 'boolean',
+      group: 'visibility',
+      description: 'When off, /gallery shows a Coming Soon message and GALLERY disappears from nav',
+      initialValue: true,
+    }),
   ],
 });

@@ -6,7 +6,13 @@ import { useLanguage, type Lang } from '@/components/LanguageContext';
 const BOOKING_URL =
   'https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348';
 
-export default function Navbar({ showProducts = false }: { showProducts?: boolean }) {
+export default function Navbar({
+  showProductsPage = false,
+  showGalleryPage = false,
+}: {
+  showProductsPage?: boolean;
+  showGalleryPage?: boolean;
+}) {
   const { lang, setLang, t } = useLanguage();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -38,15 +44,16 @@ export default function Navbar({ showProducts = false }: { showProducts?: boolea
 
   return (
     <nav id="navbar" aria-label="Main navigation">
-      <a href="#hero" className="nav-logo">
+      <a href="/" className="nav-logo">
         <img src="/labelle-logo-white.png" alt="La Belle' Beauty Bar" />
       </a>
       <ul className="nav-links">
-        <li><a href="#about">{t.nav.about}</a></li>
-        <li><a href="#services">{t.nav.services}</a></li>
-        {showProducts && <li><a href="#products">{t.nav.products}</a></li>}
-        <li><a href="#team">{t.nav.team}</a></li>
-        <li><a href="#booking">{t.nav.hours}</a></li>
+        <li><a href="/#about">{t.nav.about}</a></li>
+        <li><a href="/#services">{t.nav.services}</a></li>
+        {showProductsPage && <li><a href="/products">{t.nav.products}</a></li>}
+        {showGalleryPage && <li><a href="/gallery">{t.nav.gallery}</a></li>}
+        <li><a href="/#team">{t.nav.team}</a></li>
+        <li><a href="/#booking">{t.nav.hours}</a></li>
       </ul>
 
       {/* Language Selector */}

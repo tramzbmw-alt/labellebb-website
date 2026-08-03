@@ -41,6 +41,8 @@ export default async function Home() {
   const showAnnouncement = siteSettings?.announcementActive ?? true;
   const showFlashSale = (flashSale?.active || visibility?.showFlashSale) ?? false;
   const showProducts = visibility?.showProducts ?? false;
+  const showProductsPage = visibility?.showProductsPage ?? true;
+  const showGalleryPage = visibility?.showGalleryPage ?? true;
   const showInstagram = visibility?.showInstagram ?? false;
 
   const heroImageUrl = visibility?.heroImage
@@ -76,6 +78,8 @@ export default async function Home() {
       showAnnouncement={showAnnouncement}
       showFlashSale={showFlashSale}
       showProducts={showProducts}
+      showProductsPage={showProductsPage}
+      showGalleryPage={showGalleryPage}
       showInstagram={showInstagram}
       siteSettings={siteSettings}
       flashSale={flashSale}

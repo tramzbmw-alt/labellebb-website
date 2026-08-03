@@ -3,6 +3,7 @@ export const en = {
     about: 'About',
     services: 'Services',
     products: 'Products',
+    gallery: 'Gallery',
     team: 'Team',
     hours: 'Hours',
     bookNow: 'Book Now',

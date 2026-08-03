@@ -5,6 +5,7 @@ export const es: Translations = {
     about: 'Nosotros',
     services: 'Servicios',
     products: 'Productos',
+    gallery: 'Galería',
     team: 'Equipo',
     hours: 'Horario',
     bookNow: 'Reservar',
