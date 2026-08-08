@@ -7,15 +7,15 @@ import {
 
 const BOOKING_URL =
   'https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348';
-const SHOPIFY_URL = 'https://labellebb.myshopify.com';
+const SHOPIFY_URL = 'https://labellebeautyb.myshopify.com/collections/all';
 
 const CATEGORIES = [
   'Body Oils',
-  'Body Butters',
-  'Serums',
-  'Cleansers',
+  'Bundles',
+  'Clean Beauty',
   'Vegan',
-  'Organic',
+  'Natural',
+  'Luxurious',
 ];
 
 export const metadata = {
@@ -270,9 +270,8 @@ export default async function ProductsPage() {
                   marginBottom: '40px',
                 }}
               >
-                Our full product collection is being curated and will be available
-                here soon. In the meantime, visit our Shopify store to browse
-                available products.
+                Shop our Luxe Body Oil Collection — natural, clean ingredients
+                for glowing skin.
               </p>
               <a href={SHOPIFY_URL} target="_blank" rel="noopener" className="btn-gold">
                 Shop Now
