@@ -111,18 +111,7 @@ export default async function ProductsPage() {
               transition: border-color 0.3s;
             }
             .product-card:hover { border-color: rgba(201,149,74,0.6); }
-            .bundle-card {
-              grid-column: 1 / -1;
-              background: rgba(201,149,74,0.04);
-              border: 1px solid rgba(201,149,74,0.35);
-              padding: 40px 32px;
-              text-align: center;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              gap: 12px;
-            }
-            .product-card-btn {
+.product-card-btn {
               display: inline-block;
               margin-top: 4px;
               padding: 10px 28px;
@@ -373,38 +362,61 @@ export default async function ProductsPage() {
                 </div>
               ))}
 
-              {/* Bundle card — spans full width */}
-              <div className="bundle-card">
-                <h3
-                  style={{
-                    fontFamily: 'var(--serif)',
-                    fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
-                    fontWeight: 300,
-                    color: '#C9954A',
-                  }}
-                >
-                  Bundle &amp; Save
-                </h3>
-                <p
-                  style={{
-                    fontFamily: 'var(--sans)',
-                    fontSize: '0.78rem',
-                    fontWeight: 300,
-                    letterSpacing: '0.08em',
-                    color: 'rgba(245,240,234,0.65)',
-                  }}
-                >
-                  Buy 2 get 15% OFF &nbsp;·&nbsp; Buy 3 get 20% OFF &nbsp;·&nbsp; Buy 4+ get 25% OFF
-                </p>
-                <a
-                  href="https://labellebeautyb.myshopify.com/collections/bundles"
-                  target="_blank"
-                  rel="noopener"
-                  className="product-card-btn"
-                  style={{ marginTop: '8px' }}
-                >
-                  Shop Bundles
-                </a>
+              {/* Bundle card — 8th card, same styling as product cards */}
+              <div className="product-card" style={{ padding: 0 }}>
+                <img
+                  src="/bundle-luxe-body-oil.webp"
+                  alt="Bundle & Save"
+                  className="product-card-img"
+                />
+                <div style={{ padding: '20px 20px 24px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', width: '100%' }}>
+                  <h3
+                    style={{
+                      fontFamily: 'var(--serif)',
+                      fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
+                      fontWeight: 300,
+                      color: '#F5F0EA',
+                      lineHeight: 1.25,
+                    }}
+                  >
+                    Bundle &amp; Save
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: 'var(--sans)',
+                      fontSize: '0.72rem',
+                      fontWeight: 300,
+                      color: 'rgba(245,240,234,0.6)',
+                      letterSpacing: '0.04em',
+                      lineHeight: 1.6,
+                      marginBottom: '2px',
+                    }}
+                  >
+                    Mix &amp; Match Your Favorites
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: 'var(--sans)',
+                      fontSize: '0.68rem',
+                      fontWeight: 300,
+                      color: '#C9954A',
+                      letterSpacing: '0.04em',
+                      lineHeight: 1.8,
+                    }}
+                  >
+                    Buy 2 get 15% OFF<br />
+                    Buy 3 get 20% OFF<br />
+                    Buy 4+ get 25% OFF
+                  </p>
+                  <a
+                    href="https://labellebeautyb.myshopify.com/collections/bundles"
+                    target="_blank"
+                    rel="noopener"
+                    className="product-card-btn"
+                  >
+                    Shop Bundles
+                  </a>
+                </div>
               </div>
             </div>
           </section>
