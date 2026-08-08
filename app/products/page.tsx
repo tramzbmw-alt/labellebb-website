@@ -43,6 +43,95 @@ export default async function ProductsPage() {
 
       {showProductsPage ? (
         <>
+          {/* PLACEHOLDER VIDEO: Replace src with Shailyn's product video when ready */}
+          <style>{`
+            .video-hero {
+              position: relative;
+              width: 100vw;
+              height: 500px;
+              overflow: hidden;
+            }
+            @media (max-width: 768px) {
+              .video-hero { height: 300px; }
+            }
+          `}</style>
+          <div className="video-hero">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+              }}
+            >
+              <source src="https://assets.mixkit.co/videos/52046/52046-360.mp4" type="video/mp4" />
+            </video>
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'rgba(0,0,0,0.45)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+                padding: '0 24px',
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: 'var(--sans)',
+                  fontSize: '0.65rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.2em',
+                  color: '#C9954A',
+                  textTransform: 'uppercase',
+                  marginBottom: '16px',
+                }}
+              >
+                CLEAN BEAUTY
+              </span>
+              <h1
+                style={{
+                  fontFamily: 'var(--serif)',
+                  fontSize: '48px',
+                  fontWeight: 300,
+                  color: '#FFFFFF',
+                  lineHeight: 1.15,
+                  marginBottom: '16px',
+                }}
+              >
+                Products We Love
+              </h1>
+              <div
+                style={{
+                  width: '40px',
+                  height: '1px',
+                  background: '#C9954A',
+                  margin: '0 auto 20px',
+                }}
+              />
+              <p
+                style={{
+                  fontFamily: 'var(--sans)',
+                  fontSize: '13px',
+                  fontWeight: 300,
+                  letterSpacing: '0.1em',
+                  color: '#FFFFFF',
+                }}
+              >
+                Natural · Organic · Vegan · Luxurious
+              </p>
+            </div>
+          </div>
+
           {/* HERO */}
           <section
             style={{
