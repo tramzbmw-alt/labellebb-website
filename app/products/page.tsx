@@ -45,14 +45,39 @@ export default async function ProductsPage() {
         <>
           {/* PLACEHOLDER VIDEO: Replace src with Shailyn's product video when ready */}
           <style>{`
+            html { scroll-behavior: smooth; }
             .video-hero {
               position: relative;
               width: 100vw;
-              height: 500px;
+              height: 100vh;
               overflow: hidden;
             }
-            @media (max-width: 768px) {
-              .video-hero { height: 300px; }
+            .video-hero-btn {
+              display: inline-block;
+              margin-top: 32px;
+              padding: 14px 40px;
+              border: 1px solid #C9954A;
+              color: #C9954A;
+              font-family: var(--sans);
+              font-size: 0.65rem;
+              font-weight: 600;
+              letter-spacing: 0.2em;
+              text-transform: uppercase;
+              text-decoration: none;
+              transition: background 0.3s, color 0.3s;
+            }
+            .video-hero-btn:hover { background: #C9954A; color: #111111; }
+            @keyframes bounce-arrow {
+              0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+              50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
+            }
+            .scroll-indicator {
+              position: absolute;
+              bottom: 32px;
+              left: 50%;
+              transform: translateX(-50%);
+              animation: bounce-arrow 1.8s ease-in-out infinite;
+              text-decoration: none;
             }
           `}</style>
           <div className="video-hero">
@@ -101,7 +126,7 @@ export default async function ProductsPage() {
               <h1
                 style={{
                   fontFamily: 'var(--serif)',
-                  fontSize: '48px',
+                  fontSize: '56px',
                   fontWeight: 300,
                   color: '#FFFFFF',
                   lineHeight: 1.15,
@@ -129,11 +154,18 @@ export default async function ProductsPage() {
               >
                 Natural · Organic · Vegan · Luxurious
               </p>
+              <a href="#products-content" className="video-hero-btn">Shop Now</a>
             </div>
+            <a href="#products-content" className="scroll-indicator" aria-label="Scroll to products">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M6 9l6 6 6-6" stroke="#C9954A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
           </div>
 
           {/* HERO */}
           <section
+            id="products-content"
             style={{
               background: '#111111',
               minHeight: '60vh',
