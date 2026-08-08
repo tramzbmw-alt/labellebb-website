@@ -231,6 +231,28 @@ nav.scrolled {
 }
 
 @media (max-width: 768px) {
+  nav {
+    padding: 14px 20px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-logo img {
+    height: 52px;
+  }
+
+  .nav-logo {
+    margin-right: auto;
+  }
+
+  .lang-selector {
+    margin-right: 12px;
+  }
+
   .nav-book {
     display: none;
   }
