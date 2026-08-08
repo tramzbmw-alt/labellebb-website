@@ -18,6 +18,15 @@ const CATEGORIES = [
   'Luxurious',
 ];
 
+const PRODUCTS = [
+  { name: 'Noire Luxe Body Oil',   url: 'https://labellebeautyb.myshopify.com/products/noire-luxe-body-oil' },
+  { name: 'Coco Luxe Body Oil',    url: 'https://labellebeautyb.myshopify.com/products/coco-luxe-body-oil' },
+  { name: 'Valour Luxe Body Oil',  url: 'https://labellebeautyb.myshopify.com/products/valour-luxe-body-oil' },
+  { name: 'Dulce Luxe Body Oil',   url: 'https://labellebeautyb.myshopify.com/products/dulce-luxe-body-oil-copy' },
+  { name: 'Bare Luxe Body Oil',    url: 'https://labellebeautyb.myshopify.com/products/bare-luxe-body-oil' },
+  { name: 'Lavish Luxe Body Oil',  url: 'https://labellebeautyb.myshopify.com/products/lavish-luxe-body-oil-copy-copy' },
+];
+
 export const metadata = {
   title: "Products | La Belle' Beauty Bar",
   description:
@@ -79,6 +88,54 @@ export default async function ProductsPage() {
               animation: bounce-arrow 1.8s ease-in-out infinite;
               text-decoration: none;
             }
+            .product-grid {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 24px;
+              max-width: 960px;
+              margin: 0 auto;
+            }
+            @media (max-width: 768px) {
+              .product-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            }
+            .product-card {
+              background: #111111;
+              border: 1px solid rgba(201,149,74,0.25);
+              padding: 32px 20px;
+              text-align: center;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 12px;
+              transition: border-color 0.3s;
+            }
+            .product-card:hover { border-color: rgba(201,149,74,0.6); }
+            .bundle-card {
+              grid-column: 1 / -1;
+              background: rgba(201,149,74,0.04);
+              border: 1px solid rgba(201,149,74,0.35);
+              padding: 40px 32px;
+              text-align: center;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 12px;
+            }
+            .product-card-btn {
+              display: inline-block;
+              margin-top: 4px;
+              padding: 10px 28px;
+              border: 1px solid #C9954A;
+              color: #C9954A;
+              font-family: var(--sans);
+              font-size: 0.6rem;
+              font-weight: 600;
+              letter-spacing: 0.2em;
+              text-transform: uppercase;
+              text-decoration: none;
+              transition: background 0.3s, color 0.3s;
+            }
+            .product-card-btn:hover { background: #C9954A; color: #111111; }
           `}</style>
           <div className="video-hero">
             <video
@@ -237,45 +294,103 @@ export default async function ProductsPage() {
             </div>
           </section>
 
-          {/* MAIN CONTENT */}
+          {/* PRODUCT GRID */}
           <section
             style={{
               background: '#111111',
               padding: '80px 24px 120px',
-              textAlign: 'center',
               borderTop: '1px solid rgba(201,149,74,0.15)',
             }}
           >
-            <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-              <span className="section-label">OUR COLLECTION</span>
-              <div className="divider-gold" />
+            <div style={{ textAlign: 'center', marginBottom: '52px' }}>
               <h2
                 style={{
                   fontFamily: 'var(--serif)',
                   fontSize: 'clamp(2rem, 4vw, 3rem)',
                   fontWeight: 300,
-                  color: '#F5F0EA',
-                  marginBottom: '20px',
+                  color: '#C9954A',
+                  marginBottom: '12px',
                 }}
               >
-                Coming Soon
+                Luxe Body Oil Collection
               </h2>
               <p
                 style={{
                   fontFamily: 'var(--sans)',
-                  fontSize: '1rem',
+                  fontSize: '0.8rem',
                   fontWeight: 300,
-                  color: 'rgba(245,240,234,0.65)',
-                  lineHeight: 1.85,
-                  marginBottom: '40px',
+                  letterSpacing: '0.1em',
+                  color: 'rgba(245,240,234,0.6)',
                 }}
               >
-                Shop our Luxe Body Oil Collection — natural, clean ingredients
-                for glowing skin.
+                Natural · Clean · Luxurious · $26 each
               </p>
-              <a href={SHOPIFY_URL} target="_blank" rel="noopener" className="btn-gold">
-                Shop Now
-              </a>
+            </div>
+
+            <div className="product-grid">
+              {PRODUCTS.map((p) => (
+                <div key={p.name} className="product-card">
+                  <h3
+                    style={{
+                      fontFamily: 'var(--serif)',
+                      fontSize: 'clamp(1.2rem, 2vw, 1.5rem)',
+                      fontWeight: 300,
+                      color: '#F5F0EA',
+                      lineHeight: 1.25,
+                    }}
+                  >
+                    {p.name}
+                  </h3>
+                  <span
+                    style={{
+                      fontFamily: 'var(--sans)',
+                      fontSize: '0.85rem',
+                      fontWeight: 600,
+                      color: '#C9954A',
+                      letterSpacing: '0.06em',
+                    }}
+                  >
+                    $26.00
+                  </span>
+                  <a href={p.url} target="_blank" rel="noopener" className="product-card-btn">
+                    Shop Now
+                  </a>
+                </div>
+              ))}
+
+              {/* Bundle card — spans full width */}
+              <div className="bundle-card">
+                <h3
+                  style={{
+                    fontFamily: 'var(--serif)',
+                    fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
+                    fontWeight: 300,
+                    color: '#C9954A',
+                  }}
+                >
+                  Bundle &amp; Save
+                </h3>
+                <p
+                  style={{
+                    fontFamily: 'var(--sans)',
+                    fontSize: '0.78rem',
+                    fontWeight: 300,
+                    letterSpacing: '0.08em',
+                    color: 'rgba(245,240,234,0.65)',
+                  }}
+                >
+                  Buy 2 get 15% OFF &nbsp;·&nbsp; Buy 3 get 20% OFF &nbsp;·&nbsp; Buy 4+ get 25% OFF
+                </p>
+                <a
+                  href="https://labellebeautyb.myshopify.com/collections/bundles"
+                  target="_blank"
+                  rel="noopener"
+                  className="product-card-btn"
+                  style={{ marginTop: '8px' }}
+                >
+                  Shop Bundles
+                </a>
+              </div>
             </div>
           </section>
 
