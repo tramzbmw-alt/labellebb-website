@@ -116,6 +116,93 @@ export default async function ProductsPage() {
             </div>
           </section>
 
+          {/* VIDEO SECTION */}
+          <section
+            style={{
+              background: '#111111',
+              padding: '80px 24px',
+              textAlign: 'center',
+              borderTop: '1px solid rgba(201,149,74,0.15)',
+            }}
+          >
+            <div style={{ maxWidth: '700px', margin: '0 auto' }}>
+              <h2
+                style={{
+                  fontFamily: 'var(--serif)',
+                  fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
+                  fontWeight: 300,
+                  color: '#C9954A',
+                  marginBottom: '16px',
+                }}
+              >
+                See Our Products in Action
+              </h2>
+              <div className="divider-gold" style={{ marginBottom: '20px' }} />
+              <p
+                style={{
+                  fontFamily: 'var(--sans)',
+                  fontSize: '1rem',
+                  fontWeight: 300,
+                  color: 'rgba(245,240,234,0.65)',
+                  marginBottom: '48px',
+                }}
+              >
+                Watch how our natural luxury products work
+              </p>
+
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
+                  gap: '32px',
+                  marginBottom: '40px',
+                }}
+              >
+                <iframe
+                  src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F969866772772530%2F&show_text=false&width=267&t=0"
+                  width="267"
+                  height="476"
+                  style={{ border: 'none', overflow: 'hidden', borderRadius: '8px', display: 'block' }}
+                  scrolling="no"
+                  frameBorder="0"
+                  allowFullScreen={true}
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                />
+                <iframe
+                  src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1452212950043354%2F&show_text=false&width=267&t=0"
+                  width="267"
+                  height="476"
+                  style={{ border: 'none', overflow: 'hidden', borderRadius: '8px', display: 'block' }}
+                  scrolling="no"
+                  frameBorder="0"
+                  allowFullScreen={true}
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                />
+              </div>
+
+              <p
+                style={{
+                  fontFamily: 'var(--sans)',
+                  fontSize: '0.95rem',
+                  fontWeight: 300,
+                  color: 'rgba(245,240,234,0.65)',
+                }}
+              >
+                Follow us on{' '}
+                <a
+                  href="https://www.facebook.com/LaBelleBeautyBarLLC"
+                  target="_blank"
+                  rel="noopener"
+                  style={{ color: '#C9954A', textDecoration: 'none', fontWeight: 500 }}
+                >
+                  Facebook
+                </a>{' '}
+                for more product demos and beauty tips
+              </p>
+            </div>
+          </section>
+
           {/* MAIN CONTENT */}
           <section
             style={{
