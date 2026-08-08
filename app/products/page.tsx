@@ -19,12 +19,13 @@ const CATEGORIES = [
 ];
 
 const PRODUCTS = [
-  { name: 'Noire Luxe Body Oil',   url: 'https://labellebeautyb.myshopify.com/products/noire-luxe-body-oil' },
-  { name: 'Coco Luxe Body Oil',    url: 'https://labellebeautyb.myshopify.com/products/coco-luxe-body-oil' },
-  { name: 'Valour Luxe Body Oil',  url: 'https://labellebeautyb.myshopify.com/products/valour-luxe-body-oil' },
-  { name: 'Dulce Luxe Body Oil',   url: 'https://labellebeautyb.myshopify.com/products/dulce-luxe-body-oil-copy' },
-  { name: 'Bare Luxe Body Oil',    url: 'https://labellebeautyb.myshopify.com/products/bare-luxe-body-oil' },
-  { name: 'Lavish Luxe Body Oil',  url: 'https://labellebeautyb.myshopify.com/products/lavish-luxe-body-oil-copy-copy' },
+  { name: 'Noire Luxe Body Oil',  img: '/noire-luxe-body-oil.webp',  url: 'https://labellebeautyb.myshopify.com/products/noire-luxe-body-oil' },
+  { name: 'Coco Luxe Body Oil',   img: '/coco-luxe-body-oil.webp',   url: 'https://labellebeautyb.myshopify.com/products/coco-luxe-body-oil' },
+  { name: 'Valour Luxe Body Oil', img: '/valour-luxe-body-oil.webp', url: 'https://labellebeautyb.myshopify.com/products/valour-luxe-body-oil' },
+  { name: 'Dulce Luxe Body Oil',  img: '/dulce-luxe-body-oil.webp',  url: 'https://labellebeautyb.myshopify.com/products/dulce-luxe-body-oil-copy' },
+  { name: 'Bare Luxe Body Oil',   img: '/bare-luxe-body-oil.webp',   url: 'https://labellebeautyb.myshopify.com/products/bare-luxe-body-oil' },
+  { name: 'Lavish Luxe Body Oil', img: '/lavish-luxe-body-oil.webp', url: 'https://labellebeautyb.myshopify.com/products/lavish-luxe-body-oil-copy-copy' },
+  { name: 'Naked Luxe Body Oil',  img: '/naked-luxe-body-oil.webp',  url: 'https://labellebeautyb.myshopify.com/products/naked-luxe-body-oil' },
 ];
 
 export const metadata = {
@@ -136,6 +137,13 @@ export default async function ProductsPage() {
               transition: background 0.3s, color 0.3s;
             }
             .product-card-btn:hover { background: #C9954A; color: #111111; }
+            .product-card-img {
+              width: 100%;
+              aspect-ratio: 1 / 1;
+              object-fit: cover;
+              display: block;
+              margin-bottom: 4px;
+            }
           `}</style>
           <div className="video-hero">
             <video
@@ -329,32 +337,39 @@ export default async function ProductsPage() {
 
             <div className="product-grid">
               {PRODUCTS.map((p) => (
-                <div key={p.name} className="product-card">
-                  <h3
-                    style={{
-                      fontFamily: 'var(--serif)',
-                      fontSize: 'clamp(1.2rem, 2vw, 1.5rem)',
-                      fontWeight: 300,
-                      color: '#F5F0EA',
-                      lineHeight: 1.25,
-                    }}
-                  >
-                    {p.name}
-                  </h3>
-                  <span
-                    style={{
-                      fontFamily: 'var(--sans)',
-                      fontSize: '0.85rem',
-                      fontWeight: 600,
-                      color: '#C9954A',
-                      letterSpacing: '0.06em',
-                    }}
-                  >
-                    $26.00
-                  </span>
-                  <a href={p.url} target="_blank" rel="noopener" className="product-card-btn">
-                    Shop Now
-                  </a>
+                <div key={p.name} className="product-card" style={{ padding: 0 }}>
+                  <img
+                    src={p.img}
+                    alt={p.name}
+                    className="product-card-img"
+                  />
+                  <div style={{ padding: '20px 20px 24px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', width: '100%' }}>
+                    <h3
+                      style={{
+                        fontFamily: 'var(--serif)',
+                        fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
+                        fontWeight: 300,
+                        color: '#F5F0EA',
+                        lineHeight: 1.25,
+                      }}
+                    >
+                      {p.name}
+                    </h3>
+                    <span
+                      style={{
+                        fontFamily: 'var(--sans)',
+                        fontSize: '0.85rem',
+                        fontWeight: 600,
+                        color: '#C9954A',
+                        letterSpacing: '0.06em',
+                      }}
+                    >
+                      $26.00
+                    </span>
+                    <a href={p.url} target="_blank" rel="noopener" className="product-card-btn">
+                      Shop Now
+                    </a>
+                  </div>
                 </div>
               ))}
 
