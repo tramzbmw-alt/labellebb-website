@@ -231,6 +231,10 @@ nav.scrolled {
 }
 
 @media (max-width: 768px) {
+  .nav-book {
+    display: none;
+  }
+
   .nav-hamburger {
     display: flex;
   }
