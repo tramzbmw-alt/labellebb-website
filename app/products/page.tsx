@@ -156,60 +156,8 @@ export default async function ProductsPage() {
                 position: 'absolute',
                 inset: 0,
                 background: 'rgba(0,0,0,0.45)',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                textAlign: 'center',
-                padding: '0 24px',
               }}
-            >
-              <span
-                style={{
-                  fontFamily: 'var(--sans)',
-                  fontSize: '0.65rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.2em',
-                  color: '#C9954A',
-                  textTransform: 'uppercase',
-                  marginBottom: '16px',
-                }}
-              >
-                CLEAN BEAUTY
-              </span>
-              <h1
-                style={{
-                  fontFamily: 'var(--serif)',
-                  fontSize: '56px',
-                  fontWeight: 300,
-                  color: '#FFFFFF',
-                  lineHeight: 1.15,
-                  marginBottom: '16px',
-                }}
-              >
-                Products We Love
-              </h1>
-              <div
-                style={{
-                  width: '40px',
-                  height: '1px',
-                  background: '#C9954A',
-                  margin: '0 auto 20px',
-                }}
-              />
-              <p
-                style={{
-                  fontFamily: 'var(--sans)',
-                  fontSize: '13px',
-                  fontWeight: 300,
-                  letterSpacing: '0.1em',
-                  color: '#FFFFFF',
-                }}
-              >
-                Natural · Organic · Vegan · Luxurious
-              </p>
-              <a href="#products-content" className="video-hero-btn">Shop Now</a>
-            </div>
+            />
             <a href="#products-content" className="scroll-indicator" aria-label="Scroll to products">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
                 <path d="M6 9l6 6 6-6" stroke="#C9954A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
