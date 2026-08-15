@@ -128,22 +128,26 @@ export default function HomeContent({
       {showHomepageVideo && (
         <div className="homepage-video-intro">
           <video
+            className="hp-video-desktop"
             autoPlay
             muted
             loop
             playsInline
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              maxWidth: '100vw',
-              height: '100%',
-              objectFit: 'cover',
-              overflow: 'hidden',
-            }}
+            poster="/labelle-about-section.png"
+            {...{"x-webkit-playsinline": "true"}}
           >
             <source src="/labelle-hero-video.mp4" type="video/mp4" />
+          </video>
+          <video
+            className="hp-video-mobile"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/labelle-about-section.png"
+            {...{"x-webkit-playsinline": "true"}}
+          >
+            <source src="/labelle-mobile-video.mp4" type="video/mp4" />
           </video>
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.3)' }} />
           <a href="#hero" className="homepage-video-scroll" aria-label="Scroll down">

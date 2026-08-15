@@ -59,9 +59,19 @@ export default async function ProductsPage() {
             .video-hero {
               position: relative;
               width: 100vw;
-              height: 100vh;
+              height: 100svh;
               overflow: hidden;
             }
+            .pv-desktop,
+            .pv-mobile {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+            .pv-mobile { display: none; }
             .video-hero-btn {
               display: inline-block;
               margin-top: 32px;
@@ -133,26 +143,33 @@ export default async function ProductsPage() {
               display: block;
               margin-bottom: 4px;
             }
-            @media (max-width: 639px) {
-              .video-hero { height: 100svh; }
+            @media (max-width: 767px) {
+              .pv-desktop { display: none; }
+              .pv-mobile  { display: block; }
             }
           `}</style>
           <div className="video-hero products-video-hero">
             <video
+              className="pv-desktop"
               autoPlay
               muted
               loop
               playsInline
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-              }}
+              poster="/labelle-about-section.png"
+              {...{"x-webkit-playsinline": "true"}}
             >
               <source src="/labelle-hero-video.mp4" type="video/mp4" />
+            </video>
+            <video
+              className="pv-mobile"
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster="/labelle-about-section.png"
+              {...{"x-webkit-playsinline": "true"}}
+            >
+              <source src="/labelle-mobile-video.mp4" type="video/mp4" />
             </video>
             <div
               style={{

@@ -309,7 +309,7 @@ nav.scrolled {
 .homepage-video-intro {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100svh;
   overflow: hidden;
 }
 .homepage-video-scroll {
@@ -321,8 +321,19 @@ nav.scrolled {
   text-decoration: none;
   animation: scrollBob 2s ease-in-out infinite;
 }
-@media (max-width: 640px) {
-  .homepage-video-intro { height: 100svh; }
+.hp-video-desktop,
+.hp-video-mobile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hp-video-mobile { display: none; }
+@media (max-width: 767px) {
+  .hp-video-desktop { display: none; }
+  .hp-video-mobile  { display: block; }
 }
 
 /* ── HERO ── */
