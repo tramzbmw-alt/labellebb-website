@@ -136,7 +136,7 @@ export default function HomeContent({
             poster="/labelle-about-section.png"
             {...{"x-webkit-playsinline": "true"}}
           >
-            <source src="/labelle-hero-video.mp4" type="video/mp4" />
+            <source src="/labelle-hero-video-v2.mp4" type="video/mp4" />
           </video>
           <video
             className="hp-video-mobile"
