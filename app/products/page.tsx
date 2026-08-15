@@ -134,7 +134,7 @@ export default async function ProductsPage() {
               margin-bottom: 4px;
             }
             @media (max-width: 639px) {
-              .products-video-hero { display: none; }
+              .video-hero { height: 100svh; }
             }
           `}</style>
           <div className="video-hero products-video-hero">

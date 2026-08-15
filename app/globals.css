@@ -322,7 +322,7 @@ nav.scrolled {
   animation: scrollBob 2s ease-in-out infinite;
 }
 @media (max-width: 640px) {
-  .homepage-video-intro { display: none; }
+  .homepage-video-intro { height: 100svh; }
 }
 
 /* ── HERO ── */
