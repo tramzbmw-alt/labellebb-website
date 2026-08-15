@@ -1,4 +1,5 @@
 import { urlFor } from '@/sanity/lib/image';
+import { projectId, dataset } from '@/sanity/env';
 import HomeContent from '@/components/HomeContent';
 import {
   getSiteSettings,
@@ -38,6 +39,12 @@ export default async function Home() {
     getSignatureServices(),
   ]);
 
+  function sanityFileUrl(ref: string): string {
+    const withoutPrefix = ref.replace('file-', '');
+    const filename = withoutPrefix.replace(/-([^-]+)$/, '.$1');
+    return `https://cdn.sanity.io/files/${projectId}/${dataset}/${filename}`;
+  }
+
   const showAnnouncement = siteSettings?.announcementActive ?? true;
   const showFlashSale = (flashSale?.active || visibility?.showFlashSale) ?? false;
   const showProducts = visibility?.showProducts ?? false;
@@ -45,6 +52,10 @@ export default async function Home() {
   const showGalleryPage = visibility?.showGalleryPage ?? true;
   const showInstagram = visibility?.showInstagram ?? false;
 
+  const heroDisplayMode = visibility?.heroDisplayMode ?? 'photo';
+  const heroVideoUrl = visibility?.heroVideo?.asset?._ref
+    ? sanityFileUrl(visibility.heroVideo.asset._ref)
+    : null;
   const heroImageUrl = visibility?.heroImage
     ? urlFor(visibility.heroImage).width(1800).url()
     : null;
@@ -70,6 +81,8 @@ export default async function Home() {
 
   return (
     <HomeContent
+      heroDisplayMode={heroDisplayMode}
+      heroVideoUrl={heroVideoUrl}
       heroImageUrl={heroImageUrl}
       aboutImageUrl={aboutImageUrl}
       giftCardImageUrl={giftCardImageUrl}

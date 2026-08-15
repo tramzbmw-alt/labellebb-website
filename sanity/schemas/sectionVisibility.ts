@@ -10,12 +10,37 @@ export const sectionVisibility = defineType({
   ],
   fields: [
     defineField({
+      name: 'heroDisplayMode',
+      title: 'Hero Display Mode',
+      type: 'string',
+      group: 'images',
+      options: {
+        list: [
+          { title: 'Photo Only', value: 'photo' },
+          { title: 'Video Only', value: 'video' },
+          { title: 'Video with Photo (Recommended)', value: 'video-with-photo' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'photo',
+      description:
+        '"Video with Photo" gives instant photo display while the video loads, then the video plays over it — best of both worlds.',
+    }),
+    defineField({
+      name: 'heroVideo',
+      title: 'Hero Video (MP4)',
+      type: 'file',
+      group: 'images',
+      options: { accept: 'video/mp4' },
+      description: 'Upload an MP4 video to use as the hero background. Used when Hero Display Mode is set to Video or Video with Photo.',
+    }),
+    defineField({
       name: 'heroImage',
       title: 'Hero Background Image',
       type: 'image',
       group: 'images',
       options: { hotspot: true },
-      description: 'Full-width background photo behind the hero headline',
+      description: 'Full-width background photo behind the hero headline. Also used as the video poster in "Video with Photo" mode.',
     }),
     defineField({
       name: 'aboutImage',

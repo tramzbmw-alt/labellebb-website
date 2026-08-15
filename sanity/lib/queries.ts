@@ -43,12 +43,19 @@ export type SanityImageRef = {
   crop?: object;
 };
 
+export type SanityFileRef = {
+  _type: 'file';
+  asset: { _ref: string; _type: 'reference' };
+};
+
 export type SectionVisibility = {
   showInstagram?: boolean;
   showProducts?: boolean;
   showFlashSale?: boolean;
   showProductsPage?: boolean;
   showGalleryPage?: boolean;
+  heroDisplayMode?: 'photo' | 'video' | 'video-with-photo';
+  heroVideo?: SanityFileRef;
   heroImage?: SanityImageRef;
   aboutImage?: SanityImageRef;
 };

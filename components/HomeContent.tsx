@@ -24,6 +24,8 @@ const BOOKING_URL =
   'https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348';
 
 export interface HomeContentProps {
+  heroDisplayMode: 'photo' | 'video' | 'video-with-photo';
+  heroVideoUrl: string | null;
   heroImageUrl: string | null;
   aboutImageUrl: string | null;
   giftCardImageUrl: string | null;
@@ -56,6 +58,8 @@ export interface HomeContentProps {
 }
 
 export default function HomeContent({
+  heroDisplayMode,
+  heroVideoUrl,
   heroImageUrl,
   aboutImageUrl,
   giftCardImageUrl,
@@ -120,10 +124,31 @@ export default function HomeContent({
 
       {/* HERO */}
       <section id="hero">
-        <div
-          className="hero-bg"
-          style={heroImageUrl ? { backgroundImage: `url(${heroImageUrl})` } : undefined}
-        />
+        {(heroDisplayMode === 'video' || heroDisplayMode === 'video-with-photo') && heroVideoUrl ? (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={heroDisplayMode === 'video-with-photo' && heroImageUrl ? heroImageUrl : undefined}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              zIndex: 0,
+            }}
+          >
+            <source src={heroVideoUrl} type="video/mp4" />
+          </video>
+        ) : (
+          <div
+            className="hero-bg"
+            style={heroImageUrl ? { backgroundImage: `url(${heroImageUrl})` } : undefined}
+          />
+        )}
         <div className="hero-overlay" />
         <div className="hero-content">
           <h1 className="hero-headline">
