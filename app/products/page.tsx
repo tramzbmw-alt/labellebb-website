@@ -155,7 +155,7 @@ export default async function ProductsPage() {
               muted
               loop
               playsInline
-              poster="/labelle-about-section.png"
+              preload="auto"
               {...{"x-webkit-playsinline": "true"}}
             >
               <source src="/labelle-hero-video.mp4" type="video/mp4" />
@@ -166,7 +166,7 @@ export default async function ProductsPage() {
               muted
               loop
               playsInline
-              poster="/labelle-about-section.png"
+              preload="auto"
               {...{"x-webkit-playsinline": "true"}}
             >
               <source src="/labelle-mobile-video.mp4" type="video/mp4" />
