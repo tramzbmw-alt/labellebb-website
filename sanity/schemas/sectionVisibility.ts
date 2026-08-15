@@ -87,5 +87,13 @@ export const sectionVisibility = defineType({
       description: 'When off, /gallery shows a Coming Soon message and GALLERY disappears from nav',
       initialValue: true,
     }),
+    defineField({
+      name: 'showHomepageVideo',
+      title: 'Show Homepage Video',
+      type: 'boolean',
+      group: 'visibility',
+      description: 'Full-screen video that plays above the hero on desktop (hidden on mobile). Turn off to start the page directly with the hero.',
+      initialValue: true,
+    }),
   ],
 });

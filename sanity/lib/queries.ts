@@ -54,6 +54,7 @@ export type SectionVisibility = {
   showFlashSale?: boolean;
   showProductsPage?: boolean;
   showGalleryPage?: boolean;
+  showHomepageVideo?: boolean;
   heroDisplayMode?: 'photo' | 'video' | 'video-with-photo';
   heroVideo?: SanityFileRef;
   heroImage?: SanityImageRef;

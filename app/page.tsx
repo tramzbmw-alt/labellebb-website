@@ -51,6 +51,7 @@ export default async function Home() {
   const showProductsPage = visibility?.showProductsPage ?? true;
   const showGalleryPage = visibility?.showGalleryPage ?? true;
   const showInstagram = visibility?.showInstagram ?? false;
+  const showHomepageVideo = visibility?.showHomepageVideo ?? true;
 
   const heroDisplayMode = visibility?.heroDisplayMode ?? 'photo';
   const heroVideoUrl = visibility?.heroVideo?.asset?._ref
@@ -81,6 +82,7 @@ export default async function Home() {
 
   return (
     <HomeContent
+      showHomepageVideo={showHomepageVideo}
       heroDisplayMode={heroDisplayMode}
       heroVideoUrl={heroVideoUrl}
       heroImageUrl={heroImageUrl}

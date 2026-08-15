@@ -305,6 +305,26 @@ nav.scrolled {
   }
 }
 
+/* ── HOMEPAGE VIDEO INTRO ── */
+.homepage-video-intro {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.homepage-video-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  text-decoration: none;
+  animation: scrollBob 2s ease-in-out infinite;
+}
+@media (max-width: 640px) {
+  .homepage-video-intro { display: none; }
+}
+
 /* ── HERO ── */
 #hero {
   position: relative;

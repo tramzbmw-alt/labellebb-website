@@ -24,6 +24,7 @@ const BOOKING_URL =
   'https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348';
 
 export interface HomeContentProps {
+  showHomepageVideo: boolean;
   heroDisplayMode: 'photo' | 'video' | 'video-with-photo';
   heroVideoUrl: string | null;
   heroImageUrl: string | null;
@@ -58,6 +59,7 @@ export interface HomeContentProps {
 }
 
 export default function HomeContent({
+  showHomepageVideo,
   heroDisplayMode,
   heroVideoUrl,
   heroImageUrl,
@@ -121,6 +123,36 @@ export default function HomeContent({
   return (
     <>
       <Navbar showProductsPage={showProductsPage} showGalleryPage={showGalleryPage} />
+
+      {/* HOMEPAGE VIDEO INTRO */}
+      {showHomepageVideo && (
+        <div className="homepage-video-intro">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              maxWidth: '100vw',
+              height: '100%',
+              objectFit: 'cover',
+              overflow: 'hidden',
+            }}
+          >
+            <source src="/labelle-hero-video.mp4" type="video/mp4" />
+          </video>
+          <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.3)' }} />
+          <a href="#hero" className="homepage-video-scroll" aria-label="Scroll down">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+              <path d="M6 9l6 6 6-6" stroke="#C9954A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
+      )}
 
       {/* HERO */}
       <section id="hero">
