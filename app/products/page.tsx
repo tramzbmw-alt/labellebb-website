@@ -149,7 +149,7 @@ export default async function ProductsPage() {
                 objectFit: 'cover',
               }}
             >
-              <source src="https://assets.mixkit.co/videos/52046/52046-360.mp4" type="video/mp4" />
+              <source src="/labelle-hero-video.mp4" type="video/mp4" />
             </video>
             <div
               style={{
