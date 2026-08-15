@@ -136,8 +136,10 @@ export default function HomeContent({
               top: 0,
               left: 0,
               width: '100%',
+              maxWidth: '100vw',
               height: '100%',
               objectFit: 'cover',
+              overflow: 'hidden',
               zIndex: 0,
             }}
           >
