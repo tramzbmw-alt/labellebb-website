@@ -133,7 +133,7 @@ export default function HomeContent({
             muted
             loop
             playsInline
-            poster="/labelle-about-section.png"
+            preload="auto"
             {...{"x-webkit-playsinline": "true"}}
           >
             <source src="/labelle-hero-video-v2.mp4" type="video/mp4" />
