@@ -133,8 +133,11 @@ export default async function ProductsPage() {
               display: block;
               margin-bottom: 4px;
             }
+            @media (max-width: 639px) {
+              .products-video-hero { display: none; }
+            }
           `}</style>
-          <div className="video-hero">
+          <div className="video-hero products-video-hero">
             <video
               autoPlay
               muted
