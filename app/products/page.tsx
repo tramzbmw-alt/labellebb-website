@@ -158,7 +158,7 @@ export default async function ProductsPage() {
               preload="auto"
               {...{"x-webkit-playsinline": "true"}}
             >
-              <source src="/labelle-hero-video.mp4" type="video/mp4" />
+              <source src="/labelle-products-desktop.mp4" type="video/mp4" />
             </video>
             <video
               className="pv-mobile"
@@ -169,7 +169,7 @@ export default async function ProductsPage() {
               preload="auto"
               {...{"x-webkit-playsinline": "true"}}
             >
-              <source src="/labelle-mobile-video.mp4" type="video/mp4" />
+              <source src="/labelle-products-mobile.mp4" type="video/mp4" />
             </video>
             <div
               style={{
