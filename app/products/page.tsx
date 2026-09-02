@@ -377,7 +377,7 @@ export default async function ProductsPage() {
                     Buy 4+ get 25% OFF
                   </p>
                   <a
-                    href="https://labellebeautyb.myshopify.com/collections/bundles"
+                    href="https://labellebeautyb.myshopify.com/collections/luxe-body-oils"
                     target="_blank"
                     rel="noopener"
                     className="product-card-btn"
