@@ -11,33 +11,33 @@ const BOOKING_URL =
 const PANELS = [
   {
     n: 1,
-    label: 'Red',
-    url: 'https://labellebeautyb.myshopify.com/products/les-fruits-red-wall-art-poster-satin',
-  },
-  {
-    n: 2,
-    label: 'Blue/Purple',
-    url: 'https://labellebeautyb.myshopify.com/products/les-fruits-blue-purple-wall-art-poster-satin',
-  },
-  {
-    n: 3,
-    label: 'Green',
-    url: 'https://labellebeautyb.myshopify.com/products/les-fruits-green-wall-art-poster-satin',
-  },
-  {
-    n: 4,
-    label: 'Orange',
-    url: 'https://labellebeautyb.myshopify.com/products/les-fruits-orange-wall-art-poster-satin',
-  },
-  {
-    n: 5,
     label: 'Pink',
     url: 'https://labellebeautyb.myshopify.com/products/les-fruits-pink-wall-art-poster-satin',
   },
   {
-    n: 6,
+    n: 2,
     label: 'Yellow',
     url: 'https://labellebeautyb.myshopify.com/products/les-fruits-yellow-wall-art-poster-satin',
+  },
+  {
+    n: 3,
+    label: 'Blue/Purple',
+    url: 'https://labellebeautyb.myshopify.com/products/les-fruits-blue-purple-wall-art-poster-satin',
+  },
+  {
+    n: 4,
+    label: 'Green',
+    url: 'https://labellebeautyb.myshopify.com/products/les-fruits-green-wall-art-poster-satin',
+  },
+  {
+    n: 5,
+    label: 'Orange',
+    url: 'https://labellebeautyb.myshopify.com/products/les-fruits-orange-wall-art-poster-satin',
+  },
+  {
+    n: 6,
+    label: 'Red',
+    url: 'https://labellebeautyb.myshopify.com/products/les-fruits-red-wall-art-poster-satin',
   },
 ];
 
@@ -370,10 +370,12 @@ export default async function GalleryPage() {
                   $600.00
                 </p>
                 <a
-                  href="mailto:info@labellebb.com?subject=Les Fruits Collection Complete Set Inquiry"
+                  href="https://labellebeautyb.myshopify.com/products/les-fruits-collection-original-painting"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-gold"
                 >
-                  Inquire About Complete Set
+                  Buy Complete Set
                 </a>
               </div>
             </div>
