@@ -8,7 +8,38 @@ import {
 const BOOKING_URL =
   'https://www.fresha.com/a/la-belle-beauty-bar-apex-3675-green-level-west-road-k4js9tu2/booking?menu=true&pId=2774348';
 
-const PANELS = [1, 2, 3, 4, 5, 6];
+const PANELS = [
+  {
+    n: 1,
+    label: 'Red',
+    url: 'https://labellebeautyb.myshopify.com/products/les-fruits-red-wall-art-poster-satin',
+  },
+  {
+    n: 2,
+    label: 'Blue/Purple',
+    url: 'https://labellebeautyb.myshopify.com/products/les-fruits-blue-purple-wall-art-poster-satin',
+  },
+  {
+    n: 3,
+    label: 'Green',
+    url: 'https://labellebeautyb.myshopify.com/products/les-fruits-green-wall-art-poster-satin',
+  },
+  {
+    n: 4,
+    label: 'Orange',
+    url: 'https://labellebeautyb.myshopify.com/products/les-fruits-orange-wall-art-poster-satin',
+  },
+  {
+    n: 5,
+    label: 'Pink',
+    url: 'https://labellebeautyb.myshopify.com/products/les-fruits-pink-wall-art-poster-satin',
+  },
+  {
+    n: 6,
+    label: 'Yellow',
+    url: 'https://labellebeautyb.myshopify.com/products/les-fruits-yellow-wall-art-poster-satin',
+  },
+];
 
 export const metadata = {
   title: "Art Gallery | La Belle' Beauty Bar",
@@ -189,7 +220,7 @@ export default async function GalleryPage() {
                     marginBottom: '14px',
                   }}
                 >
-                  Pink Harvest — Six Panel Collection
+                  Les Fruits Collection — Six Panel Collection
                 </h2>
                 <p
                   style={{
@@ -216,7 +247,7 @@ export default async function GalleryPage() {
                 }}
                 className="panel-grid"
               >
-                {PANELS.map((n) => (
+                {PANELS.map(({ n, label, url }) => (
                   <div key={n} style={{ textAlign: 'center' }}>
                     <div
                       style={{
@@ -228,7 +259,7 @@ export default async function GalleryPage() {
                     >
                       <img
                         src={`/6_Panels_Shay.${n}.jpg`}
-                        alt={`Pink Harvest Panel ${n}`}
+                        alt={`Les Fruits Collection — ${label}`}
                         style={{
                           width: '100%',
                           display: 'block',
@@ -240,52 +271,55 @@ export default async function GalleryPage() {
                     <p
                       style={{
                         fontFamily: 'var(--serif)',
-                        fontSize: '1rem',
+                        fontSize: '1.05rem',
                         fontStyle: 'italic',
-                        color: 'rgba(245,240,234,0.7)',
-                        marginBottom: '6px',
+                        color: 'rgba(245,240,234,0.85)',
+                        marginBottom: '4px',
                       }}
                     >
-                      Panel {n}
+                      {label}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: 'var(--sans)',
+                        fontSize: '0.62rem',
+                        letterSpacing: '0.14em',
+                        textTransform: 'uppercase',
+                        color: 'rgba(245,240,234,0.35)',
+                        marginBottom: '10px',
+                      }}
+                    >
+                      Poster Print · Satin
                     </p>
                     <p
                       style={{
                         fontFamily: 'var(--serif)',
-                        fontSize: '1.3rem',
+                        fontSize: '1.2rem',
                         color: '#C9954A',
-                        marginBottom: '4px',
+                        marginBottom: '12px',
                       }}
                     >
-                      $100
+                      $20.00
                     </p>
                     <a
-                      href={`mailto:info@labellebb.com?subject=${encodeURIComponent(`Pink Harvest — Panel ${n} Inquiry`)}`}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       style={{
+                        display: 'inline-block',
                         fontFamily: 'var(--sans)',
-                        fontSize: '0.62rem',
-                        fontWeight: 600,
+                        fontSize: '0.6rem',
+                        fontWeight: 700,
                         letterSpacing: '0.16em',
                         textTransform: 'uppercase',
-                        color: '#C9954A',
+                        color: '#111111',
+                        background: '#C9954A',
+                        padding: '8px 14px',
                         textDecoration: 'none',
-                        borderBottom: '1px solid rgba(201,149,74,0.4)',
-                        paddingBottom: '2px',
-                        display: 'inline-block',
-                        marginBottom: '4px',
                       }}
                     >
-                      Inquire
+                      Buy Print — $20
                     </a>
-                    <p
-                      style={{
-                        fontFamily: 'var(--sans)',
-                        fontSize: '0.62rem',
-                        color: 'rgba(245,240,234,0.3)',
-                        letterSpacing: '0.08em',
-                      }}
-                    >
-                      or save with complete set
-                    </p>
                   </div>
                 ))}
               </div>
@@ -310,71 +344,36 @@ export default async function GalleryPage() {
                     marginBottom: '20px',
                   }}
                 >
-                  Complete Set — All 6 Panels
+                  Les Fruits Collection — Complete Set
                 </h3>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '16px',
-                    flexWrap: 'wrap',
-                    marginBottom: '12px',
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: 'var(--sans)',
-                      fontSize: '0.65rem',
-                      fontWeight: 700,
-                      letterSpacing: '0.2em',
-                      textTransform: 'uppercase',
-                      color: '#C9954A',
-                      border: '1px solid rgba(201,149,74,0.5)',
-                      padding: '5px 14px',
-                    }}
-                  >
-                    Save $100
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: 'var(--serif)',
-                      fontSize: '1.1rem',
-                      color: 'rgba(245,240,234,0.3)',
-                      textDecoration: 'line-through',
-                    }}
-                  >
-                    $600
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: 'var(--serif)',
-                      fontSize: '2.2rem',
-                      color: '#C9954A',
-                      fontWeight: 400,
-                    }}
-                  >
-                    $500
-                  </span>
-                </div>
                 <p
                   style={{
                     fontFamily: 'var(--sans)',
                     fontSize: '0.85rem',
                     color: 'rgba(245,240,234,0.4)',
                     maxWidth: '360px',
-                    margin: '0 auto 32px',
+                    margin: '0 auto 20px',
                     lineHeight: 1.75,
                   }}
                 >
-                  Acquire all six panels as a cohesive collection and save $100
-                  off the individual price.
+                  All 6 original paintings as a complete collection.
+                </p>
+                <p
+                  style={{
+                    fontFamily: 'var(--serif)',
+                    fontSize: '2.2rem',
+                    color: '#C9954A',
+                    fontWeight: 400,
+                    marginBottom: '32px',
+                  }}
+                >
+                  $600.00
                 </p>
                 <a
-                  href={`mailto:info@labellebb.com?subject=${encodeURIComponent('Pink Harvest Collection Inquiry')}`}
+                  href="mailto:info@labellebb.com?subject=Les Fruits Collection Complete Set Inquiry"
                   className="btn-gold"
                 >
-                  Inquire About This Collection
+                  Inquire About Complete Set
                 </a>
               </div>
             </div>
