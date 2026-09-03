@@ -76,8 +76,6 @@ export default async function Home() {
 
   const phone = contact?.phone ?? '(919) 321-1148';
   const phoneRaw = phone.replace(/\D/g, '');
-  const textNum = contact?.textNumber ?? '(919) 759-5828';
-  const textRaw = textNum.replace(/\D/g, '');
   const email = contact?.email ?? 'info@labellebb.com';
 
   return (
@@ -111,8 +109,6 @@ export default async function Home() {
       signatureServices={signatureServices}
       phone={phone}
       phoneRaw={phoneRaw}
-      textNum={textNum}
-      textRaw={textRaw}
       email={email}
     />
   );

@@ -53,8 +53,6 @@ export interface HomeContentProps {
   signatureServices: SignatureServices | null;
   phone: string;
   phoneRaw: string;
-  textNum: string;
-  textRaw: string;
   email: string;
 }
 
@@ -88,8 +86,6 @@ export default function HomeContent({
   signatureServices,
   phone,
   phoneRaw,
-  textNum,
-  textRaw,
   email,
 }: HomeContentProps) {
   const { lang, t } = useLanguage();
@@ -770,8 +766,6 @@ export default function HomeContent({
               <span className="contact-block-label">{t.contact.contactLabel}</span>
               <p>
                 <a href={`tel:${phoneRaw}`}>{t.contact.callPrefix} {phone}</a>
-                <br />
-                <a href={`sms:${textRaw}`}>{t.contact.textPrefix} {textNum}</a>
               </p>
             </div>
             <div className="contact-block">
