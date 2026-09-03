@@ -465,6 +465,7 @@ export default function HomeContent({
               <span className="pill">{t.products.pill4}</span>
               <span className="pill">{t.products.pill5}</span>
               <span className="pill">{t.products.pill6}</span>
+              <span className="pill">{t.products.pill7}</span>
             </div>
           </div>
           <div className="products-photo">
