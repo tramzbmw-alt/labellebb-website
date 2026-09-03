@@ -16,12 +16,13 @@ import {
   getContactSection,
   getFooterContent,
   getSignatureServices,
+  getRetailSection,
 } from '@/sanity/lib/queries';
 
 export default async function Home() {
   const [
     siteSettings, flashSale, monthlySpecial, teamMembers, visibility,
-    hero, story, reviews, teamSec, loyalty, gifts, contact, footer, signatureServices,
+    hero, story, reviews, teamSec, loyalty, gifts, contact, footer, signatureServices, retail,
   ] = await Promise.all([
     getSiteSettings(),
     getFlashSale(),
@@ -37,6 +38,7 @@ export default async function Home() {
     getContactSection(),
     getFooterContent(),
     getSignatureServices(),
+    getRetailSection(),
   ]);
 
   function sanityFileUrl(ref: string): string {
@@ -107,6 +109,7 @@ export default async function Home() {
       contact={contact}
       footer={footer}
       signatureServices={signatureServices}
+      retail={retail}
       phone={phone}
       phoneRaw={phoneRaw}
       email={email}

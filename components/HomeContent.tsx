@@ -18,6 +18,7 @@ import type {
   ContactSection,
   FooterContent,
   SignatureServices,
+  RetailSection,
 } from '@/sanity/lib/queries';
 
 const BOOKING_URL =
@@ -51,6 +52,7 @@ export interface HomeContentProps {
   contact: ContactSection | null;
   footer: FooterContent | null;
   signatureServices: SignatureServices | null;
+  retail: RetailSection | null;
   phone: string;
   phoneRaw: string;
   email: string;
@@ -84,6 +86,7 @@ export default function HomeContent({
   contact,
   footer,
   signatureServices,
+  retail,
   phone,
   phoneRaw,
   email,
@@ -452,20 +455,37 @@ export default function HomeContent({
             <span className="section-label">{t.products.eyebrow}</span>
             <div className="divider-gold left" />
             <h2>
-              {t.products.heading1}
-              <br />
-              <em>{t.products.heading2}</em>
+              {retail?.heading ?? t.products.heading1}
+              {retail?.subheading ? (
+                <>
+                  <br />
+                  <em>{retail.subheading}</em>
+                </>
+              ) : (
+                <>
+                  <br />
+                  <em>{t.products.heading2}</em>
+                </>
+              )}
             </h2>
-            <p>{t.products.p1}</p>
-            <p>{t.products.p2}</p>
+            <p>{retail?.description1 ?? t.products.p1}</p>
+            <p>{retail?.description2 ?? t.products.p2}</p>
             <div className="products-pills">
-              <span className="pill">{t.products.pill1}</span>
-              <span className="pill">{t.products.pill2}</span>
-              <span className="pill">{t.products.pill3}</span>
-              <span className="pill">{t.products.pill4}</span>
-              <span className="pill">{t.products.pill5}</span>
-              <span className="pill">{t.products.pill6}</span>
-              <span className="pill">{t.products.pill7}</span>
+              {retail?.tags && retail.tags.length > 0 ? (
+                retail.tags.map((tag) => (
+                  <span key={tag} className="pill">{tag}</span>
+                ))
+              ) : (
+                <>
+                  <span className="pill">{t.products.pill1}</span>
+                  <span className="pill">{t.products.pill2}</span>
+                  <span className="pill">{t.products.pill3}</span>
+                  <span className="pill">{t.products.pill4}</span>
+                  <span className="pill">{t.products.pill5}</span>
+                  <span className="pill">{t.products.pill6}</span>
+                  <span className="pill">{t.products.pill7}</span>
+                </>
+              )}
             </div>
           </div>
           <div className="products-photo">

@@ -173,6 +173,14 @@ export type SignatureServices = {
   card3Description?: string;
 };
 
+export type RetailSection = {
+  heading?: string;
+  subheading?: string;
+  description1?: string;
+  description2?: string;
+  tags?: string[];
+};
+
 export const signatureServicesQuery =
   "*[_type == 'signatureServices' && _id == 'signatureServices'][0]";
 
@@ -234,6 +242,10 @@ export async function getFooterContent(): Promise<FooterContent | null> {
 
 export async function getSignatureServices(): Promise<SignatureServices | null> {
   return client.fetch(signatureServicesQuery, {}, opts);
+}
+
+export async function getRetailSection(): Promise<RetailSection | null> {
+  return client.fetch(`*[_type == "retailSection" && _id == "retailSection"][0]`, {}, opts);
 }
 
 const artworkFields = `_id, title, description, medium, dimensions, price, status, image, displayOrder, isPartOfSeries, seriesName`;

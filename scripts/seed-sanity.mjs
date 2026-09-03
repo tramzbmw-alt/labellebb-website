@@ -143,6 +143,16 @@ const documents = [
     tagline: "We are Lavish. We are Luxury. We are La Belle'.",
     servicesList: ['Waxing', 'Facials', 'Brow + Lash'],
   },
+  {
+    _id: 'retailSection',
+    _type: 'retailSection',
+    heading: 'Daily Needs',
+    description1:
+      'Our curated retail selection features natural, organic, and vegan formulas — the same quality we trust in every treatment, available for your daily ritual.',
+    description2:
+      "From luxurious body oils and scrubs to ingrown hair care and clean beauty essentials, every product is chosen with your skin's health in mind.",
+    tags: ['Body Oils', 'Clean Beauty', 'Natural', 'Vegan', 'Scrubs', 'Ingrown Hair Care', 'Luxurious'],
+  },
 ];
 
 async function seed() {

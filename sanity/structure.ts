@@ -53,6 +53,11 @@ export const structure: StructureResolver = (S) =>
         .id('loyaltySection')
         .child(S.document().schemaType('loyaltySection').documentId('loyaltySection')),
 
+      S.listItem()
+        .title('Retail & Skincare')
+        .id('retailSection')
+        .child(S.document().schemaType('retailSection').documentId('retailSection')),
+
       S.divider(),
 
       S.listItem()
