@@ -16,6 +16,7 @@ import { footerContent } from '../schemas/footerContent';
 import { signatureServices } from '../schemas/signatureServices';
 import { artwork } from '../schemas/artwork';
 import { retailSection } from '../schemas/retailSection';
+import { productsPage } from '../schemas/productsPage';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -36,5 +37,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     signatureServices,
     artwork,
     retailSection,
+    productsPage,
   ],
 };

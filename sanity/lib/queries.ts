@@ -181,6 +181,17 @@ export type RetailSection = {
   tags?: string[];
 };
 
+export type ProductsPage = {
+  heroHeading?: string;
+  heroEyebrow?: string;
+  heroSubtext?: string;
+  collectionHeading?: string;
+  collectionSubtext?: string;
+  ctaHeading?: string;
+  ctaSubtext?: string;
+  ctaButtonText?: string;
+};
+
 export const signatureServicesQuery =
   "*[_type == 'signatureServices' && _id == 'signatureServices'][0]";
 
@@ -246,6 +257,10 @@ export async function getSignatureServices(): Promise<SignatureServices | null> 
 
 export async function getRetailSection(): Promise<RetailSection | null> {
   return client.fetch(`*[_type == "retailSection" && _id == "retailSection"][0]`, {}, opts);
+}
+
+export async function getProductsPage(): Promise<ProductsPage | null> {
+  return client.fetch(`*[_type == "productsPage" && _id == "productsPage"][0]`, {}, opts);
 }
 
 const artworkFields = `_id, title, description, medium, dimensions, price, status, image, displayOrder, isPartOfSeries, seriesName`;

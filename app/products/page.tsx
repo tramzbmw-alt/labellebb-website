@@ -3,6 +3,7 @@ import {
   getSectionVisibility,
   getFooterContent,
   getContactSection,
+  getProductsPage,
 } from '@/sanity/lib/queries';
 
 const BOOKING_URL =
@@ -35,10 +36,11 @@ export const metadata = {
 };
 
 export default async function ProductsPage() {
-  const [visibility, footer, contact] = await Promise.all([
+  const [visibility, footer, contact, cms] = await Promise.all([
     getSectionVisibility(),
     getFooterContent(),
     getContactSection(),
+    getProductsPage(),
   ]);
 
   const showProductsPage = visibility?.showProductsPage ?? true;
@@ -199,7 +201,7 @@ export default async function ProductsPage() {
               padding: '140px 24px 80px',
             }}
           >
-            <span className="section-label">RETAIL &amp; SKINCARE</span>
+            <span className="section-label">{cms?.heroEyebrow ?? 'RETAIL & SKINCARE'}</span>
             <div className="divider-gold" style={{ marginBottom: '28px' }} />
             <h1
               style={{
@@ -212,7 +214,7 @@ export default async function ProductsPage() {
                 maxWidth: '700px',
               }}
             >
-              Clean Beauty You Can Take Home
+              {cms?.heroHeading ?? 'Clean Beauty You Can Take Home'}
             </h1>
             <p
               style={{
@@ -225,8 +227,7 @@ export default async function ProductsPage() {
                 marginBottom: '48px',
               }}
             >
-              Curated natural, organic, and vegan products rooted in luxury —
-              body oils, butters, serums, and cleansers crafted for real results.
+              {cms?.heroSubtext ?? 'Curated natural, organic, and vegan products rooted in luxury — body oils, butters, serums, and cleansers crafted for real results.'}
             </p>
 
             {/* Category Chips */}
@@ -277,7 +278,7 @@ export default async function ProductsPage() {
                   marginBottom: '12px',
                 }}
               >
-                Luxe Body Oil Collection
+                {cms?.collectionHeading ?? 'Luxe Body Oil Collection'}
               </h2>
               <p
                 style={{
@@ -288,7 +289,7 @@ export default async function ProductsPage() {
                   color: 'rgba(245,240,234,0.6)',
                 }}
               >
-                Natural · Clean · Luxurious · $26 each
+                {cms?.collectionSubtext ?? 'Natural · Clean · Luxurious · $26 each'}
               </p>
             </div>
 
@@ -409,7 +410,7 @@ export default async function ProductsPage() {
                   marginBottom: '16px',
                 }}
               >
-                Experience our products in person
+                {cms?.ctaHeading ?? 'Experience our products in person'}
               </h2>
               <p
                 style={{
@@ -420,10 +421,10 @@ export default async function ProductsPage() {
                   marginBottom: '36px',
                 }}
               >
-                Book a service today and take home your favourites from our studio.
+                {cms?.ctaSubtext ?? 'Book a service today and take home your favourites from our studio.'}
               </p>
               <a href={BOOKING_URL} target="_blank" rel="noopener" className="btn-gold">
-                Book Now
+                {cms?.ctaButtonText ?? 'Book Now'}
               </a>
             </div>
           </section>
