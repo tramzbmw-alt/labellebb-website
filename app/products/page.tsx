@@ -392,7 +392,7 @@ export default async function ProductsPage() {
           {/* BOTTOM CTA */}
           <section
             style={{
-              background: '#1C2B2D',
+              background: '#111111',
               padding: '80px 24px',
               textAlign: 'center',
             }}
