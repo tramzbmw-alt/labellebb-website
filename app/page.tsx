@@ -71,6 +71,9 @@ export default async function Home() {
   const specialsImageUrl = gifts?.specialsImage
     ? urlFor(gifts.specialsImage).width(400).url()
     : null;
+  const additionalImageUrl = gifts?.additionalImage
+    ? urlFor(gifts.additionalImage).width(600).url()
+    : null;
   const monthlySpecialImageUrl =
     monthlySpecial?.specialImage
       ? urlFor(monthlySpecial.specialImage).width(600).url()
@@ -89,6 +92,7 @@ export default async function Home() {
       aboutImageUrl={aboutImageUrl}
       giftCardImageUrl={giftCardImageUrl}
       specialsImageUrl={specialsImageUrl}
+      additionalImageUrl={additionalImageUrl}
       monthlySpecialImageUrl={monthlySpecialImageUrl}
       showAnnouncement={showAnnouncement}
       showFlashSale={showFlashSale}

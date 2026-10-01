@@ -142,6 +142,7 @@ export type GiftsSection = {
   specialsEyebrow?: string;
   giftCardImage?: SanityImageRef;
   specialsImage?: SanityImageRef;
+  additionalImage?: SanityImageRef;
 };
 
 export type ContactSection = {

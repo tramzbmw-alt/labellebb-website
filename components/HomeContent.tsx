@@ -32,6 +32,7 @@ export interface HomeContentProps {
   aboutImageUrl: string | null;
   giftCardImageUrl: string | null;
   specialsImageUrl: string | null;
+  additionalImageUrl: string | null;
   monthlySpecialImageUrl: string | null;
   showAnnouncement: boolean;
   showFlashSale: boolean;
@@ -66,6 +67,7 @@ export default function HomeContent({
   aboutImageUrl,
   giftCardImageUrl,
   specialsImageUrl,
+  additionalImageUrl,
   monthlySpecialImageUrl,
   showAnnouncement,
   showFlashSale,
@@ -687,6 +689,16 @@ export default function HomeContent({
           </div>
 
         </div>
+
+        {additionalImageUrl && (
+          <div className="gifts-additional-image">
+            <img
+              src={additionalImageUrl}
+              alt="Gifts & Specials"
+              loading="lazy"
+            />
+          </div>
+        )}
       </section>
 
       {/* TESTIMONIALS */}

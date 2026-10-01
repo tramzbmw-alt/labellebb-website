@@ -12,5 +12,6 @@ export const giftsSection = defineType({
     defineField({ name: 'specialsEyebrow', title: "Monthly Special Eyebrow", type: 'string', description: "e.g. This Month's Special" }),
     defineField({ name: 'giftCardImage', title: 'Gift Card Image', type: 'image', options: { hotspot: true } }),
     defineField({ name: 'specialsImage', title: 'Specials / Loyalty Image', type: 'image', options: { hotspot: true }, description: 'Image shown below the monthly special (e.g. Belle-Points graphic)' }),
+    defineField({ name: 'additionalImage', title: 'Additional Image (optional)', type: 'image', options: { hotspot: true }, description: 'Optional additional image for the Gifts & Specials section' }),
   ],
 });
