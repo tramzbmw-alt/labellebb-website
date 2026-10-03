@@ -728,7 +728,9 @@ export default function HomeContent({
         </h2>
         <div className="belle-points-grid">
           <div className="belle-points-step">
-            <div style={{ fontSize: '2rem', marginBottom: '8px' }}>✨</div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9954A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ margin: '0 auto 12px', display: 'block' }}>
+              <path d="M12 2l1.5 8.5L22 12l-8.5 1.5L12 22l-1.5-8.5L2 12l8.5-1.5L12 2z" />
+            </svg>
             <div style={{
               fontFamily: "'Cormorant Garamond',serif",
               fontSize: '3.5rem',
@@ -756,7 +758,12 @@ export default function HomeContent({
             }}>Earn 10 points for every $1 spent on any service</p>
           </div>
           <div className="belle-points-step">
-            <div style={{ fontSize: '2rem', marginBottom: '8px' }}>📱</div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9954A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ margin: '0 auto 12px', display: 'block' }}>
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
             <div style={{
               fontFamily: "'Cormorant Garamond',serif",
               fontSize: '3.5rem',
@@ -784,7 +791,10 @@ export default function HomeContent({
             }}>Earn 100 bonus points every time you book online</p>
           </div>
           <div className="belle-points-step">
-            <div style={{ fontSize: '2rem', marginBottom: '8px' }}>🌟</div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9954A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ margin: '0 auto 12px', display: 'block' }}>
+              <path d="M3 19h18" />
+              <path d="M3 19l3-9 4 4 2-9 2 9 4-4 3 9" />
+            </svg>
             <div style={{
               fontFamily: "'Cormorant Garamond',serif",
               fontSize: '3.5rem',
@@ -812,7 +822,13 @@ export default function HomeContent({
             }}>Earn 500 bonus points on your 6th visit</p>
           </div>
           <div className="belle-points-step">
-            <div style={{ fontSize: '2rem', marginBottom: '8px' }}>💫</div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9954A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ margin: '0 auto 12px', display: 'block' }}>
+              <rect x="3" y="8" width="18" height="4" rx="1" />
+              <rect x="4" y="12" width="16" height="9" rx="1" />
+              <line x1="12" y1="8" x2="12" y2="21" />
+              <path d="M12 8c0 0-3.5-1-3.5-3.5C8.5 3 9.5 2 11 2c1 0 1 1 1 1" />
+              <path d="M12 8c0 0 3.5-1 3.5-3.5C15.5 3 14.5 2 13 2c-1 0-1 1-1 1" />
+            </svg>
             <div style={{
               fontFamily: "'Cormorant Garamond',serif",
               fontSize: '3.5rem',
