@@ -701,6 +701,168 @@ export default function HomeContent({
         )}
       </section>
 
+      {/* BELLE POINTS LOYALTY */}
+      <section id="belle-points" style={{ background: '#111111', padding: '80px 24px', textAlign: 'center' }}>
+        <span style={{
+          fontFamily: "'Montserrat',sans-serif",
+          fontSize: '0.7rem',
+          fontWeight: 700,
+          letterSpacing: '0.3em',
+          color: '#C9954A',
+          textTransform: 'uppercase',
+          display: 'block',
+          marginBottom: '12px',
+        }}>
+          BELLE POINTS
+        </span>
+        <div style={{ width: '40px', height: '1px', background: '#C9954A', margin: '0 auto 28px' }} />
+        <h2 style={{
+          fontFamily: "'Cormorant Garamond',serif",
+          fontSize: 'clamp(2rem, 5vw, 3.2rem)',
+          fontWeight: 400,
+          color: '#ffffff',
+          marginBottom: '48px',
+          letterSpacing: '0.02em',
+        }}>
+          Earn Points Every Visit
+        </h2>
+        <div className="belle-points-grid">
+          <div className="belle-points-step">
+            <div style={{ fontSize: '2rem', marginBottom: '8px' }}>✨</div>
+            <div style={{
+              fontFamily: "'Cormorant Garamond',serif",
+              fontSize: '3.5rem',
+              fontWeight: 300,
+              color: '#C9954A',
+              lineHeight: 1,
+              marginBottom: '16px',
+            }}>01</div>
+            <h3 style={{
+              fontFamily: "'Montserrat',sans-serif",
+              fontSize: '0.85rem',
+              fontWeight: 700,
+              letterSpacing: '0.1em',
+              color: '#ffffff',
+              textTransform: 'uppercase',
+              marginBottom: '12px',
+            }}>Book a Service</h3>
+            <p style={{
+              fontFamily: "'Montserrat',sans-serif",
+              fontSize: '0.8rem',
+              fontWeight: 400,
+              color: '#F5F0EA',
+              lineHeight: 1.6,
+              margin: 0,
+            }}>Earn 10 points for every $1 spent on any service</p>
+          </div>
+          <div className="belle-points-step">
+            <div style={{ fontSize: '2rem', marginBottom: '8px' }}>📱</div>
+            <div style={{
+              fontFamily: "'Cormorant Garamond',serif",
+              fontSize: '3.5rem',
+              fontWeight: 300,
+              color: '#C9954A',
+              lineHeight: 1,
+              marginBottom: '16px',
+            }}>02</div>
+            <h3 style={{
+              fontFamily: "'Montserrat',sans-serif",
+              fontSize: '0.85rem',
+              fontWeight: 700,
+              letterSpacing: '0.1em',
+              color: '#ffffff',
+              textTransform: 'uppercase',
+              marginBottom: '12px',
+            }}>Book Online</h3>
+            <p style={{
+              fontFamily: "'Montserrat',sans-serif",
+              fontSize: '0.8rem',
+              fontWeight: 400,
+              color: '#F5F0EA',
+              lineHeight: 1.6,
+              margin: 0,
+            }}>Earn 100 bonus points every time you book online</p>
+          </div>
+          <div className="belle-points-step">
+            <div style={{ fontSize: '2rem', marginBottom: '8px' }}>🌟</div>
+            <div style={{
+              fontFamily: "'Cormorant Garamond',serif",
+              fontSize: '3.5rem',
+              fontWeight: 300,
+              color: '#C9954A',
+              lineHeight: 1,
+              marginBottom: '16px',
+            }}>03</div>
+            <h3 style={{
+              fontFamily: "'Montserrat',sans-serif",
+              fontSize: '0.85rem',
+              fontWeight: 700,
+              letterSpacing: '0.1em',
+              color: '#ffffff',
+              textTransform: 'uppercase',
+              marginBottom: '12px',
+            }}>6th Visit Reward</h3>
+            <p style={{
+              fontFamily: "'Montserrat',sans-serif",
+              fontSize: '0.8rem',
+              fontWeight: 400,
+              color: '#F5F0EA',
+              lineHeight: 1.6,
+              margin: 0,
+            }}>Earn 500 bonus points on your 6th visit</p>
+          </div>
+          <div className="belle-points-step">
+            <div style={{ fontSize: '2rem', marginBottom: '8px' }}>💫</div>
+            <div style={{
+              fontFamily: "'Cormorant Garamond',serif",
+              fontSize: '3.5rem',
+              fontWeight: 300,
+              color: '#C9954A',
+              lineHeight: 1,
+              marginBottom: '16px',
+            }}>04</div>
+            <h3 style={{
+              fontFamily: "'Montserrat',sans-serif",
+              fontSize: '0.85rem',
+              fontWeight: 700,
+              letterSpacing: '0.1em',
+              color: '#ffffff',
+              textTransform: 'uppercase',
+              marginBottom: '12px',
+            }}>Redeem &amp; Save</h3>
+            <p style={{
+              fontFamily: "'Montserrat',sans-serif",
+              fontSize: '0.8rem',
+              fontWeight: 400,
+              color: '#F5F0EA',
+              lineHeight: 1.6,
+              margin: 0,
+            }}>500 points = $5 off your next service</p>
+          </div>
+        </div>
+        <a
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener"
+          style={{
+            display: 'inline-block',
+            padding: '14px 40px',
+            background: 'transparent',
+            color: '#C9954A',
+            fontFamily: "'Montserrat',sans-serif",
+            fontSize: '0.72rem',
+            fontWeight: 700,
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            textDecoration: 'none',
+            border: '2px solid #C9954A',
+            transition: 'background 0.3s,color 0.3s',
+          }}
+        >
+          Learn More About Belle Points
+        </a>
+      </section>
+
       {/* TESTIMONIALS */}
       <section id="testimonials">
         <div className="testimonials-inner">
