@@ -1840,8 +1840,27 @@ footer {
   padding: 40px 28px;
   text-align: center;
   border-right: 1px solid rgba(201,149,74,0.25);
+  background: transparent;
+  outline: 1px solid transparent;
+  transition: background 0.3s ease, outline-color 0.3s ease;
 }
 .belle-points-step:last-child { border-right: none; }
+.belle-points-step:hover {
+  background: #1a1a1a;
+  outline: 1px solid #C9954A;
+}
+.belle-points-step:hover .belle-points-num {
+  color: #d4a55a;
+}
+.belle-points-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: #C9954A;
+  line-height: 1;
+  margin-bottom: 16px;
+  transition: color 0.3s ease;
+}
 
 @media (max-width: 768px) {
   .belle-points-grid { grid-template-columns: repeat(2, 1fr); }
