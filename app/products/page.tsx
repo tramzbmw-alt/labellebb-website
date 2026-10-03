@@ -26,7 +26,7 @@ const PRODUCTS = [
   { name: 'Dulce Luxe Body Oil',  img: '/dulce-luxe-body-oil.webp',  url: 'https://labellebeautyb.myshopify.com/products/dulce-luxe-body-oil-copy' },
   { name: 'Bare Luxe Body Oil',   img: '/bare-luxe-body-oil.webp',   url: 'https://labellebeautyb.myshopify.com/products/bare-luxe-body-oil' },
   { name: 'Lavish Luxe Body Oil', img: '/lavish-luxe-body-oil.webp', url: 'https://labellebeautyb.myshopify.com/products/lavish-luxe-body-oil-copy-copy' },
-  { name: 'Naked Luxe Body Oil',  img: '/naked-luxe-body-oil.webp',  url: 'https://labellebeautyb.myshopify.com/products/naked-luxe-body-oil' },
+  { name: 'Naked Luxe Body Oil',  img: '/naked-luxe-body-oil.webp',  url: 'https://labellebeautyb.myshopify.com/products/naked-luxe-body-oil-copy' },
 ];
 
 export const metadata = {
