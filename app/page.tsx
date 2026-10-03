@@ -72,7 +72,7 @@ export default async function Home() {
     ? urlFor(gifts.specialsImage).width(400).url()
     : null;
   const additionalImageUrl = gifts?.additionalImage
-    ? urlFor(gifts.additionalImage).width(600).url()
+    ? urlFor(gifts.additionalImage).width(800).height(800).fit('crop').crop('focalpoint').auto('format').url()
     : null;
   const monthlySpecialImageUrl =
     monthlySpecial?.specialImage
