@@ -255,82 +255,83 @@ export default function HomeContent({
       )}
 
       {/* FLASH SALE */}
-      <div
-        id="flashSale"
-        style={{
-          display: showFlashSale ? 'block' : 'none',
-          background: '#C9954A',
-          padding: '40px 24px',
-          textAlign: 'center',
-        }}
-      >
+      {showFlashSale && (
         <div
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '14px', marginBottom: '10px' }}
-        >
-          <span style={{ fontSize: '2rem' }}>⚡</span>
-          <span
-            style={{
-              fontFamily: "'Montserrat',sans-serif",
-              fontSize: '2rem',
-              fontWeight: 700,
-              letterSpacing: '0.2em',
-              color: '#111111',
-              textTransform: 'uppercase',
-            }}
-          >
-            {s(flashSale?.heading, t.flashSale.defaultHeading)}
-          </span>
-          <span style={{ fontSize: '2rem' }}>⚡</span>
-        </div>
-        <p
+          id="flashSale"
           style={{
-            fontFamily: "'Montserrat',sans-serif",
-            fontSize: '1rem',
-            fontWeight: 500,
-            letterSpacing: '0.05em',
-            color: '#111111',
-            marginBottom: '8px',
+            background: '#C9954A',
+            padding: '40px 24px',
+            textAlign: 'center',
           }}
         >
-          {s(flashSale?.subtext, t.flashSale.defaultSubtext)}
-        </p>
-        {flashSale?.expiryDate && (
+          <div
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '14px', marginBottom: '10px' }}
+          >
+            <span style={{ fontSize: '2rem' }}>⚡</span>
+            <span
+              style={{
+                fontFamily: "'Montserrat',sans-serif",
+                fontSize: '2rem',
+                fontWeight: 700,
+                letterSpacing: '0.2em',
+                color: '#111111',
+                textTransform: 'uppercase',
+              }}
+            >
+              {s(flashSale?.heading, t.flashSale.defaultHeading)}
+            </span>
+            <span style={{ fontSize: '2rem' }}>⚡</span>
+          </div>
           <p
             style={{
               fontFamily: "'Montserrat',sans-serif",
-              fontSize: '0.8rem',
-              fontWeight: 400,
-              letterSpacing: '0.1em',
+              fontSize: '1rem',
+              fontWeight: 500,
+              letterSpacing: '0.05em',
               color: '#111111',
-              marginBottom: '28px',
-              opacity: 0.75,
+              marginBottom: '8px',
             }}
           >
-            {t.flashSale.limitedTime} &middot; {t.flashSale.expires} {flashSale.expiryDate}
+            {s(flashSale?.subtext, t.flashSale.defaultSubtext)}
           </p>
-        )}
-        <a
-          href={BOOKING_URL}
-          target="_blank"
-          rel="noopener"
-          style={{
-            display: 'inline-block',
-            padding: '14px 40px',
-            background: '#111111',
-            color: '#C9954A',
-            fontFamily: "'Montserrat',sans-serif",
-            fontSize: '0.72rem',
-            fontWeight: 700,
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            textDecoration: 'none',
-            border: '2px solid #111111',
-            transition: 'background 0.3s,color 0.3s',
-          }}
-        >
-          {s(flashSale?.buttonText, t.flashSale.bookNow)}
-        </a>
-      </div>
+          {flashSale?.expiryDate && (
+            <p
+              style={{
+                fontFamily: "'Montserrat',sans-serif",
+                fontSize: '0.8rem',
+                fontWeight: 400,
+                letterSpacing: '0.1em',
+                color: '#111111',
+                marginBottom: '28px',
+                opacity: 0.75,
+              }}
+            >
+              {t.flashSale.limitedTime} &middot; {t.flashSale.expires} {flashSale.expiryDate}
+            </p>
+          )}
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener"
+            style={{
+              display: 'inline-block',
+              padding: '14px 40px',
+              background: '#111111',
+              color: '#C9954A',
+              fontFamily: "'Montserrat',sans-serif",
+              fontSize: '0.72rem',
+              fontWeight: 700,
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+              border: '2px solid #111111',
+              transition: 'background 0.3s,color 0.3s',
+            }}
+          >
+            {s(flashSale?.buttonText, t.flashSale.bookNow)}
+          </a>
+        </div>
+      )}
 
       {/* ABOUT */}
       <section id="about">
