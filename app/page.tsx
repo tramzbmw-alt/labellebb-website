@@ -76,7 +76,7 @@ export default async function Home() {
     : null;
   const monthlySpecialImageUrl =
     monthlySpecial?.specialImage
-      ? urlFor(monthlySpecial.specialImage).width(600).url()
+      ? urlFor(monthlySpecial.specialImage).width(600).height(600).fit('crop').crop('focalpoint').auto('format').url()
       : null;
 
   const phone = contact?.phone ?? '(919) 321-1148';

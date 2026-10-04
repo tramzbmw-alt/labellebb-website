@@ -23,7 +23,7 @@ export type MonthlySpecial = {
   subtitle?: string;
   description?: string;
   availableThrough?: string;
-  specialImage?: { asset?: { _ref: string } };
+  specialImage?: SanityImageRef;
   monthlySpecialTitleEs?: string;
   monthlySpecialDescriptionEs?: string;
 };
@@ -205,7 +205,7 @@ export async function getFlashSale(): Promise<FlashSale | null> {
 }
 
 export async function getMonthlySpecial(): Promise<MonthlySpecial | null> {
-  return client.fetch(`*[_type == "monthlySpecial" && active == true][0]`, {}, opts);
+  return client.fetch(`*[_type == "monthlySpecial" && active == true][0]`, {}, liveOpts);
 }
 
 export async function getTeamMembers(): Promise<TeamMember[]> {
@@ -241,7 +241,7 @@ export async function getLoyaltySection(): Promise<LoyaltySection | null> {
 }
 
 export async function getGiftsSection(): Promise<GiftsSection | null> {
-  return client.fetch(`*[_type == "giftsSection"][0]`, {}, opts);
+  return client.fetch(`*[_type == "giftsSection"][0]`, {}, liveOpts);
 }
 
 export async function getContactSection(): Promise<ContactSection | null> {
