@@ -691,11 +691,12 @@ export default function HomeContent({
         </div>
 
         {additionalImageUrl && (
-          <div className="gifts-additional-image">
+          <div style={{ width: '100%', aspectRatio: '1/1', overflow: 'hidden', position: 'relative' }}>
             <img
               src={additionalImageUrl}
               alt="Gifts & Specials"
               loading="lazy"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
             />
           </div>
         )}
