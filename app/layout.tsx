@@ -35,7 +35,7 @@ const schema = {
 export const metadata: Metadata = {
   title: "La Belle' Beauty Bar | Luxury Boutique Beauty · Apex, NC",
   description:
-    "La Belle' Beauty Bar — luxury waxing, facials, lash & brow services in Apex, NC. Black-owned, woman-owned. 5-star boutique beauty bar.",
+    "La Belle' Beauty Bar in Apex NC offers luxury waxing, facials, lash & brow services. Woman-owned boutique beauty bar at 3675 Green Level W Road Suite 205. Book online today.",
   openGraph: {
     title: "La Belle' Beauty Bar — Luxury Beauty in Apex, NC",
     description:
