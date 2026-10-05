@@ -1,3 +1,5 @@
+export const revalidate = 0;
+
 import { urlFor } from '@/sanity/lib/image';
 import { projectId, dataset } from '@/sanity/env';
 import HomeContent from '@/components/HomeContent';
