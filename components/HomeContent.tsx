@@ -830,6 +830,16 @@ export default function HomeContent({
             }}>500 points = $5 off your next service</p>
           </div>
         </div>
+        <p style={{
+          fontFamily: "'Montserrat',sans-serif",
+          fontSize: '13px',
+          fontWeight: 400,
+          letterSpacing: '0.08em',
+          color: '#C9954A',
+          marginBottom: '32px',
+        }}>
+          Redeem 500 points for $5 off &nbsp;·&nbsp; 1,000 points for $10 off &nbsp;·&nbsp; 2,000 points for $20 off
+        </p>
         <a
           href={BOOKING_URL}
           target="_blank"
@@ -849,7 +859,7 @@ export default function HomeContent({
             transition: 'background 0.3s,color 0.3s',
           }}
         >
-          Learn More About Belle Points
+          Book Now
         </a>
       </section>
 
